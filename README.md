@@ -126,7 +126,7 @@
 
 ### 5. 单行实现 for 死循环如何写？
 
-![](http://image.iswbm.com/20200511195137.png)
+![](http://image.iswbm.com/20200511201025.png)
 
 
 
