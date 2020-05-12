@@ -1,9 +1,25 @@
 # Python 黑魔法手册
 
-记录 Python 中不为人知的知识与技巧，出于版权的保护，我将手册的内容生成为 pdf，需要的同学可以点击下载学习。
+大家好，我是明哥。
+
+我将自己平时记录的一些关于 Python 的 小 tip 记录整理了成了这本电子书。
+
+这本手册的关键字，有三个：
+
+1. 够魔幻
+2. 够冷门
+3. 够好用
+
+因此我将其命名为 《Python 黑魔法指南》，里面的内容都是平时的积累，不管对于刚入门的小白，还是已经是接触 Python 开发多年的人来说，应该都能有所收获。
+
+![](http://image.iswbm.com/20200512123447.png)
 
 
-## 我的目录
+
+在线阅读：[《Python 黑魔法手册》](https://github.com/iswbm/magic-python/blob/master/Python%20%E9%BB%91%E9%AD%94%E6%B3%95%E6%8C%87%E5%8D%97%20v1.0.pdf)
+
+
+## Content
 
 01. 默默无闻的省略号很好用
 
@@ -107,8 +123,28 @@
 
 
 
----
+## Example
 
----
+
+
+![](http://image.iswbm.com/20200511234738.png)
+
+
+
+![](http://image.iswbm.com/20200511234522.png)
+
+
+
+![](http://image.iswbm.com/20200511234603.png)
+
+
+
+![](http://image.iswbm.com/20200511234700.png)
+
+![](http://image.iswbm.com/20200511235931.png)
+
+
+
+
 
 ![](http://image.iswbm.com/20200512130122.png)
