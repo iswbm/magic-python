@@ -106,32 +106,9 @@
 50. 重定向标准输出到日志
 
 
-## Example
-
-### 1. 默默无闻的省略号很好用
-
-![](http://image.iswbm.com/20200511195542.png)
-
-### 2. 使用 end 来结束代码块
-
-![](http://image.iswbm.com/20200511195316.png)
-
-## 3. 可直接运行的 zip 包
-
-![](http://image.iswbm.com/20200511195259.png)
-
-### 4. 反斜杠的倔强: 不写最后
-
-![](http://image.iswbm.com/20200511195235.png)
-
-### 5. 单行实现 for 死循环如何写？
-
-![](http://image.iswbm.com/20200511201025.png)
-
-
 
 ---
 
+---
 
-
-![关注公众号，获取最新干货！](http://image.python-online.cn/image-20200320125724880.png)
+![](http://image.iswbm.com/20200512130122.png)
