@@ -1,1 +1,6 @@
-magic-python.md
+build/
+.idea/
+*.pyc
+Makefile
+Pipfile
+test*
