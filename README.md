@@ -10,7 +10,7 @@
 
 ## 在线阅读
 
-在线阅读：[《Python 黑魔法指南》](https://github.com/iswbm/magic-python/blob/master/Python 黑魔法指南 v1.1.pdf)
+在线阅读：[《Python 黑魔法指南》](https://github.com/iswbm/magic-python/blob/master/Python%20%E9%BB%91%E9%AD%94%E6%B3%95%E6%8C%87%E5%8D%97%20v1.1.pdf)
 
 
 
