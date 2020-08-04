@@ -10,13 +10,13 @@
 
 ## 在线阅读
 
-在线阅读：[《Python 黑魔法指南》](https://github.com/iswbm/magic-python/blob/master/Python%20%E9%BB%91%E9%AD%94%E6%B3%95%E6%8C%87%E5%8D%97%20v2.0.pdf)
+在线阅读：[《Python 黑魔法指南》](http://magic.iswbm.com/)
 
 
 
 ## 目录大纲
 
-![](http://image.iswbm.com/20200719221952.png)
+![](http://image.iswbm.com/20200802161110.png)
 
 (以下链接无效，请前往 PDF 进行阅读)
 
