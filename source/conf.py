@@ -113,12 +113,12 @@ html_js_files = [
 ]
 
 # General configuration.
-#with open("/home/docs/checkouts/readthedocs.org/user_builds/pythoncodingtime/envs/latest/lib/python3.7/site-packages/sphinxcontrib/disqus.py", "r") as file:
-#    content = file.read()
-#    content=content.replace("sphinx.application", "sphinx.errors")
+with open("/home/docs/checkouts/readthedocs.org/user_builds/magic-python-guide/envs/latest/lib/python3.7/site-packages/sphinx/registry.py", "r") as file:
+    content = file.read()
+    content=content.replace("sphinx.application", "sphinx.errors")
 
-#with open("/home/docs/checkouts/readthedocs.org/user_builds/pythoncodingtime/envs/latest/lib/python3.7/site-packages/sphinxcontrib/disqus.py", "w") as file:
-#    file.write(content)
+with open("/home/docs/checkouts/readthedocs.org/user_builds/magic-python-guide/envs/latest/lib/python3.7/site-packages/sphinx/registry.py", "w") as file:
+    file.write(content)
 
 author = '王炳明'
 copyright = '2020, Python编程时光'
