@@ -1,0 +1,54 @@
+5.5 自带的缓存机制不用白不用
+============================
+
+|image0|
+
+缓存是一种将定量数据加以保存，以备迎合后续获取需求的处理方式，旨在加快数据获取的速度。
+
+数据的生成过程可能需要经过计算，规整，远程获取等操作，如果是同一份数据需要多次使用，每次都重新生成会大大浪费时间。所以，如果将计算或者远程请求等操作获得的数据缓存下来，会加快后续的数据获取需求。
+
+为了实现这个需求，Python 3.2 +
+中给我们提供了一个机制，可以很方便的实现，而不需要你去写这样的逻辑代码。
+
+这个机制实现于 functool 模块中的 lru_cache 装饰器。
+
+.. code:: python
+
+   @functools.lru_cache(maxsize=None, typed=False)
+
+参数解读：
+
+-  maxsize：最多可以缓存多少个此函数的调用结果，如果为None，则无限制，设置为
+   2 的幂时，性能最佳
+-  typed：若为 True，则不同参数类型的调用将分别缓存。
+
+举个例子
+
+.. code:: python
+
+   from functools import lru_cache
+
+   @lru_cache(None)
+   def add(x, y):
+       print("calculating: %s + %s" % (x, y))
+       return x + y
+
+   print(add(1, 2))
+   print(add(1, 2))
+   print(add(2, 3))
+
+输出如下，可以看到第二次调用并没有真正的执行函数体，而是直接返回缓存里的结果
+
+.. code:: shell
+
+   calculating: 1 + 2
+   3
+   3
+   calculating: 2 + 3
+   5
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

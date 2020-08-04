@@ -1,0 +1,45 @@
+1.3 可直接运行的 zip 包
+=======================
+
+|image0|
+
+我们可以经常看到有 Python 包，居然可以以 zip
+包进行发布，并且可以不用解压直接使用。
+
+这与大多数人的认识的 Python 包格式不一样，正常人认为 Python 包的格式要嘛
+是 egg，要嘛是whl 格式。
+
+那么这个zip 是如何制作的呢，请看下面的示例。
+
+.. code:: shell
+
+   [root@localhost ~]# ls -l demo
+   total 8
+   -rw-r--r-- 1 root root 30 May  8 19:27 calc.py
+   -rw-r--r-- 1 root root 35 May  8 19:33 __main__.py
+   [root@localhost ~]# 
+   [root@localhost ~]# cat demo/__main__.py
+   import calc
+
+   print(calc.add(2, 3))
+   [root@localhost ~]# 
+   [root@localhost ~]# cat demo/calc.py 
+   def add(x, y):
+       return x+y
+   [root@localhost ~]# 
+   [root@localhost ~]# python -m zipfile -c demo.zip demo/*
+   [root@localhost ~]# 
+
+制作完成后，我们可以执行用 python 去执行它
+
+.. code:: shell
+
+   [root@localhost ~]# python demo.zip
+   5
+   [root@localhost ~]#
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

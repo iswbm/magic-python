@@ -1,0 +1,35 @@
+1.6 简洁而优雅的链式比较
+========================
+
+|image0|
+
+先给你看一个示例：
+
+.. code:: python
+
+   >>> False == False == True
+   False
+
+你知道这个表达式为什么会会返回 False 吗？
+
+它的运行原理与下面这个类似，是不是有点头绪了：
+
+.. code:: python
+
+   if 80 < score <= 90:
+       print("成绩良好")
+
+如果你还是不明白，那我再给你整个第一个例子的等价写法。
+
+.. code:: python
+
+   >>> False == False and False == True
+   False
+
+这个用法叫做链式比较。
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

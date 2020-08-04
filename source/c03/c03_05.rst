@@ -1,0 +1,137 @@
+3.5 判断是否包含子串的七种方法
+==============================
+
+|image0|
+
+1、使用 in 和 not in
+~~~~~~~~~~~~~~~~~~~~
+
+``in`` 和 ``not in`` 在 Python 中是很常用的关键字，我们将它们归类为
+``成员运算符``\ 。
+
+使用这两个成员运算符，可以很让我们很直观清晰的判断一个对象是否在另一个对象中，示例如下：
+
+.. code:: python
+
+   >>> "llo" in "hello, python"
+   True
+   >>>
+   >>> "lol" in "hello, python"
+   False
+
+2、使用 find 方法
+~~~~~~~~~~~~~~~~~
+
+使用 字符串 对象的 find
+方法，如果有找到子串，就可以返回指定子串在字符串中的出现位置，如果没有找到，就返回
+``-1``
+
+.. code:: python
+
+   >>> "hello, python".find("llo") != -1
+   True
+   >>> "hello, python".find("lol") != -1
+   False
+   >>
+
+3、使用 index 方法
+~~~~~~~~~~~~~~~~~~
+
+字符串对象有一个 index
+方法，可以返回指定子串在该字符串中第一次出现的索引，如果没有找到会抛出异常，因此使用时需要注意捕获。
+
+.. code:: python
+
+   def is_in(full_str, sub_str):
+       try:
+           full_str.index(sub_str)
+           return True
+       except ValueError:
+           return False
+
+   print(is_in("hello, python", "llo"))  # True
+   print(is_in("hello, python", "lol"))  # False
+
+4、使用 count 方法
+~~~~~~~~~~~~~~~~~~
+
+利用和 index 这种曲线救国的思路，同样我们可以使用 count 的方法来判断。
+
+只要判断结果大于 0 就说明子串存在于字符串中。
+
+.. code:: python
+
+   def is_in(full_str, sub_str):
+       return full_str.count(sub_str) > 0
+
+   print(is_in("hello, python", "llo"))  # True
+   print(is_in("hello, python", "lol"))  # False
+
+5、通过魔法方法
+~~~~~~~~~~~~~~~
+
+在第一种方法中，我们使用 in 和 not in
+判断一个子串是否存在于另一个字符中，实际上当你使用 in 和 not in
+时，Python 解释器会先去检查该对象是否有 ``__contains__`` 魔法方法。
+
+若有就执行它，若没有，Python
+就自动会迭代整个序列，只要找到了需要的一项就返回 True 。
+
+示例如下；
+
+.. code:: python
+
+   >>> "hello, python".__contains__("llo")
+   True
+   >>>
+   >>> "hello, python".__contains__("lol")
+   False
+   >>>
+
+这个用法与使用 in 和 not in
+没有区别，但不排除有人会特意写成这样来增加代码的理解难度。
+
+6、借助 operator
+~~~~~~~~~~~~~~~~
+
+operator模块是python中内置的操作符函数接口，它定义了一些算术和比较内置操作的函数。operator模块是用c实现的，所以执行速度比
+python 代码快。
+
+在 operator 中有一个方法 ``contains``
+可以很方便地判断子串是否在字符串中。
+
+.. code:: python
+
+   >>> import operator
+   >>>
+   >>> operator.contains("hello, python", "llo")
+   True
+   >>> operator.contains("hello, python", "lol")
+   False
+   >>> 
+
+7、使用正则匹配
+~~~~~~~~~~~~~~~
+
+说到查找功能，那正则绝对可以说是专业的工具，多复杂的查找规则，都能满足你。
+
+对于判断字符串是否存在于另一个字符串中的这个需求，使用正则简直就是大材小用。
+
+.. code:: python
+
+   import re
+
+   def is_in(full_str, sub_str):
+       if re.findall(sub_str, full_str):
+           return True
+       else:
+           return False
+
+   print(is_in("hello, python", "llo"))  # True
+   print(is_in("hello, python", "lol"))  # False
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

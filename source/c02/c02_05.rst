@@ -1,0 +1,22 @@
+2.5 用调试模式执行脚本
+======================
+
+|image0|
+
+当你使用 pdb 进行脚本的调试时，你可能会先在目标代码处输入
+``import pdb;pdb.set_trace()`` 来设置断点。
+
+除此之外，还有一种方法，就是使用 ``-m pdb``
+
+.. code:: shell
+
+   $ python -m pdb demo.py
+   > /Users/MING/demo.py(1)<module>()
+   -> import sys
+   (Pdb)
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

@@ -1,0 +1,41 @@
+1.2 使用 end 来结束代码块
+=========================
+
+有不少编程语言，循环、判断代码块需要用 end
+标明结束，这样一定程度上会使代码逻辑更加清晰一点。
+
+但是其实在 Python 这种严格缩进的语言里并没有必要这样做。
+
+如果你真的想用，也不是没有办法，具体你看下面这个例子。
+
+.. code:: python
+
+   __builtins__.end = None
+
+
+   def my_abs(x):
+       if x > 0:
+           return x
+       else:
+           return -x
+       end
+   end
+
+   print(my_abs(10))
+   print(my_abs(-10))
+
+执行后，输出如下
+
+.. code:: shell
+
+   [root@localhost ~]$ python demo.py 
+   10
+   10
+
+|image0|
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

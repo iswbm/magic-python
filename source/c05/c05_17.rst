@@ -1,0 +1,55 @@
+5.17 反转字符串/列表最优雅的方式
+================================
+
+|image0|
+
+反转序列并不难，但是如何做到最优雅呢？
+
+先来看看，正常是如何反转的。
+
+最简单的方法是使用列表自带的reverse()方法。
+
+.. code:: python
+
+   >>> ml = [1,2,3,4,5]
+   >>> ml.reverse()
+   >>> ml
+   [5, 4, 3, 2, 1]
+
+但如果你要处理的是字符串，reverse就无能为力了。你可以尝试将其转化成list，再reverse，然后再转化成str。转来转去，也太麻烦了吧？需要这么多行代码（后面三行是不能合并成一行的），一点都Pythonic。
+
+.. code:: python
+
+   mstr1 = 'abc'
+   ml1 = list(mstr1)
+   ml1.reverse()
+   mstr2 = str(ml1)
+
+对于字符串还有一种稍微复杂一点的，是自定义递归函数来实现。
+
+.. code:: python
+
+   def my_reverse(str):
+       if str == "":
+           return str
+       else:
+           return my_reverse(str[1:]) + str[0]
+
+在这里，介绍一种最优雅的反转方式，使用切片，不管你是字符串，还是列表，简直通杀。
+
+.. code:: python
+
+   >>> mstr = 'abc'
+   >>> ml = [1,2,3]
+   >>> mstr[::-1]
+   'cba'
+   >>> ml[::-1]
+   [3, 2, 1]
+
+..
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

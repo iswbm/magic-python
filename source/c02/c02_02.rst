@@ -1,0 +1,70 @@
+2.2 最快查看包搜索路径的方式
+============================
+
+|image0|
+
+当你使用 import 导入一个包或模块时，Python
+会去一些目录下查找，而这些目录是有优先级顺序的，正常人会使用 sys.path
+查看。
+
+.. code:: python
+
+   >>> import sys
+   >>> from pprint import pprint   
+   >>> pprint(sys.path)
+   ['',
+    '/usr/local/Python3.7/lib/python37.zip',
+    '/usr/local/Python3.7/lib/python3.7',
+    '/usr/local/Python3.7/lib/python3.7/lib-dynload',
+    '/home/wangbm/.local/lib/python3.7/site-packages',
+    '/usr/local/Python3.7/lib/python3.7/site-packages']
+   >>> 
+
+那有没有更快的方式呢？
+
+我这有一种连 console 模式都不用进入的方法呢？
+
+你可能会想到这种，但这本质上与上面并无区别
+
+.. code:: python
+
+   [wangbm@localhost ~]$ python -c "print('\n'.join(__import__('sys').path))"
+
+   /usr/lib/python2.7/site-packages/pip-18.1-py2.7.egg
+   /usr/lib/python2.7/site-packages/redis-3.0.1-py2.7.egg
+   /usr/lib64/python27.zip
+   /usr/lib64/python2.7
+   /usr/lib64/python2.7/plat-linux2
+   /usr/lib64/python2.7/lib-tk
+   /usr/lib64/python2.7/lib-old
+   /usr/lib64/python2.7/lib-dynload
+   /home/wangbm/.local/lib/python2.7/site-packages
+   /usr/lib64/python2.7/site-packages
+   /usr/lib64/python2.7/site-packages/gtk-2.0
+   /usr/lib/python2.7/site-packages
+
+这里我要介绍的是比上面两种都方便的多的方法，一行命令即可解决
+
+.. code:: shell
+
+   [wangbm@localhost ~]$ python3 -m site
+   sys.path = [
+       '/home/wangbm',
+       '/usr/local/Python3.7/lib/python37.zip',
+       '/usr/local/Python3.7/lib/python3.7',
+       '/usr/local/Python3.7/lib/python3.7/lib-dynload',
+       '/home/wangbm/.local/lib/python3.7/site-packages',
+       '/usr/local/Python3.7/lib/python3.7/site-packages',
+   ]
+   USER_BASE: '/home/wangbm/.local' (exists)
+   USER_SITE: '/home/wangbm/.local/lib/python3.7/site-packages' (exists)
+   ENABLE_USER_SITE: True
+
+从输出你可以发现，这个列的路径会比 sys.path
+更全，它包含了用户环境的目录。
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

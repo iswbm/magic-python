@@ -1,0 +1,401 @@
+7.1 远程登陆服务器的最佳利器
+============================
+
+|image0|
+
+在使用 Python
+写一些脚本的时候，在某些情况下，我们需要频繁登陆远程服务去执行一次命令，并返回一些结果。
+
+在 shell 环境中，我们是这样子做的。
+
+.. code:: shell
+
+   $ sshpass -p ${passwd} ssh -p ${port} -l ${user} -o StrictHostKeyChecking=no xx.xx.xx.xx "ls -l"
+
+然后你会发现，你的输出有很多你并不需要，但是又不去不掉的一些信息（也许有方法，请留言交流），类似这样
+
+.. code:: shell
+
+   host: xx.xx.xx.xx, port: xx
+   Warning: Permanently added '[xx.xx.xx.xx]:xx' (RSA) to the list of known hosts.
+   Login failure: [Errno 1] This server is not registered to rmp platform, please confirm whether cdn server.
+   total 4
+   -rw-r--r-- 1 root root 239 Mar 30  2018 admin-openrc
+
+对于直接使用 shell
+命令，来执行命令的，可以直接使用管道，或者将标准输出重定向到文件的方法取得执行命令返回的结果
+
+1. 使用 subprocess
+~~~~~~~~~~~~~~~~~~
+
+若是使用 Python 来做这件事，通常我们会第一时间，想到使用
+os.popen，os.system，commands，subprocess 等一些命令执行库来间接获取 。
+
+但是据我所知，这些库获取的 output
+不仅只有标准输出，还包含标准错误（也就是上面那些多余的信息）
+
+所以每次都要对 output
+进行的数据清洗，然后整理格式化，才能得到我们想要的数据。
+
+用 subprocess 举个例子，就像这样子
+
+.. code:: python
+
+   import subprocess
+   ssh_cmd = "sshpass -p ${passwd} ssh -p 22 -l root -o StrictHostKeyChecking=no xx.xx.xx.xx  'ls -l'"
+   status, output = subprocess.getstatusoutput(ssh_cmd)
+
+   # 数据清理，格式化的就不展示了
+   <code...>
+
+通过以上的文字 + 代码的展示 ，可以感觉到 ssh 登陆的几大痛点
+
+-  **痛点一**\ ：需要额外安装 sshpass（如果不免密的话）
+-  **痛点二**\ ：干扰信息太多，数据清理、格式化相当麻烦
+-  **痛点三**\ ：代码实现不够优雅（有点土），可读性太差
+-  **痛点四**\ ：ssh 连接不能复用，一次连接仅能执行一次
+-  **痛点五**\ ：代码无法全平台，仅能在 Linux 和 OSX 上使用
+
+为了解决这几个问题，我搜索了全网关于 Python ssh
+的文章，没有看到有完整介绍这方面的技巧的。
+
+|image1|
+
+为此，我就翻阅了一个很火的 Github 项目： awesome-python-cn
+（https://github.com/BingmingWong/awesome-python-cn）。
+
+期望在这里，找到有一些关于 远程连接 的一些好用的库。
+
+还真的被我找到了两个
+
+-  sh.ssh
+-  Paramiko
+
+2. 使用 sh.ssh
+~~~~~~~~~~~~~~
+
+首先来介绍第一个，\ ``sh.ssh``
+
+``sh`` 是一个可以让你通过函数的调用来完成 Linxu/OSX
+系统命令的一个库，非常好用，关于它有机会也写篇介绍。
+
+.. code:: shell
+
+   $ python3 -m pip install sh
+
+今天只介绍它其中的一个函数：\ ``ssh``
+
+通常两台机器互访，为了方便，可设置免密登陆，这样就不需要输入密码。
+
+这段代码可以实现免密登陆，并执行我们的命令 ``ls -l``
+
+.. code:: python
+
+   from sh import ssh
+   output=ssh("root@xx.xx.xx.xx", "-p 22", "ls -l")
+   print(output)
+
+但有可能
+，我们并不想设置互信免密，为了使这段代码更通用，我假定我们没有设置免密，只能使用密码进行登陆。
+
+问题就来了，要输入密码，必须得使用交互式的方法来输入呀，在 Python
+中要如何实现呢？
+
+原来 ssh 方法接收一个 ``_out``
+参数，这个参数可以为一个字符串，表示文件路径，也可以是一个文件对象（或者类文件对象），还可以是一个回调函数，意思是当有标准输出时，就会调用将输出内容传给这个函数。
+
+这就好办了呀。
+
+我只要识别到有 ``password:`` 字样，就往标准输入写入我的密码就好了呀。
+
+完整代码如下：
+
+.. code:: python
+
+   import sys
+   from sh import ssh
+
+   aggregated = ""
+   def ssh_interact(char, stdin):
+       global aggregated
+       sys.stdout.write(char.encode())
+       sys.stdout.flush()
+       aggregated += char
+       if aggregated.endswith("password: "):
+           stdin.put("you_password\n")
+
+   output=ssh("root@xx.xx.xx.xx", "-p 22", "ls -l",_tty_in=True, _out_bufsize=0, _out=ssh_interact)
+   print(output)
+
+这是官方文档（http://amoffat.github.io/sh/tutorials/interacting_with_processes.html?highlight=ssh）给的一些信息，写的一个demo。
+
+尝试运行后，发现程序会一直在运行中，永远不会返回，不会退出，回调函数也永远不会进入。
+
+通过调试查看源代码，仍然查不到问题所在，于是去
+`Github <https://github.com/amoffat/sh/issues/393>`__ 上搜了下，原来在
+2017 年就已经存在这个问题了，到现在 2020 年了还没有修复，看来使用
+``sh.ssh`` 的人并不多，于是我又“追问”了下，期望能得到回复。
+
+|image2|
+
+以上这个问题，只有在需要输入密码才会出现，如果设置了机器互信是没有问题的。
+
+为了感受 ``sh.ssh``
+的使用效果，我设置了机器互信免密，然后使用如下这段代码。
+
+.. code:: python
+
+   from sh import ssh
+
+   my_server=ssh.bake("root@xx.xx.xx.xx", "-p 22")
+
+   # 相当于执行登陆一次执行一次命令，执行完就退出登陆
+   print(my_server.ls())
+
+   # 可在 sleep 期间，手动登陆服务器，使用 top ，查看当前有多少终端在连接
+   time.sleep(5)
+
+   # 再次执行这条命令时，登陆终端数将 +1，执行完后，又将 -1
+   print(my_server.ifconfig())
+
+惊奇地发现使用 ``bake`` 这种方式，\ ``my_server.ls()`` 和
+``my_server.ifconfig()``
+这种看似是通过同一个ssh连接，执行两次命令，可实际上，你可以在远程机器上，执行
+top 命令看到已连接的终端的变化，会先 ``+1`` 再
+``-1``\ ，说明两次命令的执行是通过两次连接实现的。
+
+如此看来，使用 ``sh.ssh``
+可以解决痛点一（如果上述问题能得到解决）、痛点二、痛点三。
+
+但是它仍然无法复用 ssh 连接，还是不太方便，不是我理想中的最佳方案。
+
+最重要的一点是， ``sh`` 这个模块，仅支持 Linxu/OSX ，在 Windows
+你得使用它的兄弟库 - ``pbs`` ，然后我又去 pypi 看了一眼
+`pbs <https://pypi.org/project/pbs/>`__\ ，已经 “年久失修”，没人维护了。
+
+|image3|
+
+至此，我离 “卒”，就差最后一根稻草了。
+
+|image4|
+
+3. 使用 paramiko
+~~~~~~~~~~~~~~~~
+
+带着最后一丝希望，我尝试使用了 ``paramiko`` 这个库，终于在 ``paramiko``
+这里，找回了本应属于 Python 的那种优雅。
+
+你可以通过如下命令去安装它
+
+::
+
+   $ python3 -m pip install paramiko
+
+然后接下来，就介绍几种常用的 ssh 登陆的方法
+
+方法1：基于用户名和密码的 sshclient 方式登录
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+然后你可以参考如下这段代码，在 Linux/OSX 系统下进行远程连接
+
+.. code:: python
+
+   import paramiko
+
+   ssh = paramiko.SSHClient()
+   # 允许连接不在know_hosts文件中的主机
+   ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+   # 建立连接
+   ssh.connect("xx.xx.xx.xx", username="root", port=22, password="you_password")
+
+   # 使用这个连接执行命令
+   ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command("ls -l")
+
+   # 获取输出
+   print(ssh_stdout.read())
+
+   # 关闭连接
+   ssh.close()
+
+方法2：基于用户名和密码的 transport 方式登录
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+方法1
+是传统的连接服务器、执行命令、关闭的一个操作，多个操作需要连接多次，无法复用连接[**痛点四**]。
+
+有时候需要登录上服务器执行多个操作，比如执行命令、上传/下载文件，方法1
+则无法实现，那就可以使用 transport 的方法。
+
+.. code:: python
+
+   import paramiko
+
+   # 建立连接
+   trans = paramiko.Transport(("xx.xx.xx.xx", 22))
+   trans.connect(username="root", password="you_passwd")
+
+   # 将sshclient的对象的transport指定为以上的trans
+   ssh = paramiko.SSHClient()
+   ssh._transport = trans
+
+   # 剩下的就和上面一样了
+   ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+   ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command("ls -l")
+   print(ssh_stdout.read())
+
+   # 关闭连接
+   trans.close()
+
+方法3：基于公钥密钥的 SSHClient 方式登录
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: python
+
+   import paramiko
+
+   # 指定本地的RSA私钥文件
+   # 如果建立密钥对时设置的有密码，password为设定的密码，如无不用指定password参数
+   pkey = paramiko.RSAKey.from_private_key_file('/home/you_username/.ssh/id_rsa', password='12345')
+
+   # 建立连接
+   ssh = paramiko.SSHClient()
+   ssh.connect(hostname='xx.xx.xx.xx',
+               port=22,
+               username='you_username',
+               pkey=pkey)
+
+   # 执行命令
+   stdin, stdout, stderr = ssh.exec_command('ls -l')
+
+   # 结果放到stdout中，如果有错误将放到stderr中
+   print(stdout.read())
+
+   # 关闭连接
+   ssh.close()
+
+方法4：基于密钥的 Transport 方式登录
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: python
+
+   import paramiko
+
+   # 指定本地的RSA私钥文件
+   # 如果建立密钥对时设置的有密码，password为设定的密码，如无不用指定password参数
+   pkey = paramiko.RSAKey.from_private_key_file('/home/you_username/.ssh/id_rsa', password='12345')
+
+   # 建立连接
+   trans = paramiko.Transport(('xx.xx.xx.xx', 22))
+   trans.connect(username='you_username', pkey=pkey)
+
+   # 将sshclient的对象的transport指定为以上的trans
+   ssh = paramiko.SSHClient()
+   ssh._transport = trans
+
+   # 执行命令，和传统方法一样
+   stdin, stdout, stderr = ssh.exec_command('df -hl')
+   print(stdout.read().decode())
+
+   # 关闭连接
+   trans.close()
+
+以上四种方法，可以帮助你实现远程登陆服务器执行命令，如果需要复用连接：一次连接执行多次命令，可以使用
+**方法二** 和 **方法四**
+
+用完后，记得关闭连接。
+
+实现 sftp 文件传输
+^^^^^^^^^^^^^^^^^^
+
+同时，paramiko 做为 ssh 的完美解决方案，它非常专业，利用它还可以实现
+sftp 文件传输。
+
+.. code:: python
+
+   import paramiko
+
+   # 实例化一个trans对象# 实例化一个transport对象
+   trans = paramiko.Transport(('xx.xx.xx.xx', 22))
+
+   # 建立连接
+   trans.connect(username='you_username', password='you_passwd')
+
+   # 实例化一个 sftp对象,指定连接的通道
+   sftp = paramiko.SFTPClient.from_transport(trans)
+
+   # 发送文件
+   sftp.put(localpath='/tmp/11.txt', remotepath='/tmp/22.txt')
+
+   # 下载文件
+   sftp.get(remotepath='/tmp/22.txt', localpath='/tmp/33.txt')
+   trans.close()
+
+到这里，Paramiko
+已经完胜了，但是仍然有一个痛点我们没有提及，就是多平台，说的就是
+Windows，这里就有一件好事，一件坏事了，。
+
+好事就是：paramiko 支持 windows
+
+坏事就是：你需要做很多复杂的准备，你可 google
+解决，但是我建议你直接放弃，坑太深了。
+
+|image5|
+
+注意事项
+^^^^^^^^
+
+使用 paramiko 的时候，有一点需要注意一下，这个也是我自己 “踩坑”
+后才发现的，其实我觉得这个设计挺好的，如果你不需要等待它返回数据，可以直接实现异步效果，只不过对于不知道这个设计的人，确实是个容易掉坑的点
+
+就是在执行 ``ssh.exec_command(cmd)`` 时，这个命令并不是同步阻塞的。
+
+比如下面这段代码，执行时，你会发现 脚本立马就结束退出了，并不会等待 5 s
+后，再 执行 ssh.close()
+
+.. code:: python
+
+   import paramiko
+
+   trans = paramiko.Transport(("172.20.42.1", 57891))
+   trans.connect(username="root", password="youpassword")
+   ssh = paramiko.SSHClient()
+   ssh._transport = trans
+   stdin, stdout, stderr = ssh.exec_command("sleep 5;echo ok")
+   ssh.close()
+
+但是如果改成这样，加上一行 stdout.read()， paramiko
+就知道，你需要这个执行的结果，就会在 read() 进行阻塞。
+
+.. code:: python
+
+   import paramiko
+
+   trans = paramiko.Transport(("172.20.42.1", 57891))
+   trans.connect(username="root", password="youpassword")
+   ssh = paramiko.SSHClient()
+   ssh._transport = trans
+   stdin, stdout, stderr = ssh.exec_command("sleep 5;echo ok")
+
+   # 加上一行 read()
+   print(stdout.read())
+   ssh.close()
+
+4. 写在最后
+~~~~~~~~~~~
+
+经过了一番对比，和一些实例的展示，可以看出 Paramiko
+是一个专业、让人省心的 ssh 利器，个人认为 Paramiko
+模块是运维人员必学模块之一，如果你恰好需要在 Python 代码中实现 ssh
+到远程服务器去获取一些信息，那么我把 Paramiko 推荐给你。
+
+|image6|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200512125643.png
+.. |image2| image:: http://image.python-online.cn/20200228085749.png
+.. |image3| image:: http://image.python-online.cn/20200228093627.png
+.. |image4| image:: http://image.iswbm.com/20200512125643.png
+.. |image5| image:: http://image.python-online.cn/20200228111654.png
+.. |image6| image:: http://image.iswbm.com/20200607174235.png
+

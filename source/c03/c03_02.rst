@@ -1,0 +1,214 @@
+3.2 合并字典的 8 种方法
+=======================
+
+|image0|
+
+1、最简单的原地更新
+~~~~~~~~~~~~~~~~~~~
+
+字典对象内置了一个 update 方法，用于把另一个字典更新到自己身上。
+
+.. code:: python
+
+   >>> profile = {"name": "xiaoming", "age": 27}
+   >>> ext_info = {"gender": "male"}
+   >>>
+   >>> profile.update(ext_info)
+   >>> print(profile)
+   {'name': 'xiaoming', 'age': 27, 'gender': 'male'}
+
+如果想使用 update
+这种最简单、最地道原生的方法，但又不想更新到自己身上，而是生成一个新的对象，那请使用深拷贝。
+
+.. code:: python
+
+   >>> profile = {"name": "xiaoming", "age": 27}
+   >>> ext_info = {"gender": "male"}
+   >>>
+   >>> from copy import deepcopy
+   >>>
+   >>> full_profile = deepcopy(profile)
+   >>> full_profile.update(ext_info)
+   >>>
+   >>> print(full_profile)
+   {'name': 'xiaoming', 'age': 27, 'gender': 'male'}
+   >>> print(profile)
+   {"name": "xiaoming", "age": 27}
+
+2、先解包再合并字典
+~~~~~~~~~~~~~~~~~~~
+
+使用 ``**`` 可以解包字典，解包完后再使用 dict 或者 ``{}`` 就可以合并。
+
+.. code:: python
+
+   >>> profile = {"name": "xiaoming", "age": 27}
+   >>> ext_info = {"gender": "male"}
+   >>>
+   >>> full_profile01 = {**profile, **ext_info}
+   >>> print(full_profile01)
+   {'name': 'xiaoming', 'age': 27, 'gender': 'male'}
+   >>>
+   >>> full_profile02 = dict(**profile, **ext_info)
+   >>> print(full_profile02)
+   {'name': 'xiaoming', 'age': 27, 'gender': 'male'}
+
+若你不知道 ``dict(**profile, **ext_info)`` 做了啥，你可以将它等价于
+
+.. code:: python
+
+   >>> dict((("name", "xiaoming"), ("age", 27), ("gender", "male")))
+   {'name': 'xiaoming', 'age': 27, 'gender': 'male'}
+
+3、借助 itertools
+~~~~~~~~~~~~~~~~~
+
+在 Python 里有一个非常强大的内置模块，它专门用于操作可迭代对象。
+
+正好我们字典也是可迭代对象，自然就可以想到，可以使用
+``itertools.chain()``
+函数先将多个字典（可迭代对象）串联起来，组成一个更大的可迭代对象，然后再使用
+dict 转成字典。
+
+.. code:: python
+
+   >>> import itertools
+   >>>
+   >>> profile = {"name": "xiaoming", "age": 27}
+   >>> ext_info = {"gender": "male"}
+   >>>
+   >>>
+   >>> dict(itertools.chain(profile.items(), ext_info.items()))
+   {'name': 'xiaoming', 'age': 27, 'gender': 'male'}
+
+4、借助 ChainMap
+~~~~~~~~~~~~~~~~
+
+如果可以引入一个辅助包，那我就再提一个， ``ChainMap`` 也可以达到和
+``itertools`` 同样的效果。
+
+.. code:: python
+
+   >>> from collections import ChainMap
+   >>>
+   >>> profile = {"name": "xiaoming", "age": 27}
+   >>> ext_info = {"gender": "male"}
+   >>>
+   >>> dict(ChainMap(profile, ext_info))
+   {'name': 'xiaoming', 'age': 27, 'gender': 'male'}
+
+使用 ChainMap
+有一点需要注意，当字典间有重复的键时，只会取第一个值，排在后面的键值并不会更新掉前面的（使用
+itertools 就不会有这个问题）。
+
+.. code:: python
+
+   >>> from collections import ChainMap
+   >>>
+   >>> profile = {"name": "xiaoming", "age": 27}
+   >>> ext_info={"age": 30}
+   >>> dict(ChainMap(profile, ext_info))
+   {'name': 'xiaoming', 'age': 27}
+
+5、使用dict.items() 合并
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+在 Python 3.9 之前，其实就已经有 ``|``
+操作符了，只不过它通常用于对集合（set）取并集。
+
+利用这一点，也可以将它用于字典的合并，只不过得绕个弯子，有点不好理解。
+
+你得先利用 ``items`` 方法将 dict 转成 dict_items，再对这两个 dict_items
+取并集，最后利用 dict 函数，转成字典。
+
+.. code:: python
+
+   >>> profile = {"name": "xiaoming", "age": 27}
+   >>> ext_info = {"gender": "male"}
+   >>>
+   >>> full_profile = dict(profile.items() | ext_info.items())
+   >>> full_profile
+   {'gender': 'male', 'age': 27, 'name': 'xiaoming'}
+
+当然了，你如果嫌这样太麻烦，也可以简单点，直接使用 list
+函数再合并（示例为 Python 3.x ）
+
+.. code:: python
+
+   >>> profile = {"name": "xiaoming", "age": 27}
+   >>> ext_info = {"gender": "male"}
+   >>>
+   >>> dict(list(profile.items()) + list(ext_info.items()))
+   {'name': 'xiaoming', 'age': 27, 'gender': 'male'}
+
+若你在 Python 2.x 下，可以直接省去 list 函数。
+
+.. code:: python
+
+   >>> profile = {"name": "xiaoming", "age": 27}
+   >>> ext_info = {"gender": "male"}
+   >>>
+   >>> dict(profile.items() + ext_info.items())
+   {'name': 'xiaoming', 'age': 27, 'gender': 'male'}
+
+6、最酷炫的字典解析式
+~~~~~~~~~~~~~~~~~~~~~
+
+Python 里对于生成列表、集合、字典，有一套非常 Pythonnic 的写法。
+
+那就是列表解析式，集合解析式和字典解析式，通常是 Python
+发烧友的最爱，那么今天的主题：字典合并，字典解析式还能否胜任呢？
+
+当然可以，具体示例代码如下：
+
+.. code:: python
+
+   >>> profile = {"name": "xiaoming", "age": 27}
+   >>> ext_info = {"gender": "male"}
+   >>>
+   >>> {k:v for d in [profile, ext_info] for k,v in d.items()}
+   {'name': 'xiaoming', 'age': 27, 'gender': 'male'}
+
+7、Python 3.9 新特性
+~~~~~~~~~~~~~~~~~~~~
+
+在 2 月份发布的 Python 3.9.04a
+版本中，新增了一个抓眼球的新操作符操作符： ``|``\ ， PEP584
+将它称之为合并操作符（Union Operator），用它可以很直观地合并多个字典。
+
+.. code:: python
+
+   >>> profile = {"name": "xiaoming", "age": 27}
+   >>> ext_info = {"gender": "male"}
+   >>>
+   >>> profile | ext_info
+   {'name': 'xiaoming', 'age': 27, 'gender': 'male'}
+   >>>
+   >>> ext_info | profile
+   {'gender': 'male', 'name': 'xiaoming', 'age': 27}
+   >>>
+   >>>
+
+除了 ``|`` 操作符之外，还有另外一个操作符 ``|=``\ ，类似于原地更新。
+
+.. code:: python
+
+   >>> ext_info |= profile
+   >>> ext_info
+   {'gender': 'male', 'name': 'xiaoming', 'age': 27}
+   >>>
+   >>>
+   >>> profile |= ext_info
+   >>> profile
+   {'name': 'xiaoming', 'age': 27, 'gender': 'male'}
+
+看到这里，有没有涨姿势了，学了这么久的 Python
+，没想到合并字典还有这么多的方法。本篇文章的主旨，并不在于让你全部掌握这
+7
+种合并字典的方法，实际在工作中，你只要选用一种最顺手的方式即可，但是在协同工作中，或者在阅读他人代码时，你不可避免地会碰到各式各样的写法，这时候你能下意识的知道这是在做合并字典的操作，那这篇文章就是有意义的。
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

@@ -1,0 +1,68 @@
+2.3 使用 json.tool 来格式化 JSON
+================================
+
+|image0|
+
+假设现在你需要查看你机器上的json文件，而这个文件没有经过任何的美化，阅读起来是非常困难的。
+
+.. code:: shell
+
+   $ cat demo.json
+   {"_id":"5f12d319624e57e27d1291fe","index":0,"guid":"4e482708-c6aa-4ef9-a45e-d5ce2c72c68d","isActive":false,"balance":"$2,954.93","picture":"http://placehold.it/32x32","age":36,"eyeColor":"green","name":"MasseySaunders","gender":"male","company":"TALAE","email":"masseysaunders@talae.com","phone":"+1(853)508-3237","address":"246IndianaPlace,Glenbrook,Iowa,3896","about":"Velitmagnanostrudexcepteurduisextemporirurefugiataliquasunt.Excepteurvelitquiseuinexinoccaecatoccaecatveliteuet.Commodonisialiquipirureminimconsequatminimconsecteturipsumsitex.\r\n","registered":"2017-02-06T06:42:20-08:00","latitude":-10.269827,"longitude":-103.12419,"tags":["laborum","excepteur","veniam","reprehenderit","voluptate","laborum","in"],"friends":[{"id":0,"name":"DorotheaShields"},{"id":1,"name":"AnnaRosales"},{"id":2,"name":"GravesBryant"}],"greeting":"Hello,MasseySaunders!Youhave8unreadmessages.","favoriteFruit":"apple"}
+
+这时候你就可以使用 python 的命令行来直接美化。
+
+.. code:: shell
+
+   $ python -m json.tool demo.json
+   {
+       "_id": "5f12d319624e57e27d1291fe",
+       "about": "Velitmagnanostrudexcepteurduisextemporirurefugiataliquasunt.Excepteurvelitquiseuinexinoccaecatoccaecatveliteuet.Commodonisialiquipirureminimconsequatminimconsecteturipsumsitex.\r\n",
+       "address": "246IndianaPlace,Glenbrook,Iowa,3896",
+       "age": 36,
+       "balance": "$2,954.93",
+       "company": "TALAE",
+       "email": "masseysaunders@talae.com",
+       "eyeColor": "green",
+       "favoriteFruit": "apple",
+       "friends": [
+           {
+               "id": 0,
+               "name": "DorotheaShields"
+           },
+           {
+               "id": 1,
+               "name": "AnnaRosales"
+           },
+           {
+               "id": 2,
+               "name": "GravesBryant"
+           }
+       ],
+       "gender": "male",
+       "greeting": "Hello,MasseySaunders!Youhave8unreadmessages.",
+       "guid": "4e482708-c6aa-4ef9-a45e-d5ce2c72c68d",
+       "index": 0,
+       "isActive": false,
+       "latitude": -10.269827,
+       "longitude": -103.12419,
+       "name": "MasseySaunders",
+       "phone": "+1(853)508-3237",
+       "picture": "http://placehold.it/32x32",
+       "registered": "2017-02-06T06:42:20-08:00",
+       "tags": [
+           "laborum",
+           "excepteur",
+           "veniam",
+           "reprehenderit",
+           "voluptate",
+           "laborum",
+           "in"
+       ]
+   }
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

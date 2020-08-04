@@ -1,0 +1,64 @@
+1.19 return不一定都是函数的终点
+===============================
+
+|image0|
+
+众所周知，try…finally…
+的用法是：不管try里面是正常执行还是有报异常，最终都能保证finally能够执行。
+
+同时我们又知道，一个函数里只要遇到 return 函数就会立马结束。
+
+那问题就来了，以上这两种规则，如果同时存在，Python
+解释器会如何选择？哪个优先级更高？
+
+写个示例验证一下，就明白啦
+
+.. code:: python
+
+   >>> def func():
+   ...     try:
+   ...         return 'try'
+   ...     finally:
+   ...         return 'finally'
+   ...
+   >>> func()
+   'finally'
+
+从输出中，我们可以发现：在try…finally…语句中，try中的 return
+会被直接忽视（这里的 return 不是函数的终点），因为要保证 finally
+能够执行。
+
+**如果 try 里的 return 真的是直接被忽视吗？**
+
+我们都知道如果一个函数没有 return，会隐式的返回 None，假设 try 里的
+return 真的是直接被忽视，那当finally 下没有显式的 return
+的时候，是不是会返回None呢？
+
+还是写个 示例来验证一下：
+
+.. code:: python
+
+   >>> def func():
+   ...     try:
+   ...         return 'try'
+   ...     finally:
+   ...         print('finally')
+   ... 
+   >>> 
+   >>> func()
+   finally
+   'try'
+   >>> 
+
+从结果来看，当 finally 下没有 reutrn ，其实 try 里的 return
+仍然还是有效的。
+
+那结论就出来了，如果 finally 里有显式的 return，那么这个 return
+会直接覆盖 try 里的 return，而如果 finally 里没有 显式的 return，那么
+try 里的 return 仍然有效。
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

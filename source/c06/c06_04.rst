@@ -1,0 +1,389 @@
+6.4 别再使用 pprint 打印了
+==========================
+
+|image0|
+
+1. 吐槽问题
+~~~~~~~~~~~
+
+pprint 你应该很熟悉了吧？
+
+随便在搜索引擎上搜索如何打印漂亮的字典或者格式化字符串时，大部分人都会推荐你使用这货
+。
+
+比如这下面这个 json
+字符串或者说字典（我随便在网上找的），如果不格式化美化一下，根本无法阅读。
+
+.. code:: json
+
+   [{"id":1580615,"name":"皮的嘛","packageName":"com.renren.mobile.android","iconUrl":"app/com.renren.mobile.android/icon.jpg","stars":2,"size":21803987,"downloadUrl":"app/com.renren.mobile.android/com.renren.mobile.android.apk","des":"2011-2017 你的铁头娃一直在这儿。中国最大的实名制SNS网络平台，嫩头青"},{"id":1540629,"name":"不存在的","packageName":"com.ct.client","iconUrl":"app/com.ct.client/icon.jpg","stars":2,"size":4794202,"downloadUrl":"app/com.ct.client/com.ct.client.apk","des":"斗鱼271934 走过路过不要错过，这里有最好的鸡儿"}]
+
+如果你不想看到一堆密密麻麻的字，那就使用大伙都极力推荐的 pprint
+看下什么效果（以下在 Python 2 中演示，Python 3 中是不一样的效果）。
+
+.. code:: python
+
+   >>> info=[{"id":1580615,"name":"皮的嘛","packageName":"com.renren.mobile.android","iconUrl":"app/com.renren.mobile.android/icon.jpg","stars":2,"size":21803987,"downloadUrl":"app/com.renren.mobile.android/com.renren.mobile.android.apk","des":"2011-2017 你的铁头娃一直在这儿。中国最大的实名制SNS网络平台，嫩头青"},{"id":1540629,"name":"不存在的","packageName":"com.ct.client","iconUrl":"app/com.ct.client/icon.jpg","stars":2,"size":4794202,"downloadUrl":"app/com.ct.client/com.ct.client.apk","des":"斗鱼271934 走过路过不要错过，这里有最好的鸡儿"}]
+   >>> 
+   >>> from pprint import pprint
+   >>> pprint(info)
+   [{'des': '2011-2017 \xe4\xbd\xa0\xe7\x9a\x84\xe9\x93\x81\xe5\xa4\xb4\xe5\xa8\x83\xe4\xb8\x80\xe7\x9b\xb4\xe5\x9c\xa8\xe8\xbf\x99\xe5\x84\xbf\xe3\x80\x82\xe4\xb8\xad\xe5\x9b\xbd\xe6\x9c\x80\xe5\xa4\xa7\xe7\x9a\x84\xe5\xae\x9e\xe5\x90\x8d\xe5\x88\xb6SNS\xe7\xbd\x91\xe7\xbb\x9c\xe5\xb9\xb3\xe5\x8f\xb0\xef\xbc\x8c\xe5\xab\xa9\xe5\xa4\xb4\xe9\x9d\x92',
+     'downloadUrl': 'app/com.renren.mobile.android/com.renren.mobile.android.apk',
+     'iconUrl': 'app/com.renren.mobile.android/icon.jpg',
+     'id': 1580615,
+     'name': '\xe7\x9a\xae\xe7\x9a\x84\xe5\x98\x9b',
+     'packageName': 'com.renren.mobile.android',
+     'size': 21803987,
+     'stars': 2},
+    {'des': '\xe6\x96\x97\xe9\xb1\xbc271934 \xe8\xb5\xb0\xe8\xbf\x87\xe8\xb7\xaf\xe8\xbf\x87\xe4\xb8\x8d\xe8\xa6\x81\xe9\x94\x99\xe8\xbf\x87\xef\xbc\x8c\xe8\xbf\x99\xe9\x87\x8c\xe6\x9c\x89\xe6\x9c\x80\xe5\xa5\xbd\xe7\x9a\x84\xe9\xb8\xa1\xe5\x84\xbf',
+     'downloadUrl': 'app/com.ct.client/com.ct.client.apk',
+     'iconUrl': 'app/com.ct.client/icon.jpg',
+     'id': 1540629,
+     'name': '\xe4\xb8\x8d\xe5\xad\x98\xe5\x9c\xa8\xe7\x9a\x84',
+     'packageName': 'com.ct.client',
+     'size': 4794202,
+     'stars': 2}]
+
+好像有点效果，真的是 “神器”呀。
+
+但是你告诉我，
+**:raw-latex:`\xe`4:raw-latex:`\xbd`:raw-latex:`\xa`0:raw-latex:`\xe`7:raw-latex:`\x`9a**
+这些是什么玩意？本来想提高可读性的，现在变成完全不可读了。
+
+好在我懂点 Python 2 的编码，知道 Python 2
+中默认（不带u）的字符串格式都是 str 类型，也是 bytes 类型，它是以 byte
+存储的。
+
+行吧，好像是我错了，我改了下，使用 unicode 类型来定义中文字符串吧。
+
+.. code:: python
+
+   >>> info = [{"id":1580615,"name":u"皮的嘛","packageName":"com.renren.mobile.android","iconUrl":"app/com.renren.mobile.android/icon.jpg","stars":2,"size":21803987,"downloadUrl":"app/com.renren.mobile.android/com.renren.mobile.android.apk","des":u"2011-2017你的铁头娃一直在这儿。中国最大的实名制SNS网络平台，嫩头青"},{"id":1540629,"name":u"不存在的","packageName":"com.ct.client","iconUrl":"app/com.ct.client/icon.jpg","stars":2,"size":4794202,"downloadUrl":"app/com.ct.client/com.ct.client.apk","des":u"斗鱼271934走过路过不要错过，这里有最好的鸡儿"}]
+   >>> 
+   >>> from pprint import pprint
+   >>> pprint(info)
+   [{'des': u'2011-2017\u4f60\u7684\u94c1\u5934\u5a03\u4e00\u76f4\u5728\u8fd9\u513f\u3002\u4e2d\u56fd\u6700\u5927\u7684\u5b9e\u540d\u5236SNS\u7f51\u7edc\u5e73\u53f0\uff0c\u5ae9\u5934\u9752',
+     'downloadUrl': 'app/com.renren.mobile.android/com.renren.mobile.android.apk',
+     'iconUrl': 'app/com.renren.mobile.android/icon.jpg',
+     'id': 1580615,
+     'name': u'\u76ae\u7684\u561b',
+     'packageName': 'com.renren.mobile.android',
+     'size': 21803987,
+     'stars': 2},
+    {'des': u'\u6597\u9c7c271934\u8d70\u8fc7\u8def\u8fc7\u4e0d\u8981\u9519\u8fc7\uff0c\u8fd9\u91cc\u6709\u6700\u597d\u7684\u9e21\u513f',
+     'downloadUrl': 'app/com.ct.client/com.ct.client.apk',
+     'iconUrl': 'app/com.ct.client/icon.jpg',
+     'id': 1540629,
+     'name': u'\u4e0d\u5b58\u5728\u7684',
+     'packageName': 'com.ct.client',
+     'size': 4794202,
+     'stars': 2}]
+
+确实是有好点了，但是看到下面这些，我崩溃了，我哪里知道这是什么鬼，难道是我太菜了吗？当我是计算机呀？
+
+::
+
+   u'\u6597\u9c7c271934\u8d70\u8fc7\u8def\u8fc7\u4e0d\u8981\u9519\u8fc7\uff0c\u8fd9\u91cc\u6709\u6700\u597d\u7684\u9e21\u513f'
+
+除此之外，我们知道 json 的严格要求必须使用
+**双引号**\ ，而我定义字典时，也使用了双引号了，为什么打印出来的为什么是
+**单引号**\ ？我也太难了吧，我连自己的代码都无法控制了吗？
+
+到这里，我们知道了 pprint 带来的两个问题：
+
+1. 没法在 Python 2 下正常打印中文
+2. 没法输出 JSON 标准格式的格式化内容（双引号）
+
+2. 解决问题
+~~~~~~~~~~~
+
+打印中文
+^^^^^^^^
+
+如果你是在 Python 3 下使用，你会发现中文是可以正常显示的。
+
+.. code:: python
+
+   # Python3.7
+   >>> info = [{"id":1580615,"name":u"皮的嘛","packageName":"com.renren.mobile.android","iconUrl":"app/com.renren.mobile.android/icon.jpg","stars":2,"size":21803987,"downloadUrl":"app/com.renren.mobile.android/com.renren.mobile.android.apk","des":u"2011-2017你的铁头娃一直在这儿。中国最大的实名制SNS网络平台，嫩头青"},{"id":1540629,"name":u"不存在的","packageName":"com.ct.client","iconUrl":"app/com.ct.client/icon.jpg","stars":2,"size":4794202,"downloadUrl":"app/com.ct.client/com.ct.client.apk","des":u"斗鱼271934走过路过不要错过，这里有最好的鸡儿"}]
+   >>> 
+   >>> from pprint import pprint
+   >>> pprint(info)
+   [{'des': '2011-2017你的铁头娃一直在这儿。中国最大的实名制SNS网络平台，嫩头青',
+     'downloadUrl': 'app/com.renren.mobile.android/com.renren.mobile.android.apk',
+     'iconUrl': 'app/com.renren.mobile.android/icon.jpg',
+     'id': 1580615,
+     'name': '皮的嘛',
+     'packageName': 'com.renren.mobile.android',
+     'size': 21803987,
+     'stars': 2},
+    {'des': '斗鱼271934走过路过不要错过，这里有最好的鸡儿',
+     'downloadUrl': 'app/com.ct.client/com.ct.client.apk',
+     'iconUrl': 'app/com.ct.client/icon.jpg',
+     'id': 1540629,
+     'name': '不存在的',
+     'packageName': 'com.ct.client',
+     'size': 4794202,
+     'stars': 2}]
+   >>> 
+
+但是很多时候（在公司的一些服务器）你无法选择自己使用哪个版本的
+Python，本来我可以选择不用的，因为有更好的替代方案（\ **这个后面会讲**\ ）。
+
+但是我出于猎奇，正好前两天不是写过一篇关于 编码
+的文章吗，我自认为自己对于
+编码还是掌握比较熟练的，就想着来解决一下这个问题。
+
+索性就来看下 pprint
+的源代码，还真被我找到了解决方法，如果你也想挑战一下，不防在这里停住，自己研究一下如何实现，我相信对你阅读源码会有帮助。
+
+**以下是我的解决方案，供你参考**\ ：
+
+写一个自己的 printer 对象，继承自 PrettyPrinter （pprint 使用的printer）
+
+并且复写 format 方法，判断传进来的字符串对象是否 str 类型，如果不是 str
+类型，而是 unicode 类型，就用 uft8 编码成 str 类型。
+
+.. code:: python
+
+   # coding: utf-8
+   from pprint import PrettyPrinter
+
+   # 继承 PrettyPrinter，复写 format 方法
+   class MyPrettyPrinter(PrettyPrinter):
+       def format(self, object, context, maxlevels, level):
+           if isinstance(object, unicode):
+               return (object.encode('utf8'), True, False)
+           return PrettyPrinter.format(self, object, context, maxlevels, level)
+
+   info = [{"id":1580615,"name":u"皮的嘛","packageName":"com.renren.mobile.android","iconUrl":"app/com.renren.mobile.android/icon.jpg","stars":2,"size":21803987,"downloadUrl":"app/com.renren.mobile.android/com.renren.mobile.android.apk","des":u"2011-2017你的铁头娃一直在这儿。中国最大的实名制SNS网络平台，嫩头青"},{"id":1540629,"name":u"不存在的","packageName":"com.ct.client","iconUrl":"app/com.ct.client/icon.jpg","stars":2,"size":4794202,"downloadUrl":"app/com.ct.client/com.ct.client.apk","des":u"斗鱼271934走过路过不要错过，这里有最好的鸡儿"}]
+
+   MyPrettyPrinter().pprint(info)
+
+输出如下，已经解决了中文的显示问题：
+
+|image1|
+
+打印双引号
+^^^^^^^^^^
+
+解决了中文问题后，再来看看如何让 pprint 打印双引号。
+
+在实例化 PrettyPrinter 对象的时候，可以接收一个 stream
+对象，它表示你要将内容输出到哪里，默认是使用 sys.stdout 这个
+stream，也就是标准输出。
+
+现在我们要修改输出的内容，也就是将输出的单引号替换成双引号。
+
+那我们完全可以自己定义一个 stream
+类型的对象，该对象不需要继承任何父类，只要你实现 write 方法就可以。
+
+有了思路，就可以开始写代码了，如下：
+
+.. code:: python
+
+   # coding: utf-8
+   from pprint import PrettyPrinter
+
+   class MyPrettyPrinter(PrettyPrinter):
+       def format(self, object, context, maxlevels, level):
+           if isinstance(object, unicode):
+               return (object.encode('utf8'), True, False)
+           return PrettyPrinter.format(self, object, context, maxlevels, level)
+
+   class MyStream():
+       def write(self, text):
+           print text.replace('\'', '"')
+
+   info = [{"id":1580615,"name":u"皮的嘛","packageName":"com.renren.mobile.android","iconUrl":"app/com.renren.mobile.android/icon.jpg","stars":2,"size":21803987,"downloadUrl":"app/com.renren.mobile.android/com.renren.mobile.android.apk","des":u"2011-2017你的铁头娃一直在这儿。中国最大的实名制SNS网络平台，嫩头青"},{"id":1540629,"name":u"不存在的","packageName":"com.ct.client","iconUrl":"app/com.ct.client/icon.jpg","stars":2,"size":4794202,"downloadUrl":"app/com.ct.client/com.ct.client.apk","des":u"斗鱼271934走过路过不要错过，这里有最好的鸡儿"}]
+   MyPrettyPrinter(stream=MyStream()).pprint(info)
+
+尝试执行了下，我的天，怎么是这样子的。
+
+.. code:: json
+
+   [
+   {
+   "des"
+   : 
+   2011-2017你的铁头娃一直在这儿。中国最大的实名制SNS网络平台，嫩头青
+   ,
+     "downloadUrl": 
+   "app/com.renren.mobile.android/com.renren.mobile.android.apk"
+   ,
+     "iconUrl": 
+   "app/com.renren.mobile.android/icon.jpg"
+   ,
+     "id": 
+   1580615
+   ,
+     "name": 
+   皮的嘛
+   ,
+     "packageName": 
+   "com.renren.mobile.android"
+   ,
+     "size": 
+   21803987
+   ,
+     "stars": 
+   2
+   }
+   ,
+    
+   {
+   "des"
+   : 
+   斗鱼271934走过路过不要错过，这里有最好的鸡儿
+   ,
+     "downloadUrl": 
+   "app/com.ct.client/com.ct.client.apk"
+   ,
+     "iconUrl": 
+   "app/com.ct.client/icon.jpg"
+   ,
+     "id": 
+   1540629
+   ,
+     "name": 
+   不存在的
+   ,
+     "packageName": 
+   "com.ct.client"
+   ,
+     "size": 
+   4794202
+   ,
+     "stars": 
+   2
+   }
+   ]
+
+经过一番研究，才知道是因为 print 函数默认会将打印的内容后面加个
+**换行符**\ 。
+
+那如何将使 print 函数打印的内容，不进行换行呢？
+
+方法很简单，但是我相信很多人都不知道，只要在 print 的内容后加一个
+**逗号** 就行。
+
+就像下面这样。
+
+|image2|
+
+知道了问题所在，再修改下代码
+
+.. code:: python
+
+   # coding: utf-8
+   from pprint import PrettyPrinter
+
+   class MyPrettyPrinter(PrettyPrinter):
+       def format(self, object, context, maxlevels, level):
+           if isinstance(object, unicode):
+               return (object.encode('utf8'), True, False)
+           return PrettyPrinter.format(self, object, context, maxlevels, level)
+
+   class MyStream():
+       def write(self, text):
+           print text.replace('\'', '"'),
+
+   info = [{"id":1580615,"name":u"皮的嘛","packageName":"com.renren.mobile.android","iconUrl":"app/com.renren.mobile.android/icon.jpg","stars":2,"size":21803987,"downloadUrl":"app/com.renren.mobile.android/com.renren.mobile.android.apk","des":u"2011-2017你的铁头娃一直在这儿。中国最大的实名制SNS网络平台，嫩头青"},{"id":1540629,"name":u"不存在的","packageName":"com.ct.client","iconUrl":"app/com.ct.client/icon.jpg","stars":2,"size":4794202,"downloadUrl":"app/com.ct.client/com.ct.client.apk","des":u"斗鱼271934走过路过不要错过，这里有最好的鸡儿"}]
+
+   MyPrettyPrinter(stream=MyStream()).pprint(info)
+
+终于成功了，太不容易了吧。
+
+|image3|
+
+3. 何必折腾
+~~~~~~~~~~~
+
+通过上面的一番折腾，我终于实现了我 **梦寐以求** 的需求。
+
+代价就是我整整花费了两个小时，才得以实现，而对于小白来说，可能没有信心，也没有耐心去做这样的事情。
+
+**所以我想说的是，Python 2 下的 pprint ，真的不要再用了**\ 。
+
+为什么我要用这么 说，因为明明有更好的替代品，人生苦短，既然用了 Python
+，当然是怎么简单怎么来咯，何必为难自己呢，一行代码可以解决的事情，偏偏要去写两个类，那不是自讨苦吃吗？（我这是在骂自己吗？
+
+如果你愿意抛弃 pprint ，那我推荐你用 json.dumps ，我保证你再也不想用
+pprint 了。
+
+.. _打印中文-1:
+
+打印中文
+^^^^^^^^
+
+其实无法打印中文，是 Python 2 引来的大坑，并不能全怪 pprint 。
+
+但是同样的问题，在 json.dumps 这里，却只要加个参数就好了，可比 pprint
+简单得不要太多。
+
+具体的代码示例如下：
+
+.. code:: python
+
+   >>> info = [{"id":1580615,"name":"皮的嘛","packageName":"com.renren.mobile.android","iconUrl":"app/com.renren.mobile.android/icon.jpg","stars":2,"size":21803987,"downloadUrl":"app/com.renren.mobile.android/com.renren.mobile.android.apk","des":"2011-2017你的铁头娃一直在这儿。中国最大的实名制SNS网络平台，嫩头青"},{"id":1540629,"name":"不存在的","packageName":"com.ct.client","iconUrl":"app/com.ct.client/icon.jpg","stars":2,"size":4794202,"downloadUrl":"app/com.ct.client/com.ct.client.apk","des":"斗鱼271934走过路过不要错过，这里有最好的鸡儿"}]
+   >>> 
+   >>> import json
+   >>> 
+   >>> 
+   >>> print json.dumps(info, indent=4, ensure_ascii=False)
+   [
+       {
+           "downloadUrl": "app/com.renren.mobile.android/com.renren.mobile.android.apk", 
+           "iconUrl": "app/com.renren.mobile.android/icon.jpg", 
+           "name": "皮的嘛", 
+           "stars": 2, 
+           "packageName": "com.renren.mobile.android", 
+           "des": "2011-2017你的铁头娃一直在这儿。中国最大的实名制SNS网络平台，嫩头青", 
+           "id": 1580615, 
+           "size": 21803987
+       }, 
+       {
+           "downloadUrl": "app/com.ct.client/com.ct.client.apk", 
+           "iconUrl": "app/com.ct.client/icon.jpg", 
+           "name": "不存在的", 
+           "stars": 2, 
+           "packageName": "com.ct.client", 
+           "des": "斗鱼271934走过路过不要错过，这里有最好的鸡儿", 
+           "id": 1540629, 
+           "size": 4794202
+       }
+   ]
+   >>> 
+
+json.dumps 的关键参数有两个：
+
+-  **indent=4**\ ：以 4 个空格缩进单位
+-  **ensure_ascii=False**\ ：接收非 ASCII 编码的字符，这样才能使用中文
+
+与 pprint 相比 json.dumps 可以说完胜：
+
+1. 两个参数就能实现所有我的需求（打印中文与双引号）
+2. 就算在 Python 2 下，使用中文也不需要用 ``u'中文'`` 这种写法
+3. Python2 和 Python3 的写法完全一致，对于这一点不需要考虑兼容问题
+
+4. 总结一下
+~~~~~~~~~~~
+
+本来很简单的一个观点，我为了证明 pprint
+实现那两个需求有多么困难，花了很多的时间去研究了 pprint
+的源码（各种处理其实还是挺复杂的），不过好在最后也能有所收获。
+
+本文的分享就到这里，阅读本文，我认为你可以获取到三个知识点
+
+1. 核心观点：Python2 下不要再使用 pprint
+2. 若真要使用，且有和一样的改造需求，可以参考我的实现
+3. Python 2 中的 print 语句后居然可以加 逗号
+
+|image4|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200507171451.png
+.. |image2| image:: http://image.iswbm.com/20200507174459.png
+.. |image3| image:: http://image.iswbm.com/20200507174802.png
+.. |image4| image:: http://image.iswbm.com/20200607174235.png
+

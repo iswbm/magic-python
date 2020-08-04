@@ -1,0 +1,64 @@
+5.6 如何流式读取数G超大文件
+===========================
+
+|image0|
+
+使用 with…open… 可以从一个文件中读取数据，这是所有 Python
+开发者都非常熟悉的操作。
+
+但是如果你使用不当，也会带来很大的麻烦。
+
+比如当你使用了 read 函数，其实 Python
+会将文件的内容一次性的全部载入内存中，如果文件有 10
+个G甚至更多，那么你的电脑就要消耗的内存非常巨大。
+
+.. code:: python
+
+   # 一次性读取
+   with open("big_file.txt", "r") as fp:
+       content = fp.read()
+
+对于这个问题，你也许会想到使用 readline 去做一个生成器来逐行返回。
+
+.. code:: python
+
+   def read_from_file(filename):
+       with open(filename, "r") as fp:
+           yield fp.readline()
+
+可如果这个文件内容就一行呢，一行就
+10个G，其实你还是会一次性读取全部内容。
+
+最优雅的解决方法是，在使用 read
+方法时，指定每次只读取固定大小的内容，比如下面的代码中，每次只读取 8kb
+返回。
+
+.. code:: python
+
+   def read_from_file(filename, block_size = 1024 * 8):
+       with open(filename, "r") as fp:
+           while True:
+               chunk = fp.read(block_size)
+               if not chunk:
+                   break
+
+               yield chunk
+
+上面的代码，功能上已经没有问题了，但是代码看起来代码还是有些臃肿。
+
+借助偏函数 和 iter 函数可以优化一下代码
+
+.. code:: python
+
+   from functools import partial
+
+   def read_from_file(filename, block_size = 1024 * 8):
+       with open(filename, "r") as fp:
+           for chunk in iter(partial(fp.read, block_size), ""):
+               yield chunk
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

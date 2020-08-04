@@ -1,0 +1,32 @@
+1.24 时有时无的切片异常
+=======================
+
+|image0|
+
+这是个简单例子，alist 只有5 个元素，当你取第 6
+个元素时，会抛出索引异常。这与我们的认知一致。
+
+.. code:: python
+
+   >>> alist = [0, 1, 2, 3, 4]
+   >>> alist[5]
+   Traceback (most recent call last):
+     File "<stdin>", line 1, in <module>
+   IndexError: list index out of range
+
+但是当你使用 alist[5:] 取一个区间时，即使 alist 并没有 第
+6个元素，也不抛出异常，而是会返回一个新的列表。
+
+.. code:: python
+
+   >>> alist = [0, 1, 2, 3, 4]
+   >>> alist[5:]
+   []
+   >>> alist[100:]
+   []
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

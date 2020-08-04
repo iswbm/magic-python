@@ -1,0 +1,27 @@
+2.9 往 Python Shell 中传入参数
+==============================
+
+|image0|
+
+往一个 Python 脚本传入参数，是一件非常简单的事情。
+
+比如这样：
+
+.. code:: shell
+
+   $ python demo.py arg1 arg2
+
+我在验证一些简单的 Python 代码时，喜欢使用 Python Shell 。
+
+那有没有办法在使用 Python Shell 时，向上面传递参数一样，传入参数呢？
+
+经过我的摸索，终于找到了方法，具体方法如下：
+
+|image1|
+
+|image2|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200801195158.png
+.. |image2| image:: http://image.iswbm.com/20200607174235.png
+

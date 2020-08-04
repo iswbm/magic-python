@@ -1,0 +1,29 @@
+1.14 argument 和 parameter 的区别?
+==================================
+
+|image0|
+
+arguments 和 parameter
+的翻译都是参数，在中文场景下，二者混用基本没有问题，毕竟都叫参数嘛。
+
+但若要严格再进行区分，它们实际上还有各自的叫法
+
+-  parameter：形参（\ **formal
+   parameter**\ ），体现在函数内部，作用域是这个函数体。
+-  argument ：实参（\ **actual parameter**\ ），调用函数实际传递的参数。
+
+举个例子，如下这段代码，\ ``"error"`` 为 argument，而 msg 为
+``parameter``\ 。
+
+.. code:: python
+
+   def output_msg(msg):
+       print(msg)
+       
+   output_msg("error")
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

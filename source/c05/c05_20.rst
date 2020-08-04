@@ -1,0 +1,74 @@
+5.20 让你晕头转向的 else 用法
+=============================
+
+|image0|
+
+if else 用法可以说最基础的语法表达式之一，但是今天不是讲这个的。
+
+if else 早已烂大街，但我相信仍然有很多人都不曾见过 for else 和 try else
+的用法。为什么说它曾让我晕头转向，因为它不像 if else
+那么直白，非黑即白，脑子经常要想一下才能才反应过来代码怎么走。
+
+先来说说，for … else …
+
+.. code:: python
+
+   def check_item(source_list, target):
+       for item in source_list:
+           if item == target:
+               print("Exists!")
+               break
+
+       else:
+           print("Does not exist")
+
+在往下看之前，你可以思考一下，什么情况下才会走 else。是循环被
+break，还是没有break？
+
+给几个例子，你体会一下。
+
+.. code:: python
+
+   check_item(["apple", "huawei", "oppo"], "oppo")
+   # Exists!
+
+   check_item(["apple", "huawei", "oppo"], "vivo")
+   # Does not exist
+
+可以看出，没有被 break 的程序才会正常走else流程。
+
+再来看看，try else 用法。
+
+.. code:: python
+
+   def test_try_else(attr1 = None):
+       try:
+           if attr1:
+               pass
+           else:
+               raise
+       except:
+           print("Exception occurred...")
+       else:
+           print("No Exception occurred...")
+
+同样来几个例子。当不传参数时，就抛出异常。
+
+.. code:: python
+
+   test_try_else()
+   # Exception occurred...
+
+   test_try_else("ming")
+   # No Exception occurred...
+
+可以看出，没有 try 里面的代码块没有抛出异常的，会正常走else。
+
+总结一下，for else 和 try else 相同，只要代码正常走下去不被
+break，不抛出异常，就可以走else。
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

@@ -1,0 +1,45 @@
+5.1 嵌套上下文管理的另类写法
+============================
+
+|image0|
+
+当我们要写一个嵌套的上下文管理器时，可能会这样写
+
+.. code:: python
+
+   import contextlib
+
+   @contextlib.contextmanager
+   def test_context(name):
+       print('enter, my name is {}'.format(name))
+
+       yield
+
+       print('exit, my name is {}'.format(name))
+
+   with test_context('aaa'):
+       with test_context('bbb'):
+           print('========== in main ============')
+
+输出结果如下
+
+.. code:: python
+
+   enter, my name is aaa
+   enter, my name is bbb
+   ========== in main ============
+   exit, my name is bbb
+   exit, my name is aaa
+
+除此之外，你可知道，还有另一种嵌套写法
+
+.. code:: python
+
+   with test_context('aaa'), test_context('bbb'):
+       print('========== in main ============')
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

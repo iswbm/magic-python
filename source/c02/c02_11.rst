@@ -1,0 +1,28 @@
+2.11 极简模式执行 Python Shell
+==============================
+
+|image0|
+
+在终端输入 Python 就会进入 Python Shell 。
+
+方便是挺方便，就是有点说不出的难受，谁能告诉我，为什么要多出这么大一段无关的内容。
+
+|image1|
+
+这有点像，你上爱某艺看视频吧，都要先看个 90 秒的广告。
+
+如果你和我一样不喜欢这种 『牛皮癣』，那么可以加个 ``-q`` 参数，静默进入
+Python Shell，就像下面这样子，开启了极简模式，舒服多了。
+
+|image2|
+
+|image3|
+
+|image4|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200801202733.png
+.. |image2| image:: http://image.iswbm.com/20200801203047.png
+.. |image3| image:: http://image.iswbm.com/20200512125643.png
+.. |image4| image:: http://image.iswbm.com/20200607174235.png
+

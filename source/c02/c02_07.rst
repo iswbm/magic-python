@@ -1,0 +1,33 @@
+2.7 快速构建 HTML 帮助文档
+==========================
+
+|image0|
+
+当你不知道一个内置模块如何使用时，会怎么做呢？
+
+百度？Google？
+
+其实完全没必要，这里教你一个离线学习 Python 模块的方法。
+
+是的，你没有听错。
+
+就算没有外网网络也能学习 Python 模块.
+
+你只要在命令行下输入 ``python -m pydoc -p xxx`` 命令即可开启一个 HTTP
+服务，xxx 为端口，你可以自己指定。
+
+.. code:: shell
+
+   $ python -m pydoc -p 5200
+   pydoc server ready at http://localhost:5200/
+
+帮助文档的效果如下
+
+|image1|
+
+|image2|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200718191249.png
+.. |image2| image:: http://image.iswbm.com/20200607174235.png
+

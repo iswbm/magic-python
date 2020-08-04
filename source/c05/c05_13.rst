@@ -1,0 +1,43 @@
+5.13 如何在运行状态查看源代码？
+===============================
+
+|image0|
+
+查看函数的源代码，我们通常会使用 IDE 来完成。
+
+比如在 PyCharm 中，你可以 Ctrl + 鼠标点击 进入函数的源代码。
+
+那如果没有 IDE 呢？
+
+当我们想使用一个函数时，如何知道这个函数需要接收哪些参数呢？
+
+当我们在使用函数时出现问题的时候，如何通过阅读源代码来排查问题所在呢？
+
+这时候，我们可以使用 inspect 来代替 IDE 帮助你完成这些事
+
+.. code:: python
+
+   # demo.py
+   import inspect
+
+
+   def add(x, y):
+       return x + y
+
+   print("===================")
+   print(inspect.getsource(add))
+
+运行结果如下
+
+.. code:: shell
+
+   $ python demo.py
+   ===================
+   def add(x, y):
+       return x + y
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

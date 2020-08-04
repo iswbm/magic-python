@@ -1,0 +1,53 @@
+6.2 默认参数最好不为可变对象
+============================
+
+|image0|
+
+函数的参数分三种
+
+-  可变参数
+-  默认参数
+-  关键字参数
+
+当你在传递默认参数时，有新手很容易踩雷的一个坑。
+
+先来看一个示例
+
+.. code:: python
+
+   def func(item, item_list=[]):
+       item_list.append(item)
+       print(item_list)
+
+   func('iphone')
+   func('xiaomi', item_list=['oppo','vivo'])
+   func('huawei')
+
+在这里，你可以暂停一下，思考一下会输出什么？
+
+思考过后，你的答案是否和下面的一致呢
+
+::
+
+   ['iphone']
+   ['oppo', 'vivo', 'xiaomi']
+   ['iphone', 'huawei']
+
+如果是，那你可以跳过这部分内容，如果不是，请接着往下看，这里来分析一下。
+
+Python 中的 def
+语句在每次执行的时候都初始化一个函数对象，这个函数对象就是我们要调用的函数，可以把它当成一个一般的对象，只不过这个对象拥有一个可执行的方法和部分属性。
+
+对于参数中提供了初始值的参数，由于 Python
+中的函数参数传递的是对象，也可以认为是传地址，在第一次初始化 def
+的时候，会先生成这个可变对象的内存地址，然后将这个默认参数 item_list
+会与这个内存地址绑定。在后面的函数调用中，如果调用方指定了新的默认值，就会将原来的默认值覆盖。如果调用方没有指定新的默认值，那就会使用原来的默认值。
+
+|image1|
+
+|image2|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.python-online.cn/20190511165650.png
+.. |image2| image:: http://image.iswbm.com/20200607174235.png
+

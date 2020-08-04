@@ -1,0 +1,39 @@
+2.8 最正确且优雅的装包方法
+==========================
+
+|image0|
+
+当你使用 pip 来安装第三方的模块时，通常会使用这样的命令
+
+.. code:: shell
+
+   $ pip install requests
+
+此时如果你的环境中有 Python2 也有 Python
+3，那你使用这条命令安装的包是安装 Python2 呢？还是安装到 Python 3 呢？
+
+就算你的环境上没有安装 Python2，那也有可能存在着多个版本的 Python
+吧？比如安装了 Python3.8，也安装了
+Python3.9，那你安装包时就会很困惑，我到底把包安装在了哪里？
+
+但若你使用这样的命令去安装，就没有了这样的烦恼了
+
+.. code:: shell
+
+   # 在 python2 中安装
+   $ python -m pip install requests
+
+   # 在 python3 中安装
+   $ python3 -m pip install requests
+
+   # 在 python3.8 中安装
+   $ python3.8 -m pip install requests
+
+   # 在 python3.9 中安装
+   $ python3.9 -m pip install requests
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

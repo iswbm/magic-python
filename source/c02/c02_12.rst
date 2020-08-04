@@ -1,0 +1,66 @@
+2.12 在执行任意代码前自动念一段平安经
+=====================================
+
+|image0|
+
+最近的“平安经”可谓是引起了不小的风波啊。
+
+作为一个正儿八经的程序员，最害怕的就是自己的代码上线出现各种各样的 BUG。
+
+为此明哥就研究了一下，如何在你执行任意 Python 代码前，让 Python
+解释器自动念上一段平安经，保佑代码不出 BUG 。
+
+没想到还真被我研究出来了
+
+做好心理准备了嘛？
+
+我要开始作妖了，噢不，是开始念经了。
+
+|image1|
+
+感谢佛祖保佑，Everything is ok，No bugs in the code.
+
+你一定很想知道这是如何的吧？
+
+如果你对 Linux 比较熟悉，就会知道，当你在使用 SSH 远程登陆 Linux
+服务器的时候？会读取 ``.bash_profile`` 文件加载一些环境变量。
+
+``.bash_profile`` 你可以视其为一个 shell 脚本，可以在这里写一些 shell
+代码达到你的定制化需求。
+
+而在 Python 中，也有类似 ``.bash_profile``
+的文件，这个文件一般情况下是不存在的。
+
+我们需要新建一个用户环境目录，这个目录比较长，不需要你死记硬背，使用
+site 模块的方法就可以获取，然后使用 ``mkdir -p`` 命令创建它。
+
+|image2|
+
+在这个目录下，新建一个 ``usercustomize.py``
+文件，注意名字必须是这个，换成其他的可就识别不到啦。
+
+这个 ``usercustomize.py`` 的内容如下（明哥注：佛祖只保佑几个 Python
+的主要应用方向，毕竟咱是 Python 攻城狮嘛…）
+
+|image3|
+
+这个文件我放在了我的 github 上，你可以点此前往获取。
+
+一切都完成后，无论你是使用 ``python xxx.py`` 执行脚本
+
+|image4|
+
+还是使用 ``python`` 进入 Python Shell ，都会先念一下平安经保平安。
+
+|image5|
+
+|image6|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200801221705.png
+.. |image2| image:: http://image.iswbm.com/20200801220819.png
+.. |image3| image:: http://image.iswbm.com/20200801221413.png
+.. |image4| image:: http://image.iswbm.com/20200801221705.png
+.. |image5| image:: http://image.iswbm.com/20200801221457.png
+.. |image6| image:: http://image.iswbm.com/20200607174235.png
+

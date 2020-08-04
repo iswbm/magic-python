@@ -1,0 +1,165 @@
+3.4 条件语句的七种写法
+======================
+
+|image0|
+
+第一种：原代码
+~~~~~~~~~~~~~~
+
+这是一段非常简单的通过年龄判断一个人是否成年的代码，由于代码行数过多，有些人就不太愿意这样写，因为这体现不出自己多年的
+Python 功力。
+
+.. code:: python
+
+   if age > 18:
+       return "已成年"
+   else:
+       return "未成年"
+
+下面我列举了六种这段代码的变异写法，一个比一个还 6
+，单独拿出来比较好理解，放在工程代码里，没用过这些学法的人，一定会看得一脸懵逼，理解了之后，又不经意大呼：\ **卧槽，还可以这样写？**\ ，而后就要开始骂街了：\ **这是给人看的代码？**
+（除了第一种之外）
+
+第二种
+~~~~~~
+
+语法：
+
+.. code:: python
+
+   <on_true> if <condition> else <on_false> 
+
+例子
+
+.. code:: python
+
+   >>> age1 = 20
+   >>> age2 = 17
+   >>> 
+   >>> 
+   >>> msg1 = "已成年" if age1 > 18 else "未成年"
+   >>> print msg1
+   已成年
+   >>> 
+   >>> msg2 = "已成年" if age2 > 18 else "未成年"
+   >>> print msg2
+   未成年
+   >>> 
+
+第三种
+~~~~~~
+
+语法
+
+.. code:: python
+
+   <condition> and <on_true> or <on_false>
+
+例子
+
+.. code:: python
+
+   >>> msg1 = age1 > 18 and "已成年" or "未成年"
+   >>> msg2 = "已成年" if age2 > 18 else "未成年"
+   >>> 
+   >>> print(msg1)
+   已成年
+   >>> 
+   >>> print(msg2)
+   未成年
+
+第四种
+~~~~~~
+
+语法
+
+.. code:: python
+
+   (<on_true>, <on_false>)[condition]
+
+例子
+
+.. code:: python
+
+   >>> msg1 = ("未成年", "已成年")[age1 > 18]
+   >>> print(msg1)
+   已成年
+   >>> 
+   >>> 
+   >>> msg2 = ("未成年", "已成年")[age2 > 18]
+   >>> print(msg2)
+   未成年
+
+第五种
+~~~~~~
+
+语法
+
+.. code:: python
+
+   (lambda: <on_false>, lambda:<on_true>)[<condition>]()
+
+例子
+
+.. code:: python
+
+   >>> msg1 = (lambda:"未成年", lambda:"已成年")[age1 > 18]()
+   >>> print(msg1)
+   已成年
+   >>> 
+   >>> msg2 = (lambda:"未成年", lambda:"已成年")[age2 > 18]()
+   >>> print(msg2)
+   未成年
+
+第六种
+~~~~~~
+
+语法：
+
+.. code:: python
+
+   {True: <on_true>, False: <on_false>}[<condition>]
+
+例子：
+
+.. code:: python
+
+   >>> msg1 = {True: "已成年", False: "未成年"}[age1 > 18]
+   >>> print(msg1)
+   已成年
+   >>> 
+   >>> msg2 = {True: "已成年", False: "未成年"}[age2 > 18]
+   >>> print(msg2)
+   未成年
+
+第七种
+~~~~~~
+
+语法
+
+.. code:: python
+
+   ((<condition>) and (<on_true>,) or (<on_false>,))[0]
+
+例子
+
+.. code:: python
+
+   >>> msg1 = ((age1 > 18) and ("已成年",) or ("未成年",))[0]
+   >>> print(msg1)
+   已成年
+   >>> 
+   >>> msg2 = ((age2 > 18) and ("已成年",) or ("未成年",))[0]
+   >>> print(msg2)
+   未成年
+
+以上代码，都比较简单，仔细看都能看懂，我就不做解释了。
+
+看到这里，有没有涨姿势了，学了这么久的 Python
+，这么多骚操作，还真是活久见。。这六种写法里，我最推荐使用的是第一种，自己也经常在用，简洁直白，代码行还少。而其他的写法虽然能写，但是不会用，也不希望在我余生里碰到会在公共代码里用这些写法的同事。
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

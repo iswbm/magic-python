@@ -1,0 +1,54 @@
+1.20 字符串里的缝隙是什么？
+===========================
+
+|image0|
+
+在Python中求一个字符串里，某子字符（串）出现的次数。
+
+大家都懂得使用 count() 函数，比如下面几个常规例子：
+
+.. code:: python
+
+   >>> "aabb".count("a")
+   2
+   >>> "aabb".count("b")
+   2
+   >>> "aabb".count("ab")
+   1
+
+但是如果我想计算空字符串的个数呢？
+
+.. code:: python
+
+   >>> "aabb".count("")
+   5
+
+**奇怪了吧？**
+
+不是应该返回 0 吗？怎么会返回 5？
+
+实际上，在 Python 看来，两个字符之间都是一个空字符，通俗的说就是缝隙。
+
+因此 对于 ``aabb`` 这个字符串在 Python 来看应该是这样的
+
+|image1|
+
+理解了这个“**缝隙**” 的概念后，以下这些就好理解了。
+
+.. code:: python
+
+   >>> (" " * 10).count("")
+   11
+   >>> 
+   >>> "" in ""
+   True
+   >>> 
+   >>> "" in "M"
+   True
+
+|image2|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200509172331.png
+.. |image2| image:: http://image.iswbm.com/20200607174235.png
+
