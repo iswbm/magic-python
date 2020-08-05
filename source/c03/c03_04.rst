@@ -75,7 +75,7 @@ Python 功力。
 
 .. code:: python
 
-   (<on_true>, <on_false>)[condition]
+   (<on_false>, <on_true>)[condition]
 
 例子
 
