@@ -88,8 +88,8 @@ importlib 是 Python 中的一个标准库，importlib 能提供的功能非常�
 .. code:: python
 
    >>> import importlib
-   >>> myos=importlib.import_module("os")
-   >>> myos.getcwd()
+   >>> os=importlib.import_module("os")
+   >>> os.getcwd()
    '/home/wangbm'
 
 如果要实现 ``import xx as yy``\ 效果，可以这样
