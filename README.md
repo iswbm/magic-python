@@ -12,7 +12,7 @@
 
 在线阅读：[《Python 黑魔法指南》](http://magic.iswbm.com/)
 
-
+PDF 下载：https://pan.baidu.com/s/1t7c03aG2y91z3F5vHJGh4w  密码:ruot
 
 ## 目录大纲
 
