@@ -1,6 +1,9 @@
 ![](http://image.iswbm.com/20200719231251.png)
 
 <p align="center">
+      <a href="http://image.iswbm.com/20200816082224.png"><img src="https://img.shields.io/badge/Talk-%E5%BE%AE%E4%BF%A1%E7%BE%A4-brightgreen.svg?style=popout-square" alt="微信"></a>
+      <a href="https://github.com/iswbm/magic-python/stargazers"><img src="https://img.shields.io/github/stars/iswbm/magic-python.svg?style=popout-square" alt="GitHub stars"></a>
+      <a href="https://github.com/iswbm/magic-python/issues"><img src="https://img.shields.io/github/issues/iswbm/magic-python.svg?style=popout-square" alt="GitHub issues"></a>
     <img src='https://img.shields.io/badge/language-Python-blue.svg' alt="Build Status">
     <img src='https://img.shields.io/badge/framwork-Sphinx-green.svg'>
   	<a href='https://www.zhihu.com/people/wongbingming'><img src='https://img.shields.io/badge/dynamic/json?color=0084ff&logo=zhihu&label=%E7%8E%8B%E7%82%B3%E6%98%8E&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dzhihu%26queryKey%3Dwongbingming'></a>
@@ -8,15 +11,35 @@
     <a href='http://image.iswbm.com/20200607114246.png'><img src='http://img.shields.io/badge/%E5%85%AC%E4%BC%97%E5%8F%B7-30k+-brightgreen'></a>
 </p>
 
-## 在线阅读
 
-在线阅读：[《Python 黑魔法指南》](http://magic.iswbm.com/)
 
-PDF 下载：https://pan.baidu.com/s/1t7c03aG2y91z3F5vHJGh4w  密码:ruot
+## 关于本书
+
+本书是一本专门介绍 **Python 黑魔法玩法**的电子书。其中包括少有人知的一些 Python 冷门知识，Python Shell 的多样玩法，各种令人疯狂的 Python 炫技操作，Python 的超详细进阶知识解读，还有不断扩充完善适合所有 Python 开发者的开发技巧等等。
+
+本书旨在向你介绍一个不一样的 Python，而不是一份初学者的 Python 基础教学资料。
+
+![](http://image.iswbm.com/20200802161110.png)
+
+## 如何开始
+
+阅读本书有两个入口：
+
+1. **在线阅读**：实时更新最新内容，链接：http://magic.iswbm.com/
+
+   ![](http://image.iswbm.com/20200816092506.png)
+
+2. **在线阅读**：点击下面目录大纲的具体的 github 链接
+
+   ![](http://image.iswbm.com/20200816092815.png)
+
+3. **离线阅读**：下载 PDF 版，内容有滞后。链接：https://pan.baidu.com/s/1t7c03aG2y91z3F5vHJGh4w，密码：ruot
+
+   ![](http://image.iswbm.com/20200816092741.png)
 
 ## 目录大纲
 
-![](http://image.iswbm.com/20200802161110.png)
+![](http://image.iswbm.com/20200816090103.png)
 
 - **第一章**
    * [1.1 默默无闻的省略号很好用](./source/c01/c01_01.md)
@@ -108,6 +131,8 @@ PDF 下载：https://pan.baidu.com/s/1t7c03aG2y91z3F5vHJGh4w  密码:ruot
    * [7.2 代码 BUG 变得酷炫的利器](./source/c07/c07_02.md)
    * [7.3 少有人知的 Python "重试机制"](./source/c07/c07_03.md)
 
+## 写在最后
 
+本书所有文章均为本人原创，若对你学习 Python 有帮助，希望你能多多帮忙宣传，让更多的人知道这本书。
 
-![](http://image.iswbm.com/20200512130122.png)
+如果你有不错的内容，想加入进来，可以提交 pull requests ，大家一起努力作好这个项目。
