@@ -23,7 +23,7 @@
 
 ## 如何开始
 
-阅读本书有两个入口：
+阅读本书有三个入口：
 
 1. **在线阅读**：实时更新最新内容，链接：http://magic.iswbm.com/
 
@@ -33,7 +33,7 @@
 
    ![](http://image.iswbm.com/20200816092815.png)
 
-3. **离线阅读**：下载 PDF 版，内容有滞后。链接：https://pan.baidu.com/s/1t7c03aG2y91z3F5vHJGh4w，密码：ruot
+3. **离线阅读**：下载 PDF 版，内容有滞后。链接：https://pan.baidu.com/s/1t7c03aG2y91z3F5vHJGh4w ，密码：ruot
 
    ![](http://image.iswbm.com/20200816092741.png)
 
