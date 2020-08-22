@@ -1,0 +1,81 @@
+1.31 如何像 awk一样分割字符串？
+===============================
+
+|image0|
+
+若你使用过 Shell 中的 awk
+工具，会发现用它来分割字符串是非常方便的。特别是多个连续空格会被当做一个处理。
+
+.. code:: shell
+
+   [root@localhost ~]# cat demo.txt 
+   hello      world
+   [root@localhost ~]# 
+   [root@localhost ~]# awk '{print$1,$2}' demo.txt 
+   hello world
+
+可是转换到 Python 上面来呢？结果可能是这样的。
+
+.. code:: python
+
+   >>> msg='hello    world'
+   >>> msg.split(' ')
+   ['hello', '', '', '', 'world']
+
+与我预想的结果不符，多个空格会被分割多次。
+
+那有什么办法可以达到 awk 一样的效果呢？
+
+有两种方法。
+
+第一种方法
+----------
+
+不加参数，这种只适用于将多个空格当成一个空格处理，如果不是以空格为分隔符的场景，这种就不适用了。
+
+.. code:: python
+
+   >>> msg='hello    world'
+   >>> msg.split()
+   ['hello', 'world']
+
+第二种方法
+----------
+
+使用 filter 来辅助，这种适用于所有的分隔符，下面以 ``-``
+为分隔符来举例。
+
+.. code:: python
+
+   >>> msg='hello----world'
+   >>> msg.split('-')
+   ['hello', '', '', '', 'world']
+   >>> 
+   >>> filter(None, msg.split('-'))
+   ['hello', 'world']
+
+是不是很神奇，filter 印象中第一个参数接收的是 函数，这里直接传 None
+居然有奇效。
+
+查看了注释，原来是这个函数会适配 None
+的情况，当第一个参数是None的时候，返回第二个参数（可迭代对象）中非空的值，非常方便。
+
+|image1|
+
+换用函数的写法，可以这样
+
+.. code:: python
+
+   >>> msg='hello----world'
+   >>> msg.split('-')
+   ['hello', '', '', '', 'world']
+   >>> 
+   >>> filter(lambda item: True if item else False, msg.split('-'))
+   ['hello', 'world']
+
+|image2|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200821173708.png
+.. |image2| image:: http://image.iswbm.com/20200607174235.png
+
