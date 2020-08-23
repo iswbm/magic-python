@@ -1,0 +1,81 @@
+6.5 变量名与保留关键冲突怎么办？
+================================
+
+|image0|
+
+所有的编程语言都有一些保留关键字，这是代码得以编译/解释的基础。
+
+有了这些关键字就组成了语法，当你的变量名和这些保留关键字冲突时，该怎么办呢？
+
+在回答这个问题前，先要看看 Python 中的保留关键字有哪些？
+
+Python 的关键字，可以通过 keyword 这个模块列出来，一共有 33 个。
+
+.. code:: python
+
+   >>> import keyword;
+   >>> print('\n'.join(keyword.kwlist))
+   False
+   None
+   True
+   and
+   as
+   assert
+   break
+   class
+   continue
+   def
+   del
+   elif
+   else
+   except
+   finally
+   for
+   from
+   global
+   if
+   import
+   in
+   is
+   lambda
+   nonlocal
+   not
+   or
+   pass
+   raise
+   return
+   try
+   while
+   with
+   yield
+   >>> len(keyword.kwlist)
+   33
+
+使用这些关键字来做为变量名，是会报语法错误的。
+
+.. code:: python
+
+   >>> try = True
+     File "<stdin>", line 1
+       try = True
+           ^
+   SyntaxError: invalid syntax
+
+关于这个问题，\ `PEP8 <https://www.python.org/dev/peps/pep-0008/>`__
+建议当你想使用的变量名被关键字所占用时，可以使用 ``变量_``
+这样在变量后面加一个单下划线的形式来命名，这种后缀一下划线的方式优先于缩写或拼写错误。
+
+|image1|
+
+有了 PEP8 做为指导，我们可以这样子写了
+
+.. code:: python
+
+   >>> try_ = True
+
+|image2|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200823203106.png
+.. |image2| image:: http://image.iswbm.com/20200607174235.png
+
