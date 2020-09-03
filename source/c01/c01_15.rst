@@ -65,10 +65,10 @@ python 解释器都是 ``/usr/bin/python`` 。
 |image6|
 
 .. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.python-online.cn/20200331184021.png
-.. |image2| image:: http://image.python-online.cn/20200331185034.png
-.. |image3| image:: http://image.python-online.cn/20200331184755.png
-.. |image4| image:: http://image.python-online.cn/20200331185741.png
-.. |image5| image:: http://image.python-online.cn/20200331190224.png
+.. |image1| image:: http://image.iswbm.com/20200331184021.png
+.. |image2| image:: http://image.iswbm.com/20200331185034.png
+.. |image3| image:: http://image.iswbm.com/20200331184755.png
+.. |image4| image:: http://image.iswbm.com/20200331185741.png
+.. |image5| image:: http://image.iswbm.com/20200331190224.png
 .. |image6| image:: http://image.iswbm.com/20200607174235.png
 
