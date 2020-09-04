@@ -25,13 +25,13 @@ in_port 对应的 n_bytes、n_packets 的值 。
 
 ::
 
-   cookie=0x9816da8e872d717d, duration=298506.364s, table=0, n_packets=480, n_bytes=20160, priority=10,arp,in_port="tapbbdf080b-c2" actions=resubmit(,24)
+   cookie=0x9816da8e872d717d, duration=298506.364s, table=0, n_packets=480, n_bytes=20160, priority=10,ip,in_port="tapbbdf080b-c2" actions=NORMAL
 
 如果是你，你会怎么做呢？
 
 先以逗号分隔开来，再以等号分隔取出值来？
 
-你不防可以尝试一下，写出来的代码应该和我想象的一样，没有一丝感而言。
+你不防可以尝试一下，写出来的代码应该和我想象的一样，没有一丝美感而言。
 
 我来给你展示一下，我是怎么做的？
 
