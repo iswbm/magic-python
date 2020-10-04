@@ -138,6 +138,7 @@ Github仓库：https://github.com/iswbm/pycharm-guide
    * [7.2 代码 BUG 变得酷炫的利器](http://magic.iswbm.com/zh/latest/c07/c07_02.html)
    * [7.3 少有人知的 Python "重试机制"](http://magic.iswbm.com/zh/latest/c07/c07_03.html)
    * [7.4 规整字符串提取数据的神器](http://magic.iswbm.com/zh/latest/c07/c07_04.html)
+   * [7.5 一行代码让代码运行速度提高100倍](http://magic.iswbm.com/zh/latest/c07/c07_05.html)
 
 ## 写在最后
 

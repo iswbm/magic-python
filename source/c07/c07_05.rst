@@ -1,0 +1,284 @@
+7.5 一行代码让代码运行速度提高100倍
+===================================
+
+|image0|
+
+python一直被病垢运行速度太慢，但是实际上python的执行效率并不慢，慢的是python用的解释器Cpython运行效率太差。
+
+“一行代码让python的运行速度提高100倍”这绝不是哗众取宠的论调。
+
+我们来看一下这个最简单的例子，从1一直累加到1亿。
+
+最原始的代码：
+
+.. code:: python
+
+   import time
+   def foo(x,y):
+           tt = time.time()
+           s = 0
+           for i in range(x,y):
+                   s += i
+           print('Time used: {} sec'.format(time.time()-tt))
+           return s
+
+   print(foo(1,100000000))
+
+结果：
+
+.. code:: python
+
+   Time used: 6.779874801635742 sec
+   4999999950000000
+
+我们来加一行代码，再看看结果：
+
+.. code:: python
+
+   from numba import jit
+   import time
+   @jit
+   def foo(x,y):
+           tt = time.time()
+           s = 0
+           for i in range(x,y):
+                   s += i
+           print('Time used: {} sec'.format(time.time()-tt))
+           return s
+   print(foo(1,100000000))
+
+结果：
+
+::
+
+   Time used: 0.04680037498474121 sec
+   4999999950000000
+
+是不是快了100多倍呢？
+
+那么下面就分享一下“为啥\ **numba**\ 库的\ **jit**\ 模块那么牛掰？”
+
+**NumPy**\ 的创始人Travis
+Oliphant在离开Enthought之后，创建了CONTINUUM，致力于将Python大数据处理方面的应用。最近推出的Numba项目能够将处理NumPy数组的Python函数JIT编译为机器码执行，从而上百倍的提高程序的运算速度。
+
+Numba项目的主页上有Linux下的详细安装步骤。编译LLVM需要花一些时间。Windows用户可以从Unofficial
+Windows Binaries for Python Extension
+Packages下载安装LLVMPy、meta和numba等几个扩展库。
+
+下面我们看一个例子：
+
+.. code:: python
+
+   import numba as nb
+   from numba import jit
+
+   @jit('f8(f8[:])')
+   def sum1d(array):
+       s = 0.0
+       n = array.shape[0]
+       for i in range(n):
+           s += array[i]
+       return s
+
+   import numpy as np
+   array = np.random.random(10000)
+   %timeit sum1d(array)
+   %timeit np.sum(array)
+   %timeit sum(array)
+   10000 loops, best of 3: 38.9 us per loop
+   10000 loops, best of 3: 32.3 us per loop
+   100 loops, best of 3: 12.4 ms per loop
+
+numba中提供了一些修饰器，它们可以将其修饰的函数\ **JIT**\ 编译成机器码函数，并返回一个可在Python中调用机器码的包装对象。为了能将Python函数编译成能高速执行的机器码，我们需要告诉JIT编译器函数的各个参数和返回值的类型。我们可以通过多种方式指定类型信息，在上面的例子中，类型信息由一个字符串’f8(f8[:])’指定。其中’f8’表示8个字节双精度浮点数，括号前面的’f8’表示返回值类型，括号里的表示参数类型，’[:]’表示一维数组。因此整个类型字符串表示sum1d()是一个参数为双精度浮点数的一维数组，返回值是一个双精度浮点数。需要注意的是，JIT所产生的函数只能对指定的类型的参数进行运算：
+
+.. code:: python
+
+   print sum1d(np.ones(10, dtype=np.int32))
+   print sum1d(np.ones(10, dtype=np.float32))
+   print sum1d(np.ones(10, dtype=np.float64))
+   1.2095376009e-312
+   1.46201599944e+185
+   10.0
+
+如果希望JIT能针对所有类型的参数进行运算，可以使用\ **autojit**\ ：
+
+.. code:: python
+
+   from numba import autojit
+   @autojit
+   def sum1d2(array):
+       s = 0.0
+       n = array.shape[0]
+       for i in range(n):
+           s += array[i]
+       return s
+
+   %timeit sum1d2(array)
+   print sum1d2(np.ones(10, dtype=np.int32))
+   print sum1d2(np.ones(10, dtype=np.float32))
+   print sum1d2(np.ones(10, dtype=np.float64))
+   10000 loops, best of 3: 143 us per loop
+   10.0
+   10.0
+   10.0
+
+**autoit**\ 虽然可以根据参数类型动态地产生机器码函数，但是由于它需要每次检查参数类型，因此计算速度也有所降低。numba的用法很简单，基本上就是用jit和autojit这两个修饰器，和一些类型对象。下面的程序列出numba所支持的所有类型：
+
+.. code:: python
+
+   print [obj for obj in nb.__dict__.values() if isinstance(obj, nb.minivect.minitypes.Type)]
+   [size_t, Py_uintptr_t, uint16, complex128, float, complex256, void, int , long double,
+   unsigned PY_LONG_LONG, uint32, complex256, complex64, object_, npy_intp, const char *,
+   double, unsigned short, float, object_, float, uint64, uint32, uint8, complex128, uint16,
+   int, int , uint8, complex64, int8, uint64, double, long double, int32, double, long double,
+   char, long, unsigned char, PY_LONG_LONG, int64, int16, unsigned long, int8, int16, int32,
+   unsigned int, short, int64, Py_ssize_t]
+
+工作原理
+**numba**\ 的通过\ **meta**\ 模块解析Python函数的ast语法树，对各个变量添加相应的类型信息。然后调用llvmpy生成机器码，最后再生成机器码的Python调用接口。
+
+meta模块
+^^^^^^^^
+
+通过研究numba的工作原理，我们可以找到许多有用的工具。例如meta模块可在程序源码、ast语法树以及Python二进制码之间进行相互转换。下面看一个例子：
+
+.. code:: python
+
+   def add2(a, b):
+       return a + b
+
+decompile_func能将函数的代码对象反编译成ast语法树，而str_ast能直观地显示ast语法树，使用这两个工具学习Python的ast语法树是很有帮助的。
+
+.. code:: python
+
+   from meta.decompiler import decompile_func
+   from meta.asttools import str_ast
+   print str_ast(decompile_func(add2))
+   FunctionDef(args=arguments(args=[Name(ctx=Param(),
+                                         id='a'),
+                                    Name(ctx=Param(),
+                                         id='b')],
+                              defaults=[],
+                              kwarg=None,
+                              vararg=None),
+               body=[Return(value=BinOp(left=Name(ctx=Load(),
+                                                  id='a'),
+                                        op=Add(),
+                                        right=Name(ctx=Load(),
+                                                   id='b')))],
+               decorator_list=[],
+               name='add2')
+
+而python_source可以将ast语法树转换为Python源代码：
+
+.. code:: python
+
+   from meta.asttools import python_source
+   python_source(decompile_func(add2))
+   def add2(a, b):
+       return (a + b)
+
+decompile_pyc将上述二者结合起来，它能将Python编译之后的pyc或者pyo文件反编译成源代码。下面我们先写一个tmp.py文件，然后通过py_compile将其编译成tmp.pyc。
+
+.. code:: python
+
+   with open("tmp.py", "w") as f:
+       f.write("""
+   def square_sum(n):
+       s = 0
+       for i in range(n):
+           s += i**2
+       return s
+   """)
+   import py_compile
+   py_compile.compile("tmp.py")
+
+下面调用decompile_pyc将tmp.pyc显示为源代码：
+
+.. code:: python
+
+   with open("tmp.pyc", "rb") as f:
+       decompile_pyc(f)
+   def square_sum(n):
+       s = 0
+       for i in range(n):
+           s += (i ** 2)
+       return s
+
+llvmpy模块
+^^^^^^^^^^
+
+LLVM是一个动态编译器，llvmpy则可以通过Python调用LLVM动态地创建机器码。直接通过llvmpy创建机器码是比较繁琐的，例如下面的程序创建一个计算两个整数之和的函数，并调用它计算结果。
+
+.. code:: python
+
+   from llvm.core import Module, Type, Builder
+   from llvm.ee import ExecutionEngine, GenericValue
+
+   # Create a new module with a function implementing this:
+   #
+   # int add(int a, int b) {
+   #   return a + b;
+   # }
+   #
+   my_module = Module.new('my_module')
+   ty_int = Type.int()
+   ty_func = Type.function(ty_int, [ty_int, ty_int])
+   f_add = my_module.add_function(ty_func, "add")
+   f_add.args[0].name = "a"
+   f_add.args[1].name = "b"
+   bb = f_add.append_basic_block("entry")
+
+   # IRBuilder for our basic block
+   builder = Builder.new(bb)
+   tmp = builder.add(f_add.args[0], f_add.args[1], "tmp")
+   builder.ret(tmp)
+
+   # Create an execution engine object. This will create a JIT compiler
+   # on platforms that support it, or an interpreter otherwise
+   ee = ExecutionEngine.new(my_module)
+
+   # Each argument needs to be passed as a GenericValue object, which is a kind
+   # of variant
+   arg1 = GenericValue.int(ty_int, 100)
+   arg2 = GenericValue.int(ty_int, 42)
+
+   # Now let's compile and run!
+   retval = ee.run_function(f_add, [arg1, arg2])
+
+   # The return value is also GenericValue. Let's print it.
+   print "returned", retval.as_int()
+   returned 142
+
+f_add就是一个动态生成的机器码函数，我们可以把它想象成C语言编译之后的函数。在上面的程序中，我们通过ee.run_function调用此函数，而实际上我们还可以获得它的地址，然后通过Python的ctypes模块调用它。
+
+首先通过ee.get_pointer_to_function获得f_add函数的地址：
+
+.. code:: python
+
+   addr = ee.get_pointer_to_function(f_add)
+   addr
+   2975997968L
+
+然后通过ctypes.PYFUNCTYPE创建一个函数类型：
+
+.. code:: python
+
+   import ctypes
+   f_type = ctypes.PYFUNCTYPE(ctypes.c_int, ctypes.c_int, ctypes.c_int)
+
+最后通过f_type将函数的地址转换为可调用的Python函数，并调用它：
+
+.. code:: python
+
+   f = f_type(addr)
+   f(100, 42)
+   142
+
+numba所完成的工作就是：解析Python函数的ast语法树并加以改造，添加类型信息；将带类型信息的ast语法树通过llvmpy动态地转换为机器码函数，然后再通过和ctypes类似的技术为机器码函数创建包装函数供Python调用。
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+
