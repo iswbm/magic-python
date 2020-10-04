@@ -81,7 +81,7 @@ Github仓库：https://github.com/iswbm/pycharm-guide
    * [2.3 使用 json.tool 来格式化 JSON](http://magic.iswbm.com/zh/latest/c02/c02_03.html)
    * [2.4 命令行式执行 Python 代码](http://magic.iswbm.com/zh/latest/c02/c02_04.html)
    * [2.5 用调试模式执行脚本](http://magic.iswbm.com/zh/latest/c02/c02_05.html)
-   * [2.6 如何快速搭建 FTP 服务器](http://magic.iswbm.com/zh/latest/c02/c02_06.html)
+   * [2.6 如何快速搭建 HTTP 服务器](http://magic.iswbm.com/zh/latest/c02/c02_06.html)
    * [2.7 快速构建 HTML 帮助文档](http://magic.iswbm.com/zh/latest/c02/c02_07.html)
    * [2.8 最正确且优雅的装包方法](http://magic.iswbm.com/zh/latest/c02/c02_08.html)
    * [2.9 往 Python Shell 中传入参数](http://magic.iswbm.com/zh/latest/c02/c02_09.html)
@@ -97,6 +97,7 @@ Github仓库：https://github.com/iswbm/pycharm-guide
    * [3.4 条件语句的七种写法](http://magic.iswbm.com/zh/latest/c03/c03_04.html)
    * [3.5 判断是否包含子串的七种方法](http://magic.iswbm.com/zh/latest/c03/c03_05.html)
    * [3.6 海象运算符的三种用法](http://magic.iswbm.com/zh/latest/c03/c03_06.html)
+   * [3.7 模块重载的五种方法](http://magic.iswbm.com/zh/latest/c03/c03_07.html)
 - **第四章：魔法进阶扫盲**
    * [4.1 精通装饰器八大用法](http://magic.iswbm.com/zh/latest/c04/c04_01.html)
    * [4.2 深入理解描述符](http://magic.iswbm.com/zh/latest/c04/c04_02.html)
@@ -124,6 +125,7 @@ Github仓库：https://github.com/iswbm/pycharm-guide
    * [5.20 让你晕头转向的 else 用法](http://magic.iswbm.com/zh/latest/c05/c05_20.html)
    * [5.21 字典访问不存在的key时不再报错](http://magic.iswbm.com/zh/latest/c05/c05_21.html)
    * [5.22 如何实现函数的连续调用？](http://magic.iswbm.com/zh/latest/c05/c05_22.html)
+   * [5.23 如何实现字典的多级排序](http://magic.iswbm.com/zh/latest/c05/c05_23.html)
 - **第六章：良好编码习惯**
    * [6.1 不要直接调用类的私有方法](http://magic.iswbm.com/zh/latest/c06/c06_01.html)
    * [6.2 默认参数最好不为可变对象](http://magic.iswbm.com/zh/latest/c06/c06_02.html)
@@ -135,6 +137,7 @@ Github仓库：https://github.com/iswbm/pycharm-guide
    * [7.1 远程登陆服务器的最佳利器](http://magic.iswbm.com/zh/latest/c07/c07_01.html)
    * [7.2 代码 BUG 变得酷炫的利器](http://magic.iswbm.com/zh/latest/c07/c07_02.html)
    * [7.3 少有人知的 Python "重试机制"](http://magic.iswbm.com/zh/latest/c07/c07_03.html)
+   * [7.4 规整字符串提取数据的神器](http://magic.iswbm.com/zh/latest/c07/c07_04.html)
 
 ## 写在最后
 
