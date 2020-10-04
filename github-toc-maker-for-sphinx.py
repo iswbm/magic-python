@@ -41,7 +41,7 @@ def get_toc_info():
             section = int(re.findall(r"c\d{2}_(\d{2}).md", file_name)[0])
 
             #md_path = os.path.join("./source/", dir_name, file_name)
-            md_path = os.path.join("http://magic.iswbm.com/en/latest/", dir_name, file_name.replace("md", "html"))
+            md_path = os.path.join("http://magic.iswbm.com/zh/latest/", dir_name, file_name.replace("md", "html"))
             title = get_title(file)
             if not title:
                 continue
