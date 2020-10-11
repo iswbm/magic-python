@@ -41,7 +41,7 @@ var setIdTimer = setInterval(function () {
                 blogId: '15406-1578143418297-890',
                 name: 'Python编程时光',
                 qrcode: 'http://image.iswbm.com/20200104210733.png',
-                keyword: 'vip'
+                keyword: '1024'
             });
         }
        
