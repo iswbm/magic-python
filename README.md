@@ -61,7 +61,7 @@ Github仓库：https://github.com/iswbm/pycharm-guide
    * [1.15 /usr/bin/env python 有什么用？](http://magic.iswbm.com/zh/latest/c01/c01_15.html)
    * [1.16 dict() 与 {} 生成空字典有什么区别？](http://magic.iswbm.com/zh/latest/c01/c01_16.html)
    * [1.17 有趣但没啥用的 import 用法](http://magic.iswbm.com/zh/latest/c01/c01_17.html)
-   * [1.18 正负得正，负负得正](http://magic.iswbm.com/zh/latest/c01/c01_18.html)
+   * [1.18 正负得负，负负得正](http://magic.iswbm.com/zh/latest/c01/c01_18.html)
    * [1.19 return不一定都是函数的终点](http://magic.iswbm.com/zh/latest/c01/c01_19.html)
    * [1.20 字符串里的缝隙是什么？](http://magic.iswbm.com/zh/latest/c01/c01_20.html)
    * [1.21 Python2下 也能使用 print(“”)](http://magic.iswbm.com/zh/latest/c01/c01_21.html)
