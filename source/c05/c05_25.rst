@@ -1,0 +1,40 @@
+5.25 将位置参数变成关键字参数
+=============================
+
+|image0|
+
+在 Python 中，参数的种类，大概可以分为四种：
+
+1. ``必选参数``\ ，也叫\ ``位置参数``\ ，调用函数时一定指定的参数，并且在传参的时候必须按函数定义时的顺序来
+2. ``可选参数``\ ，也叫\ ``默认参数``\ ，调用函数时，可以指定也可以不指定，不指定就默认的参数值来。
+3. ``可变参数``\ ，就是参数个数可变，可以是 0
+   个或者任意个，但是传参时不能指定参数名，通常使用 ``*args`` 来表示。
+4. ``关键字参数``\ ，就是参数个数可变，可以是 0
+   个或者任意个，但是传参时必须指定参数名，通常使用 ``**kw`` 来表示
+
+使用单独的
+``*``\ ，可以后面的位置参数变成关键字参数，关键字参数在你传参时，必须要写参数名，不然会报错。
+
+.. code:: python
+
+   >>> def demo_func(a, b, *, c):
+   ...     print(a)
+   ...     print(b)
+   ...     print(c)
+   ... 
+   >>> 
+   >>> demo_func(1, 2, 3)
+   Traceback (most recent call last):
+     File "<stdin>", line 1, in <module>
+   TypeError: demo_func() takes 2 positional arguments but 3 were given
+   >>> 
+   >>> demo_func(1, 2, c=3)
+   1
+   2
+   3
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

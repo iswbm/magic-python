@@ -35,7 +35,17 @@
 .. code:: python
 
    >>> text = '''talk is cheap,
-   ...           show me the code'''
+   ... show me code.'''
+   >>>
+
+但是这种写法回车会自动转化为 ``\n``
+
+.. code:: python
+
+   >>> text = '''talk is cheap,
+   ... show me code.'''
+   >>> text
+   'talk is cheap,\nshow me code.'
 
 |image1|
 

@@ -1,215 +1,375 @@
-4.3 精通上下文管理器
-====================
+4.3 神奇的元类编程
+==================
 
 |image0|
 
-with\` 这个关键字，对于每一学习Python的人，都不会陌生。
+1. 类是如何产生的
+-----------------
 
-操作文本对象的时候，几乎所有的人都会让我们要用 ``with open``
-，这就是一个上下文管理的例子。你一定已经相当熟悉了，我就不再废话了。
+类是如何产生？这个问题也许你会觉得很傻。
 
-.. code:: python
+实则不然，很多初学者只知道使用继承的表面形式来创建一个类，却不知道其内部真正的创建是由
+``type`` 来创建的。
 
-   with open('test.txt') as f:
-       print f.readlines()
+type？这不是判断对象类型的函数吗？
 
-what context manager？
-~~~~~~~~~~~~~~~~~~~~~~
+是的，type通常用法就是用来判断对象的类型。但除此之外，他最大的用途是用来动态创建类。当Python扫描到class的语法的时候，就会调用type函数进行类的创建。
 
-**基本语法**
+2. 如何使用type创建类
+---------------------
 
-.. code:: python
+首先，\ ``type()`` 需要接收三个参数
 
-   with EXPR as VAR:
-       BLOCK
+1. 类的名称，若不指定，也要传入空字符串：\ ``""``
+2. 父类，注意以tuple的形式传入，若没有父类也要传入空tuple：\ ``()``\ ，默认继承object
+3. 绑定的方法或属性，注意以dict的形式传入
 
-先理清几个概念
-
-::
-
-   1. 上下文表达式：with open('test.txt') as f:
-   2. 上下文管理器：open('test.txt')
-   3. f 不是上下文管理器，应该是资源对象。
-
-how context manager？
-~~~~~~~~~~~~~~~~~~~~~
-
-要自己实现这样一个上下文管理，要先知道上下文管理协议。
-
-简单点说，就是在一个类里，实现了\ ``__enter__``\ 和\ ``__exit__``\ 的方法，这个类的实例就是一个上下文管理器。
-
-例如这个示例：
+来看个例子
 
 .. code:: python
 
-   class Resource():
-       def __enter__(self):
-           print('===connect to resource===')
-           return self
-       def __exit__(self, exc_type, exc_val, exc_tb):
-           print('===close resource connection===')
+   # 准备一个基类（父类）
+   class BaseClass:
+       def talk(self):
+           print("i am people")
+
+   # 准备一个方法
+   def say(self):
+       print("hello")
+
+   # 使用type来创建User类
+   User = type("User", (BaseClass, ), {"name":"user", "say":say})
+
+3. 理解什么是元类
+-----------------
+
+什么是类？可能谁都知道，类就是用来创建对象的「模板」。
+
+那什么是元类呢？一句话通俗来说，元类就是创建类的「模板」。
+
+为什么type能用来创建类？因为它本身是一个元类。使用元类创建类，那就合理了。
+
+type是Python在背后用来创建所有类的元类，我们熟知的类的始祖 ``object``
+也是由type创建的。更有甚者，连type自己也是由type自己创建的，这就过份了。
+
+.. code:: python
+
+   >>> type(type)
+   <class 'type'>
+
+   >>> type(object)
+   <class 'type'>
+
+   >>> type(int)
+   <class 'type'>
+
+   >>> type(str)
+   <class 'type'>
+
+如果要形象的来理解的话，就看下面这三行话。
+
+-  str：用来创建字符串对象的类。
+-  int：是用来创建整数对象的类。
+-  type：是用来创建类对象的类。
+
+反过来看
+
+-  一个实例的类型，是类
+-  一个类的类型，是元类
+-  一个元类的类型，是type
+
+写个简单的小示例来验证下
+
+.. code:: python
+
+   >>> class MetaPerson(type):
+   ...     pass
+   ...
+   >>> class Person(metaclass=MetaPerson):
+   ...     pass
+   ...
+   >>> Tom = Person()
+   >>> print(type(Tom))
+   <class '__main__.Person'>
+   >>> print(type(Tom.__class__))
+   <class '__main__.MetaPerson'>
+   >>> print(type(Tom.__class__.__class__))
+   <class 'type'>
+
+下面再来看一个稍微完整的
+
+.. code:: python
+
+   # 注意要从type继承
+   class BaseClass(type):
+       def __new__(cls, *args, **kwargs):
+           print("in BaseClass")
+           return super().__new__(cls, *args, **kwargs)
+
+   class User(metaclass=BaseClass):
+       def __init__(self, name):
+           print("in User")
+           self.name = name
            
-       def operate(self):
-           print('===in operation===')
-           
-   with Resource() as res:
-       res.operate()
+   # in BaseClass
 
-我们执行一下，通过日志的打印顺序。可以知道其执行过程。
+   user = User("wangbm")
+   # in User
 
-::
+综上，我们知道了类是元类的实例，所以在创建一个普通类时，其实会走元类的
+``__new__``\ 。
 
-   ===connect to resource===
-   ===in operation===
-   ===close resource connection===
+同时，我们又知道在类里实现了 ``__call__``
+就可以让这个类的实例变成可调用。
 
-从这个示例可以很明显的看出，在编写代码时，可以将资源的连接或者获取放在\ ``__enter__``\ 中，而将资源的关闭写在\ ``__exit__``
-中。
+所以在我们对普通类进行实例化时，实际是对一个元类的实例（也就是普通类）进行直接调用，所以会走进元类的
+``__call__``
 
-why context manager？
-~~~~~~~~~~~~~~~~~~~~~
-
-学习时多问自己几个为什么，养成对一些细节的思考，有助于加深对知识点的理解。
-
-为什么要使用上下文管理器？
-
-在我看来，这和 Python 崇尚的优雅风格有关。
-
-1. 可以以一种更加优雅的方式，操作（创建/获取/释放）资源，如文件操作、数据库连接；
-2. 可以以一种更加优雅的方式，处理异常；
-
-第一种，我们上面已经以资源的连接为例讲过了。
-
-而第二种，会被大多数人所忽略。这里会重点讲一下。
-
-大家都知道，处理异常，通常都是使用 ``try...execept..``
-来捕获处理的。这样做一个不好的地方是，在代码的主逻辑里，会有大量的异常处理代理，这会很大的影响我们的可读性。
-
-好一点的做法呢，可以使用 ``with`` 将异常的处理隐藏起来。
-
-仍然是以上面的代码为例，我们将\ ``1/0``
-这个\ ``一定会抛出异常的代码``\ 写在 ``operate`` 里
+在这里可以借助 「单例的实现」举一个例子，你就清楚了
 
 .. code:: python
 
-   class Resource():
-       def __enter__(self):
-           print('===connect to resource===')
-           return self
+   class MetaSingleton(type):
+       def __call__(cls, *args, **kwargs):
+           print("cls:{}".format(cls.__name__))
+           print("====1====")
+           if not hasattr(cls, "_instance"):
+               print("====2====")
+               cls._instance = type.__call__(cls, *args, **kwargs)
+           return cls._instance
 
-       def __exit__(self, exc_type, exc_val, exc_tb):
-           print('===close resource connection===')
-           return True
+   class User(metaclass=MetaSingleton):
+       def __init__(self, *args, **kw):
+           print("====3====")
+           for k,v in kw:
+               setattr(self, k, v)
 
-       def operate(self):
-           1/0
-
-   with Resource() as res:
-       res.operate()
-
-运行一下，惊奇地发现，居然不会报错。
-
-这就是上下文管理协议的一个强大之处，异常可以在\ ``__exit__``
-进行捕获并由你自己决定如何处理，是抛出呢还是在这里就解决了。在\ ``__exit__``
-里返回 ``True``\ （没有return 就默认为 return False），就相当于告诉
-Python解释器，这个异常我们已经捕获了，不需要再往外抛了。
-
-在 写\ ``__exit__`` 函数时，需要注意的事，它必须要有这三个参数：
-
--  exc_type：异常类型
--  exc_val：异常值
--  exc_tb：异常的错误栈信息
-
-当主逻辑代码没有报异常时，这三个参数将都为None。
-
-how contextlib?
-~~~~~~~~~~~~~~~
-
-在上面的例子中，我们只是为了构建一个上下文管理器，却写了一个类。如果只是要实现一个简单的功能，写一个类未免有点过于繁杂。这时候，我们就想，如果只写一个函数就可以实现上下文管理器就好了。
-
-这个点Python早就想到了。它给我们提供了一个装饰器，你只要按照它的代码协议来实现函数内容，就可以将这个函数对象变成一个上下文管理器。
-
-我们按照 contextlib 的协议来自己实现一个打开文件（with
-open）的上下文管理器。
+验证结果
 
 .. code:: python
 
-   import contextlib
+   >>> u1 = User('wangbm1')
+   cls:User
+   ====1====
+   ====2====
+   ====3====
+   >>> u1.age = 20
+   >>> u2 = User('wangbm2')
+   cls:User
+   ====1====
+   >>> u2.age
+   20
+   >>> u1 is u2
+   True
 
-   @contextlib.contextmanager
-   def open_func(file_name):
-       # __enter__方法
-       print('open file:', file_name, 'in __enter__')
-       file_handler = open(file_name, 'r')
-       
-       # 【重点】：yield
-       yield file_handler
+4. 使用元类的意义
+-----------------
 
-       # __exit__方法
-       print('close file:', file_name, 'in __exit__')
-       file_handler.close()
-       return
+正常情况下，我们都不会使用到元类。但是这并不意味着，它不重要。假如某一天，我们需要写一个框架，很有可能就需要你对元类要有进一步的研究。
 
-   with open_func('/Users/MING/mytest.txt') as file_in:
-       for line in file_in:
-           print(line)
+元类有啥用，用我通俗的理解，元类的作用过程：
 
-在被装饰函数里，必须是一个生成器（带有yield），而yield之前的代码，就相当于\ ``__enter__``\ 里的内容。yield
-之后的代码，就相当于\ ``__exit__`` 里的内容。
+1. 拦截类的创建
+2. 拦截下后，进行修改
+3. 修改完后，返回修改后的类
 
-上面这段代码只能实现上下文管理器的第一个目的（管理资源），并不能实现第二个目的（处理异常）。
+所以，很明显，为什么要用它呢？不要它会怎样？
 
-如果要处理异常，可以改成下面这个样子。
+使用元类，是要对类进行定制修改。使用元类来动态生成元类的实例，而99%的开发人员是不需要动态修改类的，因为这应该是框架才需要考虑的事。
+
+但是，这样说，你一定不会服气，到底元类用来干什么？其实元类的作用就是\ ``创建API``\ ，一个最典型的应用是
+``Django ORM``\ 。
+
+5. 元类实战：ORM
+----------------
+
+使用过Django ORM的人都知道，有了ORM，使得我们操作数据库，变得异常简单。
+
+ORM的一个类(User)，就对应数据库中的一张表。id,name,email,password
+就是字段。
 
 .. code:: python
 
-   import contextlib
+   class User(BaseModel):
+       id = IntField('id')
+       name = StrField('username')
+       email = StrField('email')
+       password = StrField('password')
 
-   @contextlib.contextmanager
-   def open_func(file_name):
-       # __enter__方法
-       print('open file:', file_name, 'in __enter__')
-       file_handler = open(file_name, 'r')
+       class Meta:
+           db_table = "user"
 
-       try:
-           yield file_handler
-       except Exception as exc:
-           # deal with exception
-           print('the exception was thrown')
-       finally:
-           print('close file:', file_name, 'in __exit__')
-           file_handler.close()
+如果我们要插入一条数据，我们只需这样做
 
-           return
+.. code:: python
 
-   with open_func('/Users/MING/mytest.txt') as file_in:
-       for line in file_in:
-           1/0
-           print(line)
+   # 实例化成一条记录
+   u = User(id=20180424, name="xiaoming", 
+            email="xiaoming@163.com", password="abc123")
 
-好像只要讲到上下文管理器，大多数人都会谈到打开文件这个经典的例子。
+   # 保存这条记录
+   u.save()
 
-但是在实际开发中，可以使用到上下文管理器的例子也不少。我这边举个我自己的例子。
+通常用户层面，只需要懂应用，就像上面这样操作就可以了。
 
-在OpenStack中，给一个虚拟机创建快照时，需要先创建一个临时文件夹，来存放这个本地快照镜像，等到本地快照镜像创建完成后，再将这个镜像上传到Glance。然后删除这个临时目录。
+但是今天我并不是来教大家如何使用ORM，我们是用来探究ORM内部究竟是如何实现的。我们也可以自己写一个简易的ORM。
 
-这段代码的主逻辑是\ ``创建快照``\ ，而\ ``创建临时目录``\ ，属于前置条件，\ ``删除临时目录``\ ，是收尾工作。
+从上面的\ ``User``\ 类中，我们看到\ ``StrField``\ 和\ ``IntField``\ ，从字段意思上看，我们很容易看出这代表两个字段类型。字段名分别是\ ``id``,\ ``username``,\ ``email``,\ ``password``\ 。
 
-虽然代码量很少，逻辑也不复杂，但是“``创建临时目录，使用完后再删除临时目录``”这个功能，在一个项目中很多地方都需要用到，如果可以将这段逻辑处理写成一个工具函数作为一个上下文管理器，那代码的复用率也大大提高。
+``StrField``\ 和\ ``IntField``\ 在这里的用法，叫做\ ``属性描述符``\ 。
+简单来说呢，\ ``属性描述符``\ 可以实现对属性值的类型，范围等一切做约束，意思就是说变量id只能是int类型，变量name只能是str类型，否则将会抛出异常。
 
-代码是这样的
+那如何实现这两个\ ``属性描述符``\ 呢？请看代码。
+
+.. code:: python
+
+   import numbers
+
+   class Field:
+       pass
+
+   class IntField(Field):
+       def __init__(self, name):
+           self.name = name
+           self._value = None
+
+       def __get__(self, instance, owner):
+           return self._value
+
+       def __set__(self, instance, value):
+           if not isinstance(value, numbers.Integral):
+               raise ValueError("int value need")
+           self._value = value
+
+   class StrField(Field):
+       def __init__(self, name):
+           self.name = name
+           self._value = None
+
+       def __get__(self, instance, owner):
+           return self._value
+
+       def __set__(self, instance, value):
+           if not isinstance(value, str):
+               raise ValueError("string value need")
+           self._value = value
+
+我们看到\ ``User``\ 类继承自\ ``BaseModel``\ ，这个\ ``BaseModel``\ 里，定义了数据库操作的各种方法，譬如我们使用的\ ``save``\ 函数，也可以放在这里面的。所以我们就可以来写一下这个\ ``BaseModel``\ 类
+
+.. code:: python
+
+   class BaseModel(metaclass=ModelMetaClass):
+       def __init__(self, *args, **kw):
+           for k,v in kw.items():
+               # 这里执行赋值操作，会进行数据描述符的__set__逻辑
+               setattr(self, k, v)
+           return super().__init__()
+
+       def save(self):
+           db_columns=[]
+           db_values=[]
+           for column, value in self.fields.items():
+               db_columns.append(str(column))
+               db_values.append(str(getattr(self, column)))
+           sql = "insert into {table} ({columns}) values({values})".format(
+                   table=self.db_table, columns=','.join(db_columns),
+                   values=','.join(db_values))
+           pass
+
+从\ ``BaseModel``\ 类中，save函数里面有几个新变量。
+
+1. fields: 存放所有的字段属性
+2. db_table：表名
+
+我们思考一下这个\ ``u``\ 实例的创建过程：
+
+``type`` -> ``ModelMetaClass`` -> ``BaseModel`` -> ``User`` -> ``u``
+
+这里会有几个问题。
+
+-  init的参数是User实例时传入的，所以传入的id是int类型，name是str类型。看起来没啥问题，若是这样，我上面的数据描述符就失效了，不能起约束作用。所以我们希望init接收到的id是IntField类型，name是StrField类型。
+-  同时，我们希望这些字段属性，能够自动归类到fields变量中。因为，做为BaseModel，它可不是专门为User类服务的，它还要兼容各种各样的表。不同的表，表里有不同数量，不同属性的字段，这些都要能自动类别并归类整理到一起。这是一个ORM框架最基本的。
+-  我们希望对表名有两种选择，一个是User中若指定Meta信息，比如表名，就以此为表名，若未指定就以类名的小写
+   做为表名。虽然BaseModel可以直接取到User的db_table属性，但是如果在数据库业务逻辑中，加入这段复杂的逻辑，显然是很不优雅的。
+
+上面这几个问题，其实都可以通过元类的\ ``__new__``\ 函数来完成。
+
+下面就来看看，如何用元类来解决这些问题呢？请看代码。
+
+.. code:: python
+
+   class ModelMetaClass(type):
+       def __new__(cls, name, bases, attrs):
+           if name == "BaseModel":
+               # 第一次进入__new__是创建BaseModel类，name="BaseModel"
+               # 第二次进入__new__是创建User类及其实例，name="User"
+               return super().__new__(cls, name, bases, attrs)
+
+           # 根据属性类型，取出字段
+           fields = {k:v for k,v in attrs.items() if isinstance(v, Field)}
+
+           # 如果User中有指定Meta信息，比如表名，就以此为准
+           # 如果没有指定，就默认以 类名的小写 做为表名，比如User类，表名就是user
+           _meta = attrs.get("Meta", None)
+           db_table = name.lower()
+           if _meta is not None:
+               table = getattr(_meta, "db_table", None)
+               if table is not None:
+                   db_table = table
+
+           # 注意原来由User传递过来的各项参数attrs，最好原模原样的返回，
+           # 如果不返回，有可能下面的数据描述符不起作用
+           # 除此之外，我们可以往里面添加我们自定义的参数
+           attrs["db_table"] = db_table
+           attrs["fields"] = fields
+           return super().__new__(cls, name, bases, attrs)
+
+6. \__new_\_ 有什么用？
+-----------------------
+
+在没有元类的情况下，每次创建实例，在先进入 ``__init__`` 之前都会先进入
+``__new__``\ 。
+
+.. code:: python
+
+   class User:
+       def __new__(cls, *args, **kwargs):
+           print("in BaseClass")
+           return super().__new__(cls)
+
+       def __init__(self, name):
+           print("in User")
+           self.name = name
+
+使用如下
+
+.. code:: python
+
+   >>> u = User('wangbm')
+   in BaseClass
+   in User
+   >>> u.name
+   'wangbm'
+
+在有元类的情况下，每次创建类时，会都先进入 元类的 ``__new__``
+方法，如果你要对类进行定制，可以在这时做一些手脚。
+
+综上，元类的\ ``__new__``\ 和普通类的不一样：
+
+-  元类的\ ``__new__``
+   在创建类时就会进入，它可以获取到上层类的一切属性和方法，包括类名，魔法方法。
+-  而普通类的\ ``__new__``
+   在实例化时就会进入，它仅能获取到实例化时外界传入的属性。
+
+附录：参考文章
+--------------
+
+-  `Python Cookbook -
+   元编程 <http://python3-cookbook.readthedocs.io/zh_CN/latest/chapters/p09_meta_programming.html>`__
+-  `深刻理解Python中的元类 <http://blog.jobbole.com/21351/>`__
 
 |image1|
 
-总结起来，使用上下文管理器有三个好处：
-
-1. 提高代码的复用率；
-2. 提高代码的优雅度；
-3. 提高代码的可读性；
-
-|image2|
-
 .. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20190310172800.png
-.. |image2| image:: http://image.iswbm.com/20200607174235.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
 
