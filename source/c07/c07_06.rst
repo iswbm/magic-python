@@ -328,9 +328,12 @@ PySnooper 在打印对象的调试信息时，会逐个判断它是否是 Person
 以上就是明哥今天给大家介绍的一款调试神器（\ ``PySnooper``\ ）
 的详细使用手册，是不是觉得还不错？
 
+|image5|
+
 .. |image0| image:: http://image.iswbm.com/20200804124133.png
 .. |image1| image:: http://image.iswbm.com/20201114183018.png
 .. |image2| image:: http://image.iswbm.com/20201114193131.png
 .. |image3| image:: http://image.iswbm.com/20201114194449.png
 .. |image4| image:: http://image.iswbm.com/20201114201042.png
+.. |image5| image:: http://image.iswbm.com/20200607174235.png
 

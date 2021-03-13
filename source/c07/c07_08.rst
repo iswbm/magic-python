@@ -1,0 +1,51 @@
+7.8 像操作路径一样，操作嵌套字典
+================================
+
+|image0|
+
+在使用前先安装它，要注意的是该模块只能在 Python 3.8+ 中使用
+
+.. code:: shell
+
+   $ python3 -m pip install dpath
+
+下边是一个简单的使用案例
+
+.. code:: python
+
+   import dpath.util
+
+   data = {
+       "foo": {
+           "bar": {
+           "a": 10,
+           "b": 20,
+           "c": [],
+           "d": ['red', 'buggy', 'bumpers'],
+           }
+       }
+   }
+
+   print(dpath.util.get(data, "/foo/bar/d"))
+
+使用 ``[ab]`` 会把 键为 ``a`` 和 ``b`` 的都筛选出来
+
+.. code:: python
+
+   print(dpath.util.search(data, "/foo/bar/[ab]"))
+   # output: {'foo': {'bar': {'a': 10, 'b': 20}}}
+
+获取所有匹配的键值对的 value 值列表
+
+.. code:: python
+
+   print(dpath.util.values(data, "/foo/bar/*"))
+   # output: [10, 20, [], ['red', 'buggy', 'bumpers']]
+
+更多案例，请前往 `官方文档 <https://pypi.org/project/dpath/>`__ 查阅。
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

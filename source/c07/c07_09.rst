@@ -1,0 +1,31 @@
+7.9 读取文件中任意行的数据
+==========================
+
+|image0|
+
+``linecache`` 是 Python 中的一个内置模块。
+
+它允许从任何文件中获取任意行，同时尝试使用缓存进行内部优化，这是一种常见的情况，即从单个文件读取多行。它被\ ``traceback``\ 模块用来检索包含在格式化回溯中的源代码行。
+
+这是一个简单的例子。
+
+.. code:: python
+
+   >>> import linecache
+   >>> linecache.getline('/etc/passwd', 4)
+   'sys:x:3:3:sys:/dev:/bin/sh\n'
+
+如果你指定的行数超过了文件原有的行数，该函数也不会抛出错误，而是返回空字符串。
+
+.. code:: python
+
+   >>> import linecache
+   >>> linecache.getline('/etc/passwd', 10000)
+
+   >>>
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

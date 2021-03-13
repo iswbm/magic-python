@@ -1,0 +1,45 @@
+5.27 如何进行版本的比较
+=======================
+
+|image0|
+
+使用 distutils
+--------------
+
+``distutils`` 是 Python 的内置模块，它做为最古老的 python
+分发工具，本身也实现了版本的比较与检查的功能。
+
+.. code:: python
+
+   >>> from distutils.version import LooseVersion, StrictVersion
+   >>> LooseVersion("2.3.1") < LooseVersion("10.1.2")
+   True
+   >>> StrictVersion("2.3.1") < StrictVersion("10.1.2")
+   True
+
+使用 packaging
+--------------
+
+如果你的环境中安装过 ``setuptools``\ ，那么一定会附带安装了 packaging
+这个包，而如果你的环境中并没有 setuptools ，也可以通过 pip 来快速安装
+
+.. code:: shell
+
+   $ python3 -m pip install packaging
+
+在 packaging 中有一个 version 模块，专门用来为 setuptools
+提供包版本的版本解析。
+
+.. code:: python
+
+   >>> from packaging import version
+   >>> version.parse("2.3.1") < version.parse("10.1.2")
+   True
+   >>> version.parse("1.3.a4") < version.parse("10.1.2")
+   True
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+
