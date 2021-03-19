@@ -1,0 +1,54 @@
+5.29 如何禁止对象深拷贝?
+========================
+
+|image0|
+
+当你使用 copy 模块的 deepcopy
+拷贝一个对象后，会创建出来一个全新的的对象。
+
+.. code:: python
+
+   >>> from copy import deepcopy
+   >>> 
+   >>> profile = {"name": "wangbm"}
+   >>> id(profile)
+   21203408
+   >>> 
+   >>> new_profile = deepcopy(profile)
+   >>> id(new_profile)
+   21236144
+
+但是有的时候，我们希望基于我们的类实例化后对象，禁止被深拷贝，这时候就要用到
+Python 的魔法方法了。
+
+在如下代码中，我们重写了 Sentinel 类的 ``__deepcopy__`` 和 ``__copy__``
+方法
+
+.. code:: python
+
+   class Sentinel(object):
+       def __deepcopy__(self, memo):
+           # Always return the same object because this is essentially a constant.
+           return self
+
+       def __copy__(self):
+           # called via copy.copy(x)
+           return self
+
+此时你如果对它进行深度拷贝的话，会发现返回的永远都是原来的对象
+
+.. code:: python
+
+   >>> obj = Sentinel()
+   >>> id(obj)
+   140151569169808
+   >>> 
+   >>> new_obj = deepcopy(obj)
+   >>> id(new_obj)
+   140151569169808
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+
