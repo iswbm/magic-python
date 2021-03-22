@@ -1,0 +1,228 @@
+3.12 调用函数的九种方法
+=======================
+
+|image0|
+
+方法一：直接调用函数运行
+------------------------
+
+这种是最简单且直观的方法
+
+.. code:: python
+
+   def task():
+       print("running task")
+
+   task()
+
+如果是在类中，也是如此
+
+.. code:: python
+
+   class Task:
+       def task(self):
+           print("running task")
+
+   Task().task()
+
+方法二：使用偏函数来执行
+------------------------
+
+在 functools 这个内置库中，有一个 partial 方法专门用来生成偏函数。
+
+.. code:: python
+
+   def power(x, n):
+       s = 1
+       while n > 0:
+           n = n - 1
+           s = s * x
+       return s
+
+   from functools import partial
+
+   power_2=partial(power, n=2)
+   power_2(2)  # output: 4
+   power_2(3)  # output: 9
+
+方法三：使用 eval 动态执行
+--------------------------
+
+如果你有需要动态执行函数的需要，可以使用 eval + 字符串 来执行函数。
+
+.. code:: python
+
+   import sys
+
+   def pre_task():
+       print("running pre_task")
+
+   def task():
+       print("running task")
+
+   def post_task():
+       print("running post_task")
+
+   argvs = sys.argv[1:]
+
+   for action in argvs:
+       eval(action)()
+
+运行效果如下
+
+.. code:: sh
+
+   $ python demo.py pre_task task post_task
+   running pre_task
+   running task
+   running post_task
+
+方法四：使用 getattr 动态获取执行
+---------------------------------
+
+若把所有的函数是放在类中，并定义成静态方法，那就不需要用 eval
+了，接着使用 getattr 去获取并调用。
+
+.. code:: python
+
+   import sys
+
+   class Task:
+       @staticmethod
+       def pre_task():
+           print("running pre_task")
+
+       @staticmethod
+       def task():
+           print("running task")
+
+       @staticmethod
+       def post_task():
+           print("running post_task")
+
+   argvs = sys.argv[1:]
+
+   task = Task()
+
+   for action in argvs:
+       func = getattr(task, action)
+       func()
+
+方法五：使用类本身的字典
+------------------------
+
+我们都知道对象都有一个 ``__dict__()``
+的魔法方法，存放所有对象的属性及方法。
+
+到这里，大家可以思考一下， 如果还是上面的代码，我直接取实例的
+``__dict__()`` 能不能取到函数呢？
+
+**我相信很多人都会答错。**
+
+上面我们定义的是静态方法，静态方法并没有与实例进行绑定，因此静态方法是属于类的，但是不是属于实例的，实例虽然有使用权（可以调用），但是并没有拥有权。
+
+因此要想通过 ``__dict__`` 获取函数，得通过类本身
+``Task``\ ，取出来的函数，调用方法和平时的也不一样，必须先用
+``__func__`` 获取才能调用。
+
+.. code:: python
+
+   import sys
+
+   class Task:
+       @staticmethod
+       def pre_task():
+           print("running pre_task")
+
+   func = Task.__dict__.get("pre_task")
+   func.__func__()
+
+方法六：使用 global() 获取执行
+------------------------------
+
+上面放入类中，只是为了方便使用 ``getattr``
+的方法，其实不放入类中，也是可以的。此时你需要借助 globals() 或者
+locals() ，它们本质上就是一个字典，你可以直接 get 来获得函数。
+
+.. code:: python
+
+   import sys
+
+   def pre_task():
+       print("running pre_task")
+
+   def task():
+       print("running task")
+
+   def post_task():
+       print("running post_task")
+
+   argvs = sys.argv[1:]
+
+   for action in argvs:
+       globals().get(action)()
+
+方法七：从文本中编译运行
+------------------------
+
+先定义一个字符串，内容是你函数的内容，比如上面的 pre_task ，再通过
+``compile`` 函数编进 编译，转化为字节代码，最后再使用 ``exec``
+去执行它。
+
+.. code:: python
+
+   pre_task = """
+   print("running pre_task")
+   """
+   exec(compile(pre_task, '<string>', 'exec'))
+
+若你的代码是放在一个 txt 文本中，虽然无法直接导入运行，但仍然可以通过
+open 来读取，最后使用 compile 函数编译运行。
+
+.. code:: python
+
+   with open('source.txt') as f:
+       source = f.read()
+       exec(compile(source, 'source.txt', 'exec'))
+
+方法八：使用 attrgetter 获取执行
+--------------------------------
+
+在 operator 这个内置库中，有一个获取属性的方法，叫 ``attrgetter``
+，获取到函数后再执行。
+
+.. code:: python
+
+   from operator import attrgetter
+
+   class People:
+       def speak(self, dest):
+           print("Hello, %s" %dest)
+
+   p = People()
+   caller = attrgetter("speak")
+   caller(p)("明哥")
+
+方法九：使用 methodcaller 执行
+------------------------------
+
+同样还是 operator 这个内置库，有一个 methodcaller
+方法，使用它，也可以做到动态调用实例方法的效果。
+
+.. code:: python
+
+   from operator import methodcaller
+
+   class People:
+       def speak(self, dest):
+           print("Hello, %s" %dest)
+
+   caller = methodcaller("speak", "明哥")
+   p = People()
+   caller(p)
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+
