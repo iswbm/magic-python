@@ -11,7 +11,9 @@
 
 或者这样
 
-``sh e llsh el #!/usr/bin/env python``
+.. code:: shell
+
+   #!/usr/bin/env python
 
 这两者有什么区别呢？
 
