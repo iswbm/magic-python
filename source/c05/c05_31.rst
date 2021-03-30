@@ -1,0 +1,120 @@
+5.31 替换实例方法的最佳实践
+===========================
+
+|image0|
+
+思路一：简单替换
+----------------
+
+当你想对类实例的方法进行替换时，你可能想到的是直接对他进行粗暴地替换
+
+.. code:: python
+
+   class People:
+       def speak(self):
+           print("hello, world")
+
+
+   def speak(self):
+       print("hello, python")
+
+   p = People()
+   p.speak = speak
+   p.speak()
+
+但当你试着执行这段代码的时候，就会发现行不通，它提示我们要传入 self 参数
+
+::
+
+   Traceback (most recent call last):
+     File "/Users/MING/Code/Python/demo.py", line 12, in <module>
+       p.speak()
+   TypeError: speak() missing 1 required positional argument: 'self'
+
+不对啊~ self 不是实例本身吗？函数不是一直就这么写的？
+
+实际上你这么替换，speak 就变成了一个 function，而不是一个和实例绑定的
+method ，你可以把替换前后的 speak 打印出来
+
+.. code:: python
+
+   p = People()
+   print(p.speak)
+   p.speak = speak
+   print(p.speak)
+
+输出结果如下，区别非常明显
+
+::
+
+   <bound method People.speak of <__main__.People object at 0x10cfa7fd0>>
+   <function speak at 0x10ca10040>
+
+这种方法，只能用在替换不与实例绑定的静态方法上，不然你每次调用的时候，就得手动传入实例本身，但这样调用就会变得非常怪异。
+
+思路二：利用 im_func
+--------------------
+
+有 Python 2 使用经验的朋友，可以会知道类实例的方法，都有 ``im_func`` 和
+``im_class`` 属性，分别指向了该方法的函数和类。
+
+|image1|
+
+很抱歉的是，这些在 Python3 中全都取消了，意味你无法再使用 ``im_func`` 和
+``im_class`` 。
+
+但即使你身处 Python 2 的环境下，你想通过 ``im_func``
+去直接替换函数，也仍然是有问题的。
+
+因为在 Python2 中不推荐普通用户对类实例的方法进行替换，所以 Python
+给类实例的方法赋予了只读属性
+
+|image2|
+
+思路三：非常危险的字节码替换
+----------------------------
+
+表层不行，但这个方法在字节码层面却是可行的
+
+|image3|
+
+这种方法，非常的粗暴且危险，他会直接影响到使用 People 的所有实例的 speak
+方法，因此这种方法千万不要使用。
+
+|image4|
+
+思路四：利用 types 绑定方法
+---------------------------
+
+在 types 中有一个 MethodType，可以将普通方法与实例进行绑定。
+
+绑定后，就可以直接替换掉原实例的 speak 方法了，完整代码如下：
+
+.. code:: python
+
+   import types
+
+   class People:
+       def speak(self):
+           print("hello, world")
+
+
+   def speak(self):
+       print("hello, python")
+
+   p = People()
+   p.speak = types.MethodType(speak, p)
+   p.speak()
+
+这种方法，最为安全，不会影响其他实例。并且 Python 2 和 Python 3
+都适用，是官方推荐的一种做法。
+
+|image5|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20210328111610.png
+.. |image2| image:: http://image.iswbm.com/20210328111904.png
+.. |image3| image:: http://image.iswbm.com/20210328112231.png
+.. |image4| image:: http://image.iswbm.com/20210328112501.png
+.. |image5| image:: http://image.iswbm.com/20200607174235.png
+
