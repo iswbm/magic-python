@@ -1,4 +1,4 @@
-3.11 Python 读取文件的三种方式
+3.11 Python 读取文件的六种方式
 ==============================
 
 |image0|
@@ -55,16 +55,44 @@ filecache，你可以用它来指定读取具体某一行，或者某几行，�
 -  在 Python 2 下写文件，推荐使用 codecs.open，特别是有中文的情况下
 -  如果希望代码同时兼容Python2和Python3，那么也推荐用codecs.open
 
-第五种：使用 io
----------------
+第五种：使用 io 模块
+--------------------
 
-使用最底层的 io 模块
+使用 io 模块的 open 函数
 
 .. code:: python
 
    import io
    file=io.open("README.md")
    file.read()
+
+经朋友提醒，我才发现 io.open 和 open 是同一个函数
+
+.. code:: python
+
+   Python 3.9.2 (default, Feb 28 2021, 17:03:44) 
+   [GCC 10.2.1 20210110] on linux
+   Type "help", "copyright", "credits" or "license" for more information.
+   >>> import os
+   >>> (open1:=open) is (open2:=os.open)
+   False
+   >>> import io
+   >>> (open3:=open) is (open3:=io.open)
+   True
+
+第六种：使用 os 模块
+--------------------
+
+os 模块也自带了 open 函数，直接操作的是底层的 I/O
+流，操作的时候是最麻烦的
+
+.. code:: python
+
+   >>> import os
+   >>> fp = os.open("hello.txt", os.O_RDONLY)
+   >>> os.read(fp, 12)
+   b'hello, world'
+   >>> os.close(fp)
 
 |image1|
 
