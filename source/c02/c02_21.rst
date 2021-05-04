@@ -1,0 +1,27 @@
+2.21 使用自带的 telnet 端口检测工具
+===================================
+
+|image0|
+
+若你想检测指定的机器上有没有开放某端口，但本机并没有安装 telnet
+工具，不如尝试一下 python 自带的 telnetlib 库，亦可实现你的需求。
+
+检查 192.168.56.200 上的 22 端口有没有开放。
+
+.. code:: shell
+
+   $ python3 -m telnetlib -d 192.168.56.200 22
+   Telnet(192.168.56.200,22): recv b'SSH-2.0-OpenSSH_7.4\r\n'
+   SSH-2.0-OpenSSH_7.4
+
+   Telnet(192.168.56.200,22): send b'\n'
+   Telnet(192.168.56.200,22): recv b'Protocol mismatch.\n'
+   Protocol mismatch.
+   Telnet(192.168.56.200,22): recv b''
+   *** Connection closed by remote host ***
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

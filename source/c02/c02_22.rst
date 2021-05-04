@@ -1,0 +1,30 @@
+2.22 快速将项目打包成应用程序
+=============================
+
+|image0|
+
+假设我当前有一个 demo 项目，目录结构树及相关文件的的代码如下
+
+|image1|
+
+现在我使用如下命令，将该项目进行打包，其中 demo
+是项目的文件夹名，\ ``main:main`` 中的第一个 main 指的
+``main.py``\ ，而第二个 main 指的是 ``main`` 函数
+
+.. code:: shell
+
+   $ python3 -m zipapp demo -m "main:main"
+
+执行完成后，会生成一个 ``demo.pyz`` 文件，可直接执行它。
+
+具体演示过程如下
+
+|image2|
+
+|image3|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20210504133550.png
+.. |image2| image:: http://image.iswbm.com/20210504133711.png
+.. |image3| image:: http://image.iswbm.com/20200607174235.png
+

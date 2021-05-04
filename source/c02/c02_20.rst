@@ -1,0 +1,32 @@
+2.20 快速编辑 Python 脚本
+=========================
+
+|image0|
+
+pyc是一种二进制文件，是由py文件经过编译后，生成的文件，是一种byte
+code，py文件变成pyc文件后，加载的速度会有所提高。因此在一些场景下，可以预先编译成
+pyc 文件，来提高加载速度。
+
+编译的命令非常的简单，示例如下
+
+.. code:: shell
+
+   $ tree demo
+   demo
+   └── main.py
+
+   $ python3 -O -m compileall demo
+   Listing 'demo'...
+   Compiling 'demo/main.py'...
+
+   $ tree demo
+   demo
+   ├── __pycache__
+   │   └── main.cpython-39.opt-1.pyc
+   └── main.py
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

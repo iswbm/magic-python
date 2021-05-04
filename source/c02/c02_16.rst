@@ -1,0 +1,59 @@
+2.16 快速计算字符串 base64编码
+==============================
+
+|image0|
+
+对字符串编码和解码
+------------------
+
+对一个字符串进行 base64 编码 和 解码（加上 ``-d`` 参数即可）
+
+.. code:: shell
+
+   $ echo "hello, world" | python3 -m base64
+   aGVsbG8sIHdvcmxkCg==
+
+   $ echo "aGVsbG8sIHdvcmxkCg==" | python3 -m base64 -d
+   hello, world
+
+效果如下
+
+|image1|
+
+对文件进行编码和解码
+--------------------
+
+在命令后面直接加文件的路径
+
+.. code:: shell
+
+   # 编码
+   $ python3 -m base64 demo.py
+   ZGVmIG1haW4oKToKICAgcHJpbnQoJ0hlbGxvIFdvcmxk8J+RjCcpCiAgIAppZiBfX25hbWVfXz09
+   J19fbWFpbl9fJzoKICAgbWFpbigpCg==
+
+   # 解码
+   $ echo "ZGVmIG1haW4oKToKICAgcHJpbnQoJ0hlbGxvIFdvcmxk8J+RjCcpCiAgIAppZiBfX25hbWVfXz09
+   J19fbWFpbl9fJzoKICAgbWFpbigpCg==" | python3 -m base64 -d
+   def main():
+      print('Hello World👌')
+
+   if __name__=='__main__':
+      main()
+
+效果如下
+
+|image2|
+
+如果你的文件是 py 脚本的话，可以直接执行它
+
+|image3|
+
+|image4|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20210504111702.png
+.. |image2| image:: http://image.iswbm.com/20210504112153.png
+.. |image3| image:: http://image.iswbm.com/20210504112257.png
+.. |image4| image:: http://image.iswbm.com/20200607174235.png
+

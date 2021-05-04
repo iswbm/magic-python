@@ -1,0 +1,43 @@
+2.17 快速找到指定文件的mime类型
+===============================
+
+|image0|
+
+识别 html 文件
+
+.. code:: shell
+
+   # 可在线检测
+   $ python -m mimetypes https://docs.python.org/3/library/mimetypes.html
+   type: text/html encoding: None 
+
+   # 也可离线检测（后面不再赘述）
+   $ python -m mimetypes index.html
+   type: text/html encoding: None
+
+识别图片格式
+
+.. code:: shell
+
+   $ python -m mimetypes https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
+   type: image/png encoding: None 
+
+识别 Python 脚本
+
+.. code:: shell
+
+   $ python -m mimetypes sample.py
+   type: text/x-python encoding: None  # python文件
+
+识别压缩文件
+
+.. code:: shell
+
+   $ python -m mimetypes sample.py.gz
+   type: text/x-python encoding: gzip  # python文件，gzip压缩
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+
