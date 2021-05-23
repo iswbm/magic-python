@@ -1,0 +1,74 @@
+6.9 如无必要，勿增实体噢
+========================
+
+|image0|
+
+删除没必要的调用\ ``keys()``
+----------------------------
+
+字典是由一个个的键值对组成的，如果你遍历字典时只需要访问键，用不到值，有很多同学会用下面这种方式：
+
+.. code:: python
+
+   for currency in currencies.keys():
+       process(currency)
+
+在这种情况下，不需要调用keys（），因为遍历字典时的默认行为是遍历键。
+
+.. code:: python
+
+   for currency in currencies:
+       process(currency)
+
+现在，该代码更加简洁，易于阅读，并且避免调用函数会带来性能改进。
+
+简化序列比较
+------------
+
+我们经常要做的是在尝试对列表或序列进行操作之前检查列表或序列是否包含元素。
+
+.. code:: python
+
+   if len(list_of_hats) > 0:
+       hat_to_wear = choose_hat(list_of_hats)
+
+使用Python的方法则更加简单：如果Python列表和序列具有元素，则返回为True，否则为False：
+
+.. code:: python
+
+   if list_of_hats:
+       hat_to_wear = choose_hat(list_of_hats)
+
+仅使用一次的内联变量
+--------------------
+
+我们在很多代码中经常看到，有些同学分配结果给变量，然后马上返回它，例如，
+
+.. code:: python
+
+   def state_attributes(self):
+       """Return the state attributes."""
+       state_attr = {
+           ATTR_CODE_FORMAT: self.code_format,
+           ATTR_CHANGED_BY: self.changed_by,
+       }
+       return state_attr
+
+如果直接返回，则更加直观、简洁，
+
+.. code:: python
+
+   def state_attributes(self):
+       """Return the state attributes."""
+       return {
+           ATTR_CODE_FORMAT: self.code_format,
+           ATTR_CHANGED_BY: self.changed_by,
+       }
+
+这样可以缩短代码并删除不必要的变量，从而减轻了读取函数的负担。
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

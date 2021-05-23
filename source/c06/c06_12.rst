@@ -1,0 +1,37 @@
+6.12 变量不能与保留关键字重名
+=============================
+
+|image0|
+
+在 Python
+中有很多的保留关键字，这些关键字的使用，不需要我们定义，也不需要我们导入，只要你进入到了
+Python 的环境中，就可以立即使用。
+
+使用如下方法，可以查看 Python 中的保留关键字
+
+.. code:: python
+
+   >>> import keyword
+   >>> keyword.kwlist
+   ['and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'exec', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'not', 'or', 'pass', 'print', 'raise', 'return', 'try', 'while', 'with', 'yield']
+
+而很尴尬的是，如果你在日常编码中，不经意地用到其中的一些关键字，就会产生冲突。
+
+比如说
+class，这个有类别的意思，可能你也想使用它来作为变量名，如果直接使用，会发生冲突
+
+更好的做法是，使用下划线来避免冲突
+
+.. code:: python
+
+   def type_obj_class(name,class_):
+       pass
+
+   def tag(name,*content,class_):
+       pass
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

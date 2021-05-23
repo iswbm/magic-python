@@ -1,0 +1,41 @@
+6.7 利用 any 代替 for 循环
+==========================
+
+|image0|
+
+在某些场景下，我们需要判断是否满足某一组集合中任意一个条件
+
+这时候，很多同学自然会想到使用 for 循环。
+
+.. code:: python
+
+   found = False
+   for thing in things:
+       if thing == other_thing:
+           found = True
+           break
+
+但其实更好的写法，是使用 ``any()``
+函数，能够使这段代码变得更加清晰、简洁
+
+.. code:: python
+
+   found = any(thing == other_thing for thing in things)
+
+使用 any 并不会减少 for 循环的次数，只要有一个条件为 True，any
+就能得到结果。
+
+同理，当你需要判断是否满足某一组集合中所有条件，也可以使用 ``all()``
+函数。
+
+.. code:: python
+
+   found = all(thing == other_thing for thing in things)
+
+只要有一个不满足条件，all 函数的结果就会立刻返回 False
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

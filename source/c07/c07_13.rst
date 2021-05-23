@@ -1,0 +1,233 @@
+7.13 实现字典的点式操作
+=======================
+
+|image0|
+
+字典是 Python
+中基础的数据结构之一，字典的使用，可以说是非常的简单粗暴，但即便是这样一个与世无争的数据结构，仍然有很多人
+“看不惯它” 。
+
+也许你并不觉得，但我相信，你看了这篇文章后，一定会和我一样，对原生字典开始有了偏见。
+
+我举个简单的例子吧
+
+当你想访问字典中的某个 key
+时，你需要使用字典特定的访问方式，而这种方式需要你键入 一对中括号 还有
+一对引号
+
+.. code:: python
+
+   >>> profile = dict(name="iswbm")
+   >>> profile
+   {'name': 'iswbm'}
+   >>> profile["name"]
+   'iswbm'
+
+是不是开始觉得忍无可忍了？
+
+如果可以像调用对象属性一样使用 ``.`` 去访问 key
+就好了，可以省去很多多余的键盘击入，就像这样子
+
+.. code:: python
+
+   >>> profile.name
+   'iswbm'
+
+是的，今天这篇文章就是跟大家分享一种可以直接使用 ``.``
+访问和操作字典的一个黑魔法库 – ``munch``\ 。
+
+1. 安装方法
+-----------
+
+使用如下命令进行安装
+
+.. code:: shell
+
+   $ python -m pip install munch
+
+2. 简单示例
+-----------
+
+munch 有一个 Munch 类，它继承自原生字典，使用 isinstance 可以验证
+
+.. code:: python
+
+   >>> from munch import Munch
+   >>> profile = Munch()
+   >>> isinstance(profile, dict)
+   True
+   >>>
+
+并实现了点式赋值与访问，\ ``profile.name`` 与 ``profile['name']``
+是等价的
+
+.. code:: python
+
+   >>> profile.name = "iswbm"
+   >>> profile.age = 18
+   >>> profile
+   Munch({'name': 'iswbm', 'age': 18})
+   >>>
+   >>> profile.name
+   'iswbm'
+   >>> profile["name"]
+   'iswbm'
+
+3. 兼容字典的所有操作
+---------------------
+
+本身 Munch 继承自 dict，dict 的操作也同样适用于 Munch
+对象，不妨再来验证下
+
+首先是：增删改查
+
+.. code:: python
+
+   # 新增元素
+   >>> profile["gender"] = "male"
+   >>> profile
+   Munch({'name': 'iswbm', 'age': 18, 'gender': 'male'})
+
+   # 修改元素
+   >>> profile["gender"] = "female"
+   >>> profile
+   Munch({'name': 'iswbm', 'age': 18, 'gender': 'female'})
+
+   # 删除元素
+   >>> profile.pop("gender")
+   'female'
+   >>> profile
+   Munch({'name': 'iswbm', 'age': 18})
+   >>>
+   >>> del profile["age"]
+   >>> profile
+   Munch({'name': 'iswbm'})
+
+再者是：一些常用方法
+
+.. code:: python
+
+   >>> profile.keys()
+   dict_keys(['name'])
+   >>>
+   >>> profile.values()
+   dict_values(['iswbm'])
+   >>>
+   >>> profile.get('name')
+   'iswbm'
+   >>> profile.setdefault('gender', 'male')
+   'male'
+   >>> profile
+   Munch({'name': 'iswbm', 'gender': 'male'})
+
+4. 设置返回默认值
+-----------------
+
+当访问一个字典中不存在的 key 时，会报 KeyError 的错误
+
+.. code:: python
+
+   >>> profile = {}
+   >>> profile["name"]
+   Traceback (most recent call last):
+     File "<stdin>", line 1, in <module>
+   KeyError: 'name'
+
+对于这种情况，通常我们会使用 get 来规避
+
+.. code:: python
+
+   >>> profile = {}
+   >>> profile.get("name", "undefined")
+   'undefined'
+
+当然你在 munch 中仍然可以这么用，不过还有一种更好的方法：使用
+DefaultMunch，它会在你访问不存在的 key 时，给你返回一个设定好的默认值
+
+.. code:: python
+
+   >>> from munch import DefaultMunch
+   >>> profile = DefaultMunch("undefined", {"name": "iswbm"})
+   >>> profile
+   DefaultMunch('undefined', {'name': 'iswbm'})
+   >>> profile.age
+   'undefined'
+   >>> profile
+   DefaultMunch('undefined', {'name': 'iswbm'})
+
+5. 工厂函数自动创建key
+----------------------
+
+上面使用 ``DefaultMunch`` 仅当你访问不存在的 key
+是返回一个默认值，但这个行为并不会修改原 munch 对象的任何内容。
+
+若你想访问不存在的 key 时，自动触发给原 munch 中新增你想要访问的 key
+，并为其设置一个默认值，可以试一下 ``DefaultFactoryMunch``
+传入一个工厂函数。
+
+.. code:: python
+
+   >>> from munch import DefaultFactoryMunch
+   >>> profile = DefaultFactoryMunch(list, name='iswbm')
+   >>> profile
+   DefaultFactoryMunch(list, {'name': 'iswbm'})
+   >>>
+   >>> profile.brothers
+   []
+   >>> profile
+   DefaultFactoryMunch(list, {'name': 'iswbm', 'brothers': []})
+
+6. 序列化的支持
+---------------
+
+Munch 支持序列化为 JSON 或者 YAML 格式的字符串对象
+
+**转换成 JSON**
+
+.. code:: python
+
+   >>> from munch import Munch
+   >>> munch_obj = Munch(foo=Munch(lol=True), bar=100, msg='hello')
+   >>>
+   >>> import json
+   >>> json.dumps(munch_obj)
+   '{"foo": {"lol": true}, "bar": 100, "msg": "hello"}'
+
+**转换成 YAML**
+
+.. code:: python
+
+   >>> from munch import Munch
+   >>> munch_obj = Munch(foo=Munch(lol=True), bar=100, msg='hello')
+   >>> import yaml
+   >>> yaml.dump(munch_obj)
+   '!munch.Munch\nbar: 100\nfoo: !munch.Munch\n  lol: true\nmsg: hello\n'
+   >>>
+   >>> print(yaml.dump(munch_obj))
+   !munch.Munch
+   bar: 100
+   foo: !munch.Munch
+     lol: true
+   msg: hello
+
+   >>>
+
+建议使用 ``safe_dump`` 去掉 ``!munch.Munch``
+
+.. code:: python
+
+   >>> print(yaml.safe_dump(munch_obj))
+   bar: 100
+   foo:
+     lol: true
+   msg: hello
+
+以上就是关于 munch 的使用全解，替换原生字典绝无问题，munch
+的进一步封装使得数据的访问及操作更得更加 Pythonic
+了，希望有一天这个特性能够体现在原生的字典上。
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+
