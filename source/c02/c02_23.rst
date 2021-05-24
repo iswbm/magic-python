@@ -1,0 +1,35 @@
+2.23 快速打印函数的调用栈
+=========================
+
+|image0|
+
+在使用pdb时，手动打印调用栈
+
+.. code:: python
+
+   import traceback
+   traceback.print_stack(file=sys.stdout)
+
+或者直接使用 ``where`` （更简单的直接一个
+``w``\ ）：https://www.codenong.com/1156023/
+
+.. code:: python
+
+   (Pdb) where
+     /usr/lib/python2.7/site-packages/eventlet/greenpool.py(82)_spawn_n_impl()
+   -> func(*args, **kwargs)
+     /usr/lib/python2.7/site-packages/eventlet/wsgi.py(719)process_request()
+   -> proto.__init__(sock, address, self)
+     /usr/lib64/python2.7/SocketServer.py(649)__init__()
+   -> self.handle()
+     /usr/lib64/python2.7/BaseHTTPServer.py(340)handle()
+   -> self.handle_one_request()
+     /usr/lib/python2.7/site-packages/eventlet/wsgi.py(384)handle_one_request()
+   -> self.handle_one_response()
+     /usr/lib/python2.7/site-packages/eventlet/wsgi.py(481)handle_one_response()
+
+|image1|
+
+.. |image0| image:: http://image.iswbm.com/20200804124133.png
+.. |image1| image:: http://image.iswbm.com/20200607174235.png
+

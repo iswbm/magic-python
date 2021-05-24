@@ -125,8 +125,8 @@ copyright = '2020, Python编程时光'
 exclude_patterns = ['_build']
 master_doc = 'index'
 project = 'Python黑魔法手册'
-release = '2.0'
-version = '2.0'
+release = '3.0'
+version = '3.0'
 
 # Options for extensions.
 disqus_shortname = 'iswbm'  # Add this line to conf.py.

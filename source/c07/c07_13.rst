@@ -5,7 +5,7 @@
 
 字典是 Python
 中基础的数据结构之一，字典的使用，可以说是非常的简单粗暴，但即便是这样一个与世无争的数据结构，仍然有很多人
-“看不惯它” 。
+“用不惯它” 。
 
 也许你并不觉得，但我相信，你看了这篇文章后，一定会和我一样，对原生字典开始有了偏见。
 
@@ -222,9 +222,51 @@ Munch 支持序列化为 JSON 或者 YAML 格式的字符串对象
      lol: true
    msg: hello
 
-以上就是关于 munch 的使用全解，替换原生字典绝无问题，munch
+7. 说说局限性
+-------------
+
+以上就是关于 munch 的使用全解，munch
 的进一步封装使得数据的访问及操作更得更加 Pythonic
-了，希望有一天这个特性能够体现在原生的字典上。
+，替换原生字典在大部分场景下都不会有太大问题。
+
+但同时也不得不承认，munch
+在一些场景下无法达到原生字典的效果，比如我想字典里的 key 为 ``"1.2"``
+的时候，原生字典能很好的表示它。
+
+.. code:: python
+
+   >>> dict_obj = {"1.2": "hello"}
+   >>> dict_obj["1.2"]
+   'hello'
+
+切换到 munch ，你会发现无法在初始化 munch 对象的时候，传入 1.2 的 key
+
+.. code:: python
+
+   >>> from munch import Munch
+   >>> dict_obj = Munch(1.2="hello")
+     File "<stdin>", line 1
+       dict_obj = Munch(1.2="hello")
+                        ^
+   SyntaxError: expression cannot contain assignment, perhaps you meant "=="?
+
+就算你用原生的字典的方式添加了这个 key-value，也根本无法使用 ``.``
+的方式取到 ``1.2`` 对应的 value。
+
+.. code:: python
+
+   >>> from munch import Munch
+   >>> dict_obj = Munch()
+   >>> dict_obj["1.2"]="hello"
+   >>> dict_obj
+   Munch({'1.2': 'hello'})
+   >>> dict_obj.1.2
+     File "<stdin>", line 1
+       dict_obj.1.2
+               ^
+   SyntaxError: invalid syntax
+
+也正是因为这样，原生字典至今还是不可替代的存在。
 
 |image1|
 
