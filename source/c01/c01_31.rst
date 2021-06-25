@@ -69,8 +69,8 @@
    >>> msg='hello----world'
    >>> msg.split('-')
    ['hello', '', '', '', 'world']
-   >>> 
-   >>> filter(lambda item: True if item else False, msg.split('-'))
+   >>>
+   >>> filter(bool, msg.split('-'))
    ['hello', 'world']
 
 |image2|
