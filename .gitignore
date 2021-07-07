@@ -1,7 +1,6 @@
 #build/
 .idea/
 *.pyc
-Makefile
 Pipfile
 test*
 build_bak
