@@ -54,7 +54,7 @@ copyright = '王炳明'
 # built documents.
 #
 # The short X.Y version.
-version = '1.0'
+version = '3.0'
 # The full version, including alpha/beta/rc tags.
 release = '1.0.0'
 
@@ -125,10 +125,9 @@ copyright = '2020, Python编程时光'
 exclude_patterns = ['_build']
 master_doc = 'index'
 project = 'Python黑魔法手册'
-release = '3.0'
-version = '3.0'
 
 # Options for extensions.
 disqus_shortname = 'iswbm'  # Add this line to conf.py.
 html_baseurl = 'http://magic.iswbm.com'
 html_extra_path = ["robots.txt"]
+sitemap_locales = ['zh']
