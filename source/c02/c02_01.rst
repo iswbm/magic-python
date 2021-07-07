@@ -14,11 +14,11 @@
    7
    >>> _
    7
-   >>> name='公众号: Python编程时光'
+   >>> name='iswbm'
    >>> name
-   '公众号: Python编程时光'
+   'iswbm'
    >>> _
-   '公众号: Python编程时光'
+   'iswbm'
 
 它可以返回上一次的运行结果。
 
@@ -30,8 +30,8 @@
    7
    >>> _
    7
-   >>> print("公众号: Python编程时光")
-   ming
+   >>> print("iswbm")
+   iswbm
    >>> _
    7
 
