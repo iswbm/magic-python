@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: http://magic.iswbm.com/sitemap.xml
