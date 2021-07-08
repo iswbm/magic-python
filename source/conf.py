@@ -136,4 +136,4 @@ html_sidebars = {
     ],
 }
 smv_latest_version = 'v3.0' 
-
+sitemap_url_scheme = "{link}"
