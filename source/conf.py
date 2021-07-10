@@ -64,14 +64,6 @@ html_theme = 'default'
 
 html_static_path = ['_static']
 
-# Output file base name for HTML help builder.
-htmlhelp_basename = 'Python-Time BLOG'
-
-
-# -- Options for LaTeX output ---------------------------------------------
-
-# 注：在生成html的时候这句话要注释
-# latex_engine = 'xelatex'
 
 latex_elements={# The paper size ('letterpaper' or 'a4paper').
 'papersize':'a4paper',# The font size ('10pt', '11pt' or '12pt').
@@ -112,13 +104,6 @@ html_js_files = [
     'js/baidutongji.js',
 ]
 
-# General configuration.
-#with open("/home/docs/checkouts/readthedocs.org/user_builds/magic-python-guide/envs/latest/lib/python3.7/site-packages/sphinx/registry.py", "r") as file:
-#    content = file.read()
-#    content=content.replace("sphinx.application", "sphinx.errors")
-#
-#with open("/home/docs/checkouts/readthedocs.org/user_builds/magic-python-guide/envs/latest/lib/python3.7/site-packages/sphinx/registry.py", "w") as file:
-#    file.write(content)
 
 author = '王炳明'
 copyright = '2020, Python编程时光'
@@ -127,7 +112,7 @@ master_doc = 'index'
 project = 'Python黑魔法手册'
 
 # Options for extensions.
-html_baseurl = 'http://magic.iswbm.com'
+html_baseurl = 'https://magic.iswbm.com'
 html_extra_path = ["robots.txt"]
 
 html_sidebars = {

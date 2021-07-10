@@ -15,8 +15,6 @@ Contents:
    
    preface
    chapters/*
-   leetcode/*
-   thanks
    aboutme
    roadmap
 
