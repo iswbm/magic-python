@@ -1,0 +1,134 @@
+5.33 如何规定函数的参数类型？
+=============================
+
+在定义函数时，通常都需要带有各样各样的参数。
+
+认识参数的种类
+--------------
+
+从函数定义的角度来看，参数可以分为两种：
+
+1. ``必选参数``\ ：调用函数时必须要指定的参数，在定义时没有等号
+2. ``可选参数``\ ：也叫\ ``默认参数``\ ，调用函数时可以指定也可以不指定，不指定就默认的参数值来。
+
+例如下面的代码中，a 和 b 属于必选参数， c 和 d 属于可选参数
+
+.. code:: python
+
+   def func(a,b,c=0, d=1):
+       pass
+
+从函数调用的角度来看，参数可以分为两种：
+
+1. ``关键字参数``\ ：调用时，使用 key=value
+   形式传参的，这样传递参数就可以不按定义顺序来。
+2. ``位置参数``\ ：调用时，不使用关键字参数的 key-value
+   形式传参，这样传参要注意按照函数定义时参数的顺序来。
+
+.. code:: python
+
+   def func(a,b,c=0, d=1):
+       pass
+
+     # 关键字参数传参方法
+   func(a=10, c=30, b=20, d=40)
+
+     # 位置参数传参方法
+   func(10, 20, 30, 40)
+
+最后还有一种非常特殊的参数，叫做\ ``可变参数``\ 。
+
+意思是参数个数可变，可以是 0
+个或者任意个，但是传参时不能指定参数名，通常使用 ``*args`` 和 ``**kw``
+来表示：
+
+-  ``*args``\ ：接收到的所有按照位置参数方式传递进来的参数，是一个元组类型
+-  ``**kw``
+   ：接收到的所有按照关键字参数方式传递进来的参数，是一个字典类型
+
+.. code:: python
+
+   def func(*args, **kw):
+       print(args)
+       print(kw)
+
+   func(10, 20, c=20, d=40)
+
+输出如下
+
+::
+
+   (10, 20)
+   {'c': 20, 'd': 40}
+
+两个神奇的符号
+--------------
+
+除了以上关于参数类型的基础知识，其实还有一个知识点，这是基础所有的
+Python 基础教程都不会提及的。
+
+仔细回看上面关于 ``关键字参数`` 和 ``位置参数``
+的区别，无需是在传参时是否以 key-value 的形式而不同。
+
+这是从调用者的角度去区分，如果是这样，那你应该也会觉得 ``关键字参数`` 和
+``位置参数`` 这两个概率除了区分两种传参方式之外 ，好像没有实际的作用。
+
+实则不然， ``关键字参数`` 和 ``位置参数``
+
+实际上，当你在定义函数时，函数是可以限定调用者该以何种方式来进行传参。
+
+实现的方式就是依靠两个符号：
+
+-  ``/``\ ：在 ``/`` 之前的参数都是位置参数，不能以 key-value
+   传参，至于后面是什么参数它不管
+-  ``*``\ ：在 ``*`` 之后都是关键字参数，都应该以 key-value
+   传参，至于前面是什么参数它也不管
+
+下边以标准的正确示例和两个错误范例进行演示。
+
+**正确示例**
+
+.. code:: python
+
+   def func(a,b,/,c,d):
+       pass
+
+   func("a", "b", c="c", d="d")
+
+**错误示例一**
+
+.. code:: python
+
+   def func(a,b,/,c,d):
+       pass
+
+   func("a", b="b", c="c", d="d")
+
+运行报错如下，意思是 b 是位置参数，不能使用 ``b="b"`` 这种 key-value
+传参
+
+.. code:: python
+
+   Traceback (most recent call last):
+     File "/Users/MING/demo.py", line 4, in <module>
+       func("a", b="b", c="c", d="d")
+   TypeError: func() got some positional-only arguments passed as keyword arguments: 'b'
+
+**错误示例三**
+
+.. code:: python
+
+   def func(a,b,*,c,d):
+       pass
+
+   func("a", "b", "c", d="d")
+
+运行报错如下，意思是函数中只定义了两个位置参数，却给了三个，第三个是 c
+，它是关键字参数，不能使用 ``c="c"`` 必须使用 key-value 传参
+
+.. code:: python
+
+   Traceback (most recent call last):
+     File "/Users/MING/demo.py", line 4, in <module>
+       func("a", "b", "c", d="d")
+   TypeError: func() takes 2 positional arguments but 3 positional arguments (and 1 keyword-only argument) were given
