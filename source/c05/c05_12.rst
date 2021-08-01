@@ -19,7 +19,7 @@
    [root@localhost ~]# python3 demo.py 
    ('ok',)
 
-**第二个用法**\ r
+**第二个用法**
 
 print 的取消换行
 

@@ -112,27 +112,27 @@ periodic_task
 .. code:: python
 
    # 小明，中国人
-   @say_hello("china")
+   @say_hello("China")
    def xiaoming():
        pass
 
    # jack，美国人
-   @say_hello("america")
+   @say_hello("America")
    def jack():
        pass
 
-那我们如果实现这个装饰器，让其可以实现 ``传参`` 呢？
+那我们如何实现这个装饰器，让其可以实现 ``传参`` 呢？
 
 会比较复杂，需要两层嵌套。
 
 .. code:: python
 
-   def say_hello(contry):
+   def say_hello(country):
        def wrapper(func):
            def deco(*args, **kwargs):
-               if contry == "china":
+               if country == "China":
                    print("你好!")
-               elif contry == "america":
+               elif country == "America":
                    print('hello.')
                else:
                    return
@@ -237,7 +237,7 @@ periodic_task
 
 事实上，Python 对某个对象是否能通过装饰器（
 ``@decorator``\ ）形式使用只有一个要求：\ **decorator
-必须是一个“可被调用（callable）的对象**\ 。
+必须是一个可被调用（callable）的对象**\ 。
 
 对于这个 callable 对象，我们最熟悉的就是函数了。
 
@@ -249,7 +249,7 @@ periodic_task
 接下来就来说说，如何使用 类和偏函数结合实现一个与众不同的装饰器。
 
 如下所示，DelayFunc 是一个实现了 ``__call__`` 的类，delay
-返回一个偏函数，在这里 delay 就可以做为一个装饰器。（以下代码摘自
+返回一个偏函数，在这里 delay 就可以作为一个装饰器。（以下代码摘自
 Python工匠：使用装饰器的小技巧）
 
 .. code:: python

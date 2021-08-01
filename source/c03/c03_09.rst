@@ -42,7 +42,7 @@ pip 是最主流的包管理方案，使用 ``pip install xxx`` 就可以从 PYP
    # 所安装的包的版本为 2.1.2
    $ pip install pkg==2.1.2
 
-   # 所安装的包必须大于等于 2.1.2
+   # 所安装的包的版本必须大于等于 2.1.2
    $ pip install pkg>=2.1.2
 
    # 所安装的包必须小于等于 2.1.2
@@ -65,7 +65,7 @@ pipx 是一个专门用于安装和管理 cli 应用程序的工具，使用它�
    $ python3 -m userpath append ~/.local/bin
    Success!
 
-安装就可以使用 pipx 安装cli 工具了。
+安装后就可以使用 pipx 安装cli 工具了。
 
 .. code:: shell
 
@@ -79,7 +79,7 @@ pipx
 4. 使用 setup.py
 ----------------
 
-如果你有编写 setup.py 文件，可以使用如下命令直接安装
+如果源码中有编写 setup.py 文件，可以使用如下命令直接安装
 
 .. code:: python
 
@@ -98,8 +98,7 @@ Python 包在使用 ``setup.py``
    # 发布 rpm 包
    $ python setup.py bdist_rpm
 
-对于\ ``rpm`` 这种格式，你需要使用 ``yum install xxx`` 或者
-``rpm install xxx`` 来安装。
+对于\ ``rpm`` 这种格式，你需要使用 ``yum`` 或者 ``rpm`` 来安装。
 
 .. code:: shell
 
@@ -136,7 +135,7 @@ Python 包在使用 ``setup.py``
 -------------------
 
 有一些第三方工具包提供的安装方法，是直接使用 curl
-配置管道来安装，比如上面提到的 poetry 就可以用这种方法安装。
+配合管道来安装，比如上面提到的 poetry 就可以用这种方法安装。
 
 .. code:: shell
 

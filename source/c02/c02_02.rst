@@ -43,7 +43,7 @@
    /usr/lib64/python2.7/site-packages/gtk-2.0
    /usr/lib/python2.7/site-packages
 
-这里我要介绍的是比上面两种都方便的多的方法，一行命令即可解决
+这里我要介绍的是比上面两种都方便得多的方法，一行命令即可解决
 
 .. code:: shell
 

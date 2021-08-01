@@ -44,7 +44,8 @@ site 模块的方法就可以获取，然后使用 ``mkdir -p`` 命令创建它�
 
 |image3|
 
-这个文件我放在了我的 github 上，你可以点此前往获取。
+这个文件我放在了我的 github
+上，点击\ `这里 <https://github.com/iswbm/magic-python/blob/master/usercustomize.py>`__\ 直达。
 
 一切都完成后，无论你是使用 ``python xxx.py`` 执行脚本
 
@@ -53,6 +54,9 @@ site 模块的方法就可以获取，然后使用 ``mkdir -p`` 命令创建它�
 还是使用 ``python`` 进入 Python Shell ，都会先念一下平安经保平安。
 
 |image5|
+
+另外，有读者反馈这种设置会导致在Win10环境下
+VSCode不能正常识别已安装的Python环境，并报出代码有导包错误等问题，因此请在你知道你自己在做什么，会千万什么后果，否则请在体验后还原你的环境。
 
 |image6|
 

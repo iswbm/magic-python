@@ -63,7 +63,7 @@ how context manager？
    ===in operation===
    ===close resource connection===
 
-从这个示例可以很明显的看出，在编写代码时，可以将资源的连接或者获取放在\ ``__enter__``\ 中，而将资源的关闭写在\ ``__exit__``
+从这个示例可以很明显地看出，在编写代码时，可以将资源的连接或者获取放在\ ``__enter__``\ 中，而将资源的关闭写在\ ``__exit__``
 中。
 
 why context manager？

@@ -31,11 +31,19 @@
 第一种方法
 ----------
 
-不加参数，这种只适用于将多个空格当成一个空格处理，如果不是以空格为分隔符的场景，这种就不适用了。
+split函数不加参数，就能达到 awk 的效果
 
 .. code:: python
 
    >>> msg='hello    world'
+   >>> msg.split()
+   ['hello', 'world']
+
+其实不仅是空格，严格来说，只要是空字符（比如制表符、换行符），就可以使用
+
+.. code:: python
+
+   >>> msg='hello \t \r\n world'
    >>> msg.split()
    ['hello', 'world']
 
