@@ -42,7 +42,7 @@ def get_toc_info(all_chapters_path):
         for file_name in sorted(glob(dir_name + "*.md")):
             section = int(re.findall(r"c\d{2}_(\d{2}).md", file_name)[0])
 
-            md_path = os.path.join("http://pycharm.iswbm.com/", dir_name, file_name.replace("md", "html"))
+            md_path = os.path.join("https://magic.iswbm.com/", dir_name, file_name.replace("md", "html"))
             title = get_title(file_name)
             if not title:
                 continue
