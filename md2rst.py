@@ -24,7 +24,7 @@ if not repo.is_dirty():
     # 没有文件变更
     os._exit(0)
 
-base_link = "http://python.iswbm.com/en/latest/"
+base_link = "https://python.iswbm.com/en/latest/"
 readme_header = '''
 ![](https://image.iswbm.com/20200607120940.png)
 
@@ -36,9 +36,9 @@ readme_header = '''
     <a href='https://image.iswbm.com/20200607114246.png'><img src='http://img.shields.io/badge/%E5%85%AC%E4%BC%97%E5%8F%B7-30k+-brightgreen'></a>
 </p>
 
-## [项目主页](http://python.iswbm.com/)
+## [项目主页](https://python.iswbm.com/)
 
-在线阅读：[Python 编程时光](http://python.iswbm.com/)
+在线阅读：[Python 编程时光](https://python.iswbm.com/)
 
 ![](https://image.iswbm.com/20200607130051.png)
 
