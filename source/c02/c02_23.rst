@@ -11,7 +11,7 @@
    traceback.print_stack(file=sys.stdout)
 
 或者直接使用 ``where`` （更简单的直接一个
-``w``\ ）：https://www.codenong.com/1156023/
+``w``\ ）：https://stackoverflow.com/questions/1156023/print-current-call-stack-from-a-method-in-python-code
 
 .. code:: python
 
