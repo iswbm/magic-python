@@ -20,4 +20,4 @@ Contents:
 
 --------------
 
-.. figure:: http://image.iswbm.com/20200607174235.png
+.. figure:: https://image.iswbm.com/20200607174235.png

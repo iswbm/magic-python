@@ -248,8 +248,8 @@ deco
 
 |image3|
 
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/image-20210420211718252.png
-.. |image2| image:: http://image.iswbm.com/deco.gif
-.. |image3| image:: http://image.iswbm.com/20200607174235.png
+.. |image0| image:: https://image.iswbm.com/20200804124133.png
+.. |image1| image:: https://image.iswbm.com/image-20210420211718252.png
+.. |image2| image:: https://image.iswbm.com/deco.gif
+.. |image3| image:: https://image.iswbm.com/20200607174235.png
 

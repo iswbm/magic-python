@@ -33,7 +33,7 @@ with open(all_md_path, "w") as all_md:
             if fileinput.isfirstline():
                 count += 1
                 if count%5 == 0:
-                    write("![](http://image.iswbm.com/20210523153308.png)", end="\n\n")
+                    write("![](https://image.iswbm.com/20210523153308.png)", end="\n\n")
 
             if line.startswith("# "):
                 line = line.replace("# ", "## ")

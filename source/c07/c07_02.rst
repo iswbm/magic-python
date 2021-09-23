@@ -270,17 +270,17 @@ PEP8
 
 |image12|
 
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/image-20200307210853246.png
-.. |image2| image:: http://image.iswbm.com/image-20200307212823345.png
-.. |image3| image:: http://image.iswbm.com/image-20200307213534278.png
+.. |image0| image:: https://image.iswbm.com/20200804124133.png
+.. |image1| image:: https://image.iswbm.com/image-20200307210853246.png
+.. |image2| image:: https://image.iswbm.com/image-20200307212823345.png
+.. |image3| image:: https://image.iswbm.com/image-20200307213534278.png
 .. |image4| image:: https://warehouse-camo.cmh1.psfhosted.org/31399c5a034c3989b9e99b35249e8f2f0d40e102/68747470733a2f2f692e696d6775722e636f6d2f306a7045716f622e706e67
-.. |image5| image:: http://image.iswbm.com/image-20200307214742135.png
-.. |image6| image:: http://image.iswbm.com/image-20200307213534278.png
-.. |image7| image:: http://image.iswbm.com/image-20200307215530270.png
-.. |image8| image:: http://image.iswbm.com/image-20200307215834623.png
-.. |image9| image:: http://image.iswbm.com/image-20200307214600749.png
-.. |image10| image:: http://image.iswbm.com/image-20200308121949011.png
-.. |image11| image:: http://image.iswbm.com/image-20200308125431779.png
-.. |image12| image:: http://image.iswbm.com/20200607174235.png
+.. |image5| image:: https://image.iswbm.com/image-20200307214742135.png
+.. |image6| image:: https://image.iswbm.com/image-20200307213534278.png
+.. |image7| image:: https://image.iswbm.com/image-20200307215530270.png
+.. |image8| image:: https://image.iswbm.com/image-20200307215834623.png
+.. |image9| image:: https://image.iswbm.com/image-20200307214600749.png
+.. |image10| image:: https://image.iswbm.com/image-20200308121949011.png
+.. |image11| image:: https://image.iswbm.com/image-20200308125431779.png
+.. |image12| image:: https://image.iswbm.com/20200607174235.png
 

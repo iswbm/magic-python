@@ -371,6 +371,6 @@ ORM的一个类(User)，就对应数据库中的一张表。id,name,email,passwo
 
 |image1|
 
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
+.. |image0| image:: https://image.iswbm.com/20200804124133.png
+.. |image1| image:: https://image.iswbm.com/20200607174235.png
 

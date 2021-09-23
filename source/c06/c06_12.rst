@@ -32,6 +32,6 @@ class，这个有类别的意思，可能你也想使用它来作为变量名，
 
 |image1|
 
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
+.. |image0| image:: https://image.iswbm.com/20200804124133.png
+.. |image1| image:: https://image.iswbm.com/20200607174235.png
 
