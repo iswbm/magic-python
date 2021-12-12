@@ -66,6 +66,6 @@ defaultdict 接收一个工厂方法，工厂方法返回的对象就是字典�
 
 |image1|
 
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
+.. |image0| image:: https://image.iswbm.com/20200804124133.png
+.. |image1| image:: https://image.iswbm.com/20200607174235.png
 

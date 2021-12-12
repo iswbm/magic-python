@@ -111,10 +111,10 @@ method ，你可以把替换前后的 speak 打印出来
 
 |image5|
 
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20210328111610.png
-.. |image2| image:: http://image.iswbm.com/20210328111904.png
-.. |image3| image:: http://image.iswbm.com/20210328112231.png
-.. |image4| image:: http://image.iswbm.com/20210328112501.png
-.. |image5| image:: http://image.iswbm.com/20200607174235.png
+.. |image0| image:: https://image.iswbm.com/20200804124133.png
+.. |image1| image:: https://image.iswbm.com/20210328111610.png
+.. |image2| image:: https://image.iswbm.com/20210328111904.png
+.. |image3| image:: https://image.iswbm.com/20210328112231.png
+.. |image4| image:: https://image.iswbm.com/20210328112501.png
+.. |image5| image:: https://image.iswbm.com/20200607174235.png
 

@@ -24,6 +24,6 @@ Python 作为一门高级语言，它的编写符合人类的思维逻辑，包�
 
 |image1|
 
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
+.. |image0| image:: https://image.iswbm.com/20200804124133.png
+.. |image1| image:: https://image.iswbm.com/20200607174235.png
 

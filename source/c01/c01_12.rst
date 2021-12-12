@@ -44,6 +44,6 @@ intern（字符串驻留）的技术来提高字符串效率，什么是intern�
 
 |image1|
 
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
+.. |image0| image:: https://image.iswbm.com/20200804124133.png
+.. |image1| image:: https://image.iswbm.com/20200607174235.png
 

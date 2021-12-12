@@ -20,9 +20,9 @@ Python Shell，就像下面这样子，开启了极简模式，舒服多了。
 
 |image4|
 
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200801202733.png
-.. |image2| image:: http://image.iswbm.com/20200801203047.png
-.. |image3| image:: http://image.iswbm.com/20200512125643.png
-.. |image4| image:: http://image.iswbm.com/20200607174235.png
+.. |image0| image:: https://image.iswbm.com/20200804124133.png
+.. |image1| image:: https://image.iswbm.com/20200801202733.png
+.. |image2| image:: https://image.iswbm.com/20200801203047.png
+.. |image3| image:: https://image.iswbm.com/20200512125643.png
+.. |image4| image:: https://image.iswbm.com/20200607174235.png
 

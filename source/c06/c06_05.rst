@@ -75,7 +75,7 @@ Python 的关键字，可以通过 keyword 这个模块列出来，一共有 33 
 
 |image2|
 
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200823203106.png
-.. |image2| image:: http://image.iswbm.com/20200607174235.png
+.. |image0| image:: https://image.iswbm.com/20200804124133.png
+.. |image1| image:: https://image.iswbm.com/20200823203106.png
+.. |image2| image:: https://image.iswbm.com/20200607174235.png
 
