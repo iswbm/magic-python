@@ -1,4 +1,4 @@
-2.20 快速编辑 Python 脚本
+2.20 快速编译 Python 脚本
 =========================
 
 |image0|
@@ -29,4 +29,3 @@ pyc 文件，来提高加载速度。
 
 .. |image0| image:: http://image.iswbm.com/20200804124133.png
 .. |image1| image:: http://image.iswbm.com/20200607174235.png
-
