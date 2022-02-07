@@ -1,7 +1,7 @@
 6.5 变量名与保留关键字冲突怎么办？
 ==================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 所有的编程语言都有一些保留关键字，这是代码得以编译/解释的基础。
 
@@ -65,7 +65,7 @@ Python 的关键字，可以通过 keyword 这个模块列出来，一共有 33 
 建议当你想使用的变量名被关键字所占用时，可以使用 ``变量_``
 这样在变量后面加一个单下划线的形式来命名，这种后缀一下划线的方式优先于缩写或拼写错误。
 
-|image1|
+.. image:: http://image.iswbm.com/20200823203106.png
 
 有了 PEP8 做为指导，我们可以这样子写了
 
@@ -73,9 +73,4 @@ Python 的关键字，可以通过 keyword 这个模块列出来，一共有 33 
 
    >>> try_ = True
 
-|image2|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200823203106.png
-.. |image2| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

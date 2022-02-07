@@ -1,7 +1,7 @@
 7.5 一行代码让代码运行速度提高100倍
 ===================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 python一直被病垢运行速度太慢，但是实际上python的执行效率并不慢，慢的是python用的解释器Cpython运行效率太差。
 
@@ -278,8 +278,4 @@ f_add就是一个动态生成的机器码函数，我们可以把它想象成C�
 
 numba所完成的工作就是：解析Python函数的ast语法树并加以改造，添加类型信息；将带类型信息的ast语法树通过llvmpy动态地转换为机器码函数，然后再通过和ctypes类似的技术为机器码函数创建包装函数供Python调用。
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

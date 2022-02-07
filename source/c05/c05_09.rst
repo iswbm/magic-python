@@ -1,7 +1,7 @@
 5.9 重定向标准输出到日志
 ========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 假设你有一个脚本，会执行一些任务，比如说集群健康情况的检查。
 
@@ -39,8 +39,4 @@
    with close_stdout():
        you_task()
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

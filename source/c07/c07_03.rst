@@ -1,7 +1,7 @@
 7.3 少有人知的 Python “重试机制”
 ================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 为了避免由于一些网络或其他不可控因素，而引起的功能性问题。比如在发送请求时，会因为网络不稳定，往往会有请求超时的问题。
 
@@ -220,8 +220,4 @@ RetryError，而不是最根本的原因。
    执行回调函数
    False
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

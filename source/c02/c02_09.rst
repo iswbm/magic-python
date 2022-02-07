@@ -1,7 +1,7 @@
 2.9 往 Python Shell 中传入参数
 ==============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 往一个 Python 脚本传入参数，是一件非常简单的事情。
 
@@ -17,11 +17,6 @@
 
 经过我的摸索，终于找到了方法，具体方法如下：
 
-|image1|
+.. image:: http://image.iswbm.com/20200801195158.png
 
-|image2|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200801195158.png
-.. |image2| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

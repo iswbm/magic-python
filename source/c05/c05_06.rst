@@ -1,7 +1,7 @@
 5.6 如何流式读取数G超大文件
 ===========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 使用 with…open… 可以从一个文件中读取数据，这是所有 Python
 开发者都非常熟悉的操作。
@@ -68,8 +68,4 @@
            while chunk := fp.read(block_size):
                yield chunk
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

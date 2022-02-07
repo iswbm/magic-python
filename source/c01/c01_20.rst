@@ -1,7 +1,7 @@
 1.20 字符串里的缝隙是什么？
 ===========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在Python中求一个字符串里，某子字符（串）出现的次数。
 
@@ -31,9 +31,9 @@
 
 因此 对于 ``aabb`` 这个字符串在 Python 来看应该是这样的
 
-|image1|
+.. image:: http://image.iswbm.com/20200509172331.png
 
-理解了这个“**缝隙**” 的概念后，以下这些就好理解了。
+理解了这个“\ **缝隙**\ ” 的概念后，以下这些就好理解了。
 
 .. code:: python
 
@@ -46,9 +46,4 @@
    >>> "" in "M"
    True
 
-|image2|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200509172331.png
-.. |image2| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

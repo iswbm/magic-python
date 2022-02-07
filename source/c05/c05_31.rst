@@ -1,7 +1,7 @@
 5.31 替换实例方法的最佳实践
 ===========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 思路一：简单替换
 ----------------
@@ -58,7 +58,7 @@ method ，你可以把替换前后的 speak 打印出来
 有 Python 2 使用经验的朋友，可以会知道类实例的方法，都有 ``im_func`` 和
 ``im_class`` 属性，分别指向了该方法的函数和类。
 
-|image1|
+.. image:: http://image.iswbm.com/20210328111610.png
 
 很抱歉的是，这些在 Python3 中全都取消了，意味你无法再使用 ``im_func`` 和
 ``im_class`` 。
@@ -69,19 +69,19 @@ method ，你可以把替换前后的 speak 打印出来
 因为在 Python2 中不推荐普通用户对类实例的方法进行替换，所以 Python
 给类实例的方法赋予了只读属性
 
-|image2|
+.. image:: http://image.iswbm.com/20210328111904.png
 
 思路三：非常危险的字节码替换
 ----------------------------
 
 表层不行，但这个方法在字节码层面却是可行的
 
-|image3|
+.. image:: http://image.iswbm.com/20210328112231.png
 
 这种方法，非常的粗暴且危险，他会直接影响到使用 People 的所有实例的 speak
 方法，因此这种方法千万不要使用。
 
-|image4|
+.. image:: http://image.iswbm.com/20210328112501.png
 
 思路四：利用 types 绑定方法
 ---------------------------
@@ -109,12 +109,4 @@ method ，你可以把替换前后的 speak 打印出来
 这种方法，最为安全，不会影响其他实例。并且 Python 2 和 Python 3
 都适用，是官方推荐的一种做法。
 
-|image5|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20210328111610.png
-.. |image2| image:: http://image.iswbm.com/20210328111904.png
-.. |image3| image:: http://image.iswbm.com/20210328112231.png
-.. |image4| image:: http://image.iswbm.com/20210328112501.png
-.. |image5| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

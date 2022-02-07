@@ -1,7 +1,7 @@
 5.26 如何获取一个函数设定的参数
 ===============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在 Python 中有一个叫 inspect
 的库，非常的好用，利用它可以获取一些数据，这在写一些框架时非常有用。
@@ -39,8 +39,4 @@
        raise TypeError(msg) from None
    TypeError: missing a required argument: 'age'
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

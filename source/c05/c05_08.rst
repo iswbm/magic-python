@@ -1,7 +1,7 @@
 5.8 如何快速计算函数运行时间
 ============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 计算一个函数的运行时间，你可能会这样子做
 
@@ -43,8 +43,4 @@ timeit ​ 使用它，只用一行代码即可
    2
    10.020059824
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

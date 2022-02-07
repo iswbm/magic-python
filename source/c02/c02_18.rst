@@ -1,7 +1,7 @@
 2.18 快速查看 Python 的环境信息
 ===============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 所有与 Python 相关的信息与配置，你都可以使用下面这条命令将其全部打印出来
 
@@ -16,11 +16,6 @@
 -  包的搜索路径
 -  以及各种环境变量
 
-|image1|
+.. image:: http://image.iswbm.com/20210504114516.png
 
-|image2|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20210504114516.png
-.. |image2| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

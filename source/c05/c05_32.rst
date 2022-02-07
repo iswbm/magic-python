@@ -1,7 +1,7 @@
 5.32 如何动态创建函数？
 =======================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在下面的代码中，每一次 for 循环都会创建一个返回特定字符串的函数。
 
@@ -26,8 +26,4 @@
    world
    python
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

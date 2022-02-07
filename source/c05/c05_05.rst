@@ -1,7 +1,7 @@
 5.5 自带的缓存机制不用白不用
 ============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 缓存是一种将定量数据加以保存，以备迎合后续获取需求的处理方式，旨在加快数据获取的速度。
 
@@ -47,8 +47,4 @@
    calculating: 2 + 3
    5
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

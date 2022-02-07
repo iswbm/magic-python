@@ -1,7 +1,7 @@
 2.10 让脚本报错后立即进入调试模式
 =================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 当你在使用 ``python xxx.py`` 这样的方法，执行 Python 脚本时，若因为代码
 bug 导致异常未捕获，那整个程序便会终止退出。
@@ -23,7 +23,7 @@ Shell 模式，方便你进行调试。
 
 具体演示如下：
 
-|image1|
+.. image:: http://image.iswbm.com/20200801195950.png
 
 需要注意的是：脚本执行完毕，有两种情况：
 
@@ -33,14 +33,8 @@ Shell 模式，方便你进行调试。
 这两种都会进入 Python Shell，如果脚本并无异常，最终也会进入 Python Shell
 模式，需要你手动退出
 
-|image2|
+.. image:: http://image.iswbm.com/20200801201110.png
 
 如果希望脚本正确完成时自动退出，可以在脚本最后加上一行\ ``__import__("os")._exit(0)``
 
-|image3|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200801195950.png
-.. |image2| image:: http://image.iswbm.com/20200801201110.png
-.. |image3| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

@@ -1,7 +1,7 @@
 3.5 判断是否包含子串的七种方法
 ==============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 1、使用 in 和 not in
 --------------------
@@ -130,8 +130,4 @@ python 代码快。
    print(is_in("hello, python", "llo"))  # True
    print(is_in("hello, python", "lol"))  # False
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

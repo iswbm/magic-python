@@ -1,7 +1,7 @@
 1.16 dict() 与 {} 生成空字典有什么区别？
 ========================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在初始化一个空字典时，有的人会写 dict()，而有的人会写成 {}
 
@@ -55,8 +55,4 @@
 可以发现使用
 dict()，会多了个调用函数的过程，而这个过程会有进出栈的操作，相对更加耗时。
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

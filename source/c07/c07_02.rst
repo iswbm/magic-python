@@ -1,14 +1,14 @@
 7.2 代码 BUG 变得酷炫的利器
 ===========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 当我们写的一个脚本或程序发生各种不可预知的异常时，如果我们没有进行捕获处理的时候，通常都会致使程序崩溃退出，并且会在终端打印出一堆
 **密密麻麻** 的 traceback 堆栈信息来告诉我们，是哪个地方出了问题。
 
 就像这样子，天呐，密集恐惧症要犯了都
 
-|image1|
+.. image:: http://image.iswbm.com/image-20200307210853246.png
 
 上面这段 traceback
 
@@ -47,18 +47,18 @@
 
 随便写一个没有使用 pretty-errors ，并且报错了的程序，是这样子的。
 
-|image2|
+.. image:: http://image.iswbm.com/image-20200307212823345.png
 
 而使用了 pretty_errors 后，报错信息被美化成这样了。
 
-|image3|
+.. image:: http://image.iswbm.com/image-20200307213534278.png
 
 是不是感觉清楚了不少，那种密密麻麻带来的焦虑感是不是都消失了呢？
 
 当然这段代码少，你可能还没感受到，那就来看下 该项目在
 Github上的一张效果对比图吧
 
-|image4|
+.. image:: https://warehouse-camo.cmh1.psfhosted.org/31399c5a034c3989b9e99b35249e8f2f0d40e102/68747470733a2f2f692e696d6775722e636f6d2f306a7045716f622e706e67
 
 3. 配置全局可用
 ---------------
@@ -81,23 +81,23 @@ traceback 输出都自动美化。
 
    $ python3 -m pretty_errors
 
-|image5|
+.. image:: http://image.iswbm.com/image-20200307214742135.png
 
 配置完成后，你再运行任何脚本，traceback 都会自动美化了。
 
 不仅是在我的 iTerm 终端下
 
-|image6|
+.. image:: http://image.iswbm.com/image-20200307213534278.png
 
 在 PyCharm 中也会
 
-|image7|
+.. image:: http://image.iswbm.com/image-20200307215530270.png
 
 唯一的缺点就是，原先在 PyCharm 中的 traceback 可以直接点击 ``文件路径``
 直接跳转到对应错误文件代码行，而你如果是在 VSCode 可以使用
 下面自定义配置的方案解决这个问题（下面会讲到，参数是：\ ``display_link``\ ）。
 
-|image8|
+.. image:: http://image.iswbm.com/image-20200307215834623.png
 
 因此，有些情况下，你并不想设置 ``pretty_errors`` 全局可用。
 
@@ -105,7 +105,7 @@ traceback 输出都自动美化。
 
 只需要再次输入 ``python -m pretty_errors``\ ，选择 ``C`` 即可清除。
 
-|image9|
+.. image:: http://image.iswbm.com/image-20200307214600749.png
 
 4. 单文件中使用
 ---------------
@@ -179,7 +179,7 @@ traceback 输出都自动美化。
 在你像上面这样使用 ``pretty_errrs.configure``
 进行配置时，抛出的异常信息就变成这样了。
 
-|image10|
+.. image:: http://image.iswbm.com/image-20200308121949011.png
 
 当然了，\ ``pretty_errors.configure()``
 还可以接收很多的参数，你可以根据你自己的需要进行配置。
@@ -212,18 +212,24 @@ traceback 输出都自动美化。
 
 其中，\ ``_BACKGROUND`` 用于设置背景色，举个例子如下。
 
-|image11|
+.. image:: http://image.iswbm.com/image-20200308125431779.png
 
 5.2 设置显示内容
 ~~~~~~~~~~~~~~~~
 
 -  ``line_number_first`` 启用后，将首先显示行号，而不是文件名。
+
 -  ``lines_before`` ： 显示发生异常处的前几行代码
+
 -  ``lines_after``\ ： 显示发生异常处的后几行代码
+
 -  ``display_link``\ ：启用后，将在错误位置下方写入链接，VScode将允许您单击该链接。
+
 -  ``separator_character``\ ：用于创建标题行的字符。默认情况下使用连字符。如果设置为
    ``''`` 或者 ``None`` ，标题将被禁用。
+
 -  ``display_timestamp``\ ：启用时，时间戳将写入回溯头中。
+
 -  ``display_locals``
    启用后，将显示在顶部堆栈框架代码中的局部变量及其值。
 
@@ -268,19 +274,4 @@ PEP8
 规范一样，没有它是可以，但是有了它会更好一样。对于某些想自定义错误输出场景的人，\ ``pretty_errors``
 会是一个不错的解决方案，明哥把它推荐给你。
 
-|image12|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/image-20200307210853246.png
-.. |image2| image:: http://image.iswbm.com/image-20200307212823345.png
-.. |image3| image:: http://image.iswbm.com/image-20200307213534278.png
-.. |image4| image:: https://warehouse-camo.cmh1.psfhosted.org/31399c5a034c3989b9e99b35249e8f2f0d40e102/68747470733a2f2f692e696d6775722e636f6d2f306a7045716f622e706e67
-.. |image5| image:: http://image.iswbm.com/image-20200307214742135.png
-.. |image6| image:: http://image.iswbm.com/image-20200307213534278.png
-.. |image7| image:: http://image.iswbm.com/image-20200307215530270.png
-.. |image8| image:: http://image.iswbm.com/image-20200307215834623.png
-.. |image9| image:: http://image.iswbm.com/image-20200307214600749.png
-.. |image10| image:: http://image.iswbm.com/image-20200308121949011.png
-.. |image11| image:: http://image.iswbm.com/image-20200308125431779.png
-.. |image12| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

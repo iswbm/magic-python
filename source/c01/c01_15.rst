@@ -1,7 +1,7 @@
 1.15 /usr/bin/env python 有什么用？
 ===================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 我们经常会在别人的脚本或者项目的入口文件里看到第一行是下面这样
 
@@ -20,7 +20,7 @@
 稍微接触过 linux 的人都知道 ``/usr/bin/python`` 就是我们执行 ``python``
 进入console 模式里的 ``python``
 
-|image1|
+.. image:: http://image.iswbm.com/20200331184021.png
 
 而当你在可执行文件头里使用 ``#!`` + ``/usr/bin/python``
 ，意思就是说你得用哪个软件 （python）来执行这个文件。
@@ -29,20 +29,20 @@
 
 不加的话，你每次执行这个脚本时，都得这样： ``python xx.py`` ，
 
-|image2|
+.. image:: http://image.iswbm.com/20200331185034.png
 
 有没有一种方式？可以省去每次都加 ``python`` 呢？
 
 当然有，你可以文件头里加上\ ``#!/usr/bin/python``
 ，那么当这个文件有可执行权限 时，只直接写这个脚本文件，就像下面这样。
 
-|image3|
+.. image:: http://image.iswbm.com/20200331184755.png
 
 明白了这个后，再来看看 ``!/usr/bin/env python`` 这个 又是什么意思 ？
 
 当我执行 ``env python`` 时，自动进入了 python console 的模式。
 
-|image4|
+.. image:: http://image.iswbm.com/20200331185741.png
 
 这是为什么？和 直接执行 python 好像没什么区别呀
 
@@ -57,20 +57,11 @@
 
 具体演示过程，你可以看下面。
 
-|image5|
+.. image:: http://image.iswbm.com/20200331190224.png
 
 那么对于这两者，我们应该使用哪个呢？
 
 个人感觉应该优先使用 ``#!/usr/bin/env python``\ ，因为不是所有的机器的
 python 解释器都是 ``/usr/bin/python`` 。
 
-|image6|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200331184021.png
-.. |image2| image:: http://image.iswbm.com/20200331185034.png
-.. |image3| image:: http://image.iswbm.com/20200331184755.png
-.. |image4| image:: http://image.iswbm.com/20200331185741.png
-.. |image5| image:: http://image.iswbm.com/20200331190224.png
-.. |image6| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

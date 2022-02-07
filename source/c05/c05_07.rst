@@ -1,7 +1,7 @@
 5.7 实现类似 defer 的延迟调用
 =============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在 Golang 中有一种延迟调用的机制，关键字是 defer，例如下面的示例
 
@@ -50,8 +50,4 @@
    A
    B
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

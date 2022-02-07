@@ -1,7 +1,7 @@
 3.9 Python 装包的八种方法
 =========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 1. 使用 easy_install
 --------------------
@@ -49,7 +49,7 @@ pip 是最主流的包管理方案，使用 ``pip install xxx`` 就可以从 PYP
    $ pip install pkg<=2.1.2
 
 更多 pip 的使用方法，可参考我之前写过的文章，介绍得非常清楚：\ `8.8 pip
-的详细使用指南 <https://demo.iswbm.com/en/latest/c08/c08_08.html>`__
+的详细使用指南 <https://python.iswbm.com/c08/c08_08.html>`__
 
 3. 使用 pipx
 ------------
@@ -73,8 +73,7 @@ pipx 是一个专门用于安装和管理 cli 应用程序的工具，使用它�
    $ pipx install pkg
 
 更多 pipx 的使用方法，可参考我之前写过的文章，介绍得非常清楚：\ `12.4
-pipx
-安装程序的使用指南 <https://demo.iswbm.com/en/latest/c12/c12_04.html>`__
+pipx 安装程序的使用指南 <https://python.iswbm.com/c12/c12_04.html>`__
 
 4. 使用 setup.py
 ----------------
@@ -141,8 +140,4 @@ Python 包在使用 ``setup.py``
 
    $ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

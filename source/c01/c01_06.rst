@@ -1,7 +1,7 @@
 1.6 简洁而优雅的链式比较
 ========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 先给你看一个示例：
 
@@ -28,8 +28,4 @@
 
 这个用法叫做链式比较。
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

@@ -1,7 +1,7 @@
 2.3 使用 json.tool 来格式化 JSON
 ================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 假设现在你需要查看你机器上的json文件，而这个文件没有经过任何的美化，阅读起来是非常困难的。
 
@@ -61,8 +61,4 @@
        ]
    }
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

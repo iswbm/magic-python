@@ -1,7 +1,7 @@
 1.14 argument 和 parameter 的区别?
 ==================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 arguments 和 parameter
 的翻译都是参数，在中文场景下，二者混用基本没有问题，毕竟都叫参数嘛。
@@ -22,8 +22,4 @@ arguments 和 parameter
        
    output_msg("error")
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

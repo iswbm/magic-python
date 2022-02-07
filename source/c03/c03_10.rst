@@ -1,7 +1,7 @@
 3.10 Python装饰器的六种写法
 ===========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 装饰器本质上是一个Python函数，它可以让其他函数在不需要做任何代码变动的前提下增加额外功能，装饰器的返回值也是一个函数对象。
 
@@ -338,11 +338,6 @@ Python工匠：使用装饰器的小技巧）
 
 其实例化的过程，你可以参考我这里的调试过程，加以理解。
 
-|image1|
+.. image:: http://image.iswbm.com/20190512113917.png
 
-|image2|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20190512113917.png
-.. |image2| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

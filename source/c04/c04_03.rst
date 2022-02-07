@@ -1,7 +1,7 @@
 4.3 神奇的元类编程
 ==================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 1. 类是如何产生的
 -----------------
@@ -369,8 +369,4 @@ ORM的一个类(User)，就对应数据库中的一张表。id,name,email,passwo
    元编程 <http://python3-cookbook.readthedocs.io/zh_CN/latest/chapters/p09_meta_programming.html>`__
 -  `深刻理解Python中的元类 <http://blog.jobbole.com/21351/>`__
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

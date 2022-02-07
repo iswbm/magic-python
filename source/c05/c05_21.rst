@@ -1,7 +1,7 @@
 5.21 字典访问不存在的key时不再报错
 ==================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 当一个字典里没有某个 key 时，此时你访问他是会报 KeyError 的。
 
@@ -64,8 +64,4 @@ defaultdict 接收一个工厂方法，工厂方法返回的对象就是字典�
    >>> info["msg"]
    'default value'
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

@@ -1,7 +1,7 @@
 2.7 快速构建 HTML 帮助文档
 ==========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 当你不知道一个内置模块如何使用时，会怎么做呢？
 
@@ -23,11 +23,6 @@
 
 帮助文档的效果如下
 
-|image1|
+.. image:: http://image.iswbm.com/20200718191249.png
 
-|image2|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200718191249.png
-.. |image2| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

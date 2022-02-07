@@ -1,7 +1,7 @@
 1.5 如何修改解释器提示符
 ========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 这个当做今天的一个小彩蛋吧。应该算是比较冷门的，估计知道的人很少了吧。
 
@@ -33,8 +33,4 @@
    0                                   
    1                                   
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

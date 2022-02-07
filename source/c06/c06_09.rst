@@ -1,7 +1,7 @@
 6.9 如无必要，勿增实体噢
 ========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 删除没必要的调用\ ``keys()``
 ----------------------------
@@ -67,8 +67,4 @@
 
 这样可以缩短代码并删除不必要的变量，从而减轻了读取函数的负担。
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

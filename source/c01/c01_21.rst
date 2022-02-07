@@ -1,7 +1,7 @@
 1.21 Python2下 也能使用 print(“”)
 =================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 可能会有不少人，觉得只有 Python 3 才可以使用 print()，而 Python 2
 只能使用\ ``print ""``\ 。
@@ -33,8 +33,4 @@
 ，但是这仅用于两个 python 版本之间的代码兼容，并不是说在
 python2.6+下使用 print() 后，就成了函数。
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

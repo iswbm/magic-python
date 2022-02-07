@@ -1,7 +1,7 @@
 2.4 命令行式执行 Python 代码
 ============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 有时候你只是想验证一小段 Python 代码是否可用时，通常有两种方法
 
@@ -17,8 +17,4 @@
 
 只要加 -c 参数，就可以输入你的 Python 代码了。
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

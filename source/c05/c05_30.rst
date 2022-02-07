@@ -1,7 +1,7 @@
 5.30 如何将变量名和变量值转为字典？
 ===================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 千言万语，不如上示例演示下效果
 
@@ -46,8 +46,4 @@
 附上 ：\ `inspect
 学习文档 <https://docs.python.org/zh-cn/3.7/library/inspect.html>`__
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

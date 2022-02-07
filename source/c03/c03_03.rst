@@ -1,7 +1,7 @@
 3.3 花式导包的八种方法
 ======================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 1. 直接 import
 --------------
@@ -302,8 +302,4 @@ python 文件，如果后面导入成功会打印 ``ok``\ 。
 这种方法足够了，而对于那些想要自己开发框架的人来说，深入学习\ ``__import__``\ 以及
 importlib 是非常有必要的。
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

@@ -1,7 +1,7 @@
 2.6 如何快速搭建 HTTP 服务器
 ============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 搭建FTP，或者是搭建网络文件系统，这些方法都能够实现Linux的目录共享。但是FTP和网络文件系统的功能都过于强大，因此它们都有一些不够方便的地方。比如你想快速共享Linux系统的某个目录给整个项目团队，还想在一分钟内做到，怎么办？很简单，使用Python中的SimpleHTTPServer。
 
@@ -17,13 +17,8 @@ SimpleHTTPServer是Python
    # python3
    python3 -m http.server 8888
 
-|image1|
+.. image:: http://image.iswbm.com/20190511165716.png
 
 SimpleHTTPServer有一个特性，如果待共享的目录下有index.html，那么index.html文件会被视为默认主页；如果不存在index.html文件，那么就会显示整个目录列表。
 
-|image2|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20190511165716.png
-.. |image2| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

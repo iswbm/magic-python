@@ -1,7 +1,7 @@
 1.22 字母也玩起了障眼法
 =======================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 以下我分别在 Python2.7 和 Python 3.7 的 console 模式下，运行了如下代码。
 
@@ -25,11 +25,11 @@
 
 什么？没有截图你不信？
 
-|image1|
+.. image:: http://image.iswbm.com/20200509122954.png
 
 如果你在自己的电脑上尝试一下，结果可能是这样的
 
-|image2|
+.. image:: http://image.iswbm.com/20200509123107.png
 
 **怎么又好了呢？**
 
@@ -52,10 +52,4 @@
 细思恐极，在这里可千万不要得罪同事们，万一离职的时候，对方把你项目里的
 ``e`` 全局替换成 ``e``\ ，到时候你就哭去吧，肉眼根本看不出来嘛。
 
-|image3|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200509122954.png
-.. |image2| image:: http://image.iswbm.com/20200509123107.png
-.. |image3| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

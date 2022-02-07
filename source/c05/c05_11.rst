@@ -1,7 +1,7 @@
 5.11 在程序退出前执行代码的技巧
 ===============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 使用 atexit 这个内置模块，可以很方便地注册退出函数。
 
@@ -9,7 +9,7 @@
 
 示例如下
 
-|image1|
+.. image:: http://image.iswbm.com/20200510112133.png
 
 如果\ ``clean()``\ 函数有参数，那么你可以不用装饰器，而是直接调用\ ``atexit.register(clean_1, 参数1, 参数2, 参数3='xxx')``\ 。
 
@@ -22,9 +22,4 @@
 -  如果发生了严重的 Python 内部错误，你注册的函数无法正常执行。
 -  如果你手动调用了\ ``os._exit()``\ ，你注册的函数无法正常执行。
 
-|image2|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200510112133.png
-.. |image2| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

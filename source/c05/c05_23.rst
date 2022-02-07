@@ -1,7 +1,7 @@
 5.23 如何实现字典的多级排序
 ===========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在一个列表中，每个元素都是一个字典，里面的每个字典结构都是一样的。
 
@@ -46,8 +46,4 @@
    >>> students
    [{'age': 17, 'score': 80, 'name': 'Julia'}, {'age': 16, 'score': 80, 'name': 'Tom'}, {'age': 17, 'score': 89, 'name': 'Jack'}]
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

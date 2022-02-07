@@ -1,7 +1,7 @@
 1.26 x 与 +x 等价吗？
 =====================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在大多数情况下，这个等式是成立的。
 
@@ -33,8 +33,4 @@
    >>> +ct
    Counter({'a': 3, 'b': 2})
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

@@ -1,7 +1,7 @@
 5.3 单行实现 for 死循环如何写？
 ===============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 如果让你在不借助 while ，只使用 for 来写一个死循环？
 
@@ -39,8 +39,4 @@
 由于int() 永远返回0，永远返回不了1，所以这个 for
 循环会没有终点。一直运行下去。
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

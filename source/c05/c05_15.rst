@@ -1,7 +1,7 @@
 5.15 让我爱不释手的用户环境
 ===========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 当你在机器上并没有 root 权限时，如何安装 Python 的第三方包呢？
 
@@ -41,8 +41,4 @@
    [root@localhost ~]$ pip list | grep requests
    [root@localhost ~]$
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

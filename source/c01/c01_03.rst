@@ -1,7 +1,7 @@
 1.3 可直接运行的 zip 包
 =======================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 我们可以经常看到有 Python 包，居然可以以 zip
 包进行发布，并且可以不用解压直接使用。
@@ -38,8 +38,4 @@
    5
    [root@localhost ~]#
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

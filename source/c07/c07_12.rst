@@ -1,7 +1,7 @@
 7.12 非常好用的调度模块
 =======================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 Python
 自带一个调度器模块\ ``sched``\ ，它能为你实现优先级队列/延迟队列和定时队列。
@@ -21,7 +21,7 @@ Python
 
 代码运行以后，会卡在\ ``sch.run()``\ 这里，5秒钟以后执行\ ``do_work('iswbm')``\ ，运行效果如下图所示：
 
-|image1|
+.. image:: http://image.iswbm.com/20210521215217.png
 
 其中，\ ``sch.enter()``\ 的第一个参数为延迟的时间，单位为秒，第二个参数为优先级，数字越小优先级越高。当两个任务同时要执行时，优先级高的先执行。但需要注意的是，如果你这样写：
 
@@ -39,7 +39,7 @@ Python
 
 那么先打印出来的是\ ``你好：python``
 
-|image2|
+.. image:: http://image.iswbm.com/20210521215257.png
 
 为什么这里优先级失效了？1的优先级大于2，应该先运行下面的才对啊。
 
@@ -65,7 +65,7 @@ Python
 
 运行效果如下图所示：
 
-|image3|
+.. image:: http://image.iswbm.com/20210521215402.png
 
 ``sch.enterabs()``\ 的第一个参数是任务开始时间的时间戳，这是一个绝对时间，这个时间可以使用datetime模块来生成，或者其他你熟悉的方式。后面的参数和\ ``sch.enter()``\ 完全一样。
 
@@ -89,13 +89,6 @@ Python
 
 argument参数对应的元组存放普通参数，kwargs对应的字典存放带参数名的参数。
 
-本文来源于：公众号“未闻Code”，作者：kingname
+本文来源于：公众号”未闻Code”，作者：kingname
 
-|image4|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20210521215217.png
-.. |image2| image:: http://image.iswbm.com/20210521215257.png
-.. |image3| image:: http://image.iswbm.com/20210521215402.png
-.. |image4| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

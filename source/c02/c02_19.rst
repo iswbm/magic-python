@@ -1,7 +1,7 @@
 2.19 快速解压和压缩文件
 =======================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 tar 格式压缩包
 --------------
@@ -86,8 +86,4 @@ zip 格式压缩包
    drwxr-xr-x   3 MING  staff         96  5  4 12:57 demo
    -rw-r--r--   1 MING  staff      74890  5  4 12:55 demo.zip
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

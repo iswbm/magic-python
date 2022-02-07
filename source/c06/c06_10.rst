@@ -1,7 +1,7 @@
 6.10 保持代码的简洁与可诗性
 ===========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 将条件简化为return语句
 ----------------------
@@ -22,8 +22,4 @@
    def function():
        return isinstance(a, b) or issubclass(b, a)
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

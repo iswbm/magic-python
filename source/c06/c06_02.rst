@@ -1,7 +1,7 @@
 6.2 默认参数最好不为可变对象
 ============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 函数的参数分三种
 
@@ -43,11 +43,6 @@ Python 中的 def
 的时候，会先生成这个可变对象的内存地址，然后将这个默认参数 item_list
 会与这个内存地址绑定。在后面的函数调用中，如果调用方指定了新的默认值，就会将原来的默认值覆盖。如果调用方没有指定新的默认值，那就会使用原来的默认值。
 
-|image1|
+.. image:: http://image.iswbm.com/20190511165650.png
 
-|image2|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20190511165650.png
-.. |image2| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

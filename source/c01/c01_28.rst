@@ -1,7 +1,7 @@
 1.28 循环中的局部变量泄露
 =========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在Python 2中 x 的值在一个循环执行之后被改变了。
 
@@ -25,8 +25,4 @@
    >>> x
    1
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

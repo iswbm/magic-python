@@ -1,28 +1,14 @@
 # coding:utf-8
 import os
-# import commands
 import subprocess
 import platform
 
-from git import Repo
-
 
 osName = platform.system()
-repo_path ='.'
-if (osName == 'Windows'):
-    repo_path = 'E:\\MING-Git\\magic-python'
-    blog_path = 'E:\\MING-Git\\magic-python\\source'
-    index_path = 'E:\\MING-Git\\magic-python\\README.md'
-elif (osName == 'Darwin'):
-    repo_path = '/Users/MING/Github/magic-python/'
-    blog_path = '/Users/MING/Github/magic-python/source'
-    index_path = '/Users/MING/Github/magic-python/README.md'
+pwd = os.getcwd()
+blog_path = os.path.join(pwd, "source")
+index_path = os.path.join(pwd, "README.md")
 
-
-repo = Repo.init(path=repo_path)
-if not repo.is_dirty():
-    # 没有文件变更
-    os._exit(0)
 
 base_link = "http://python.iswbm.com/en/latest/"
 readme_header = '''

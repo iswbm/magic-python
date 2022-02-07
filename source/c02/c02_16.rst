@@ -1,7 +1,7 @@
 2.16 快速计算字符串 base64编码
 ==============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 对字符串编码和解码
 ------------------
@@ -18,7 +18,7 @@
 
 效果如下
 
-|image1|
+.. image:: http://image.iswbm.com/20210504111702.png
 
 对文件进行编码和解码
 --------------------
@@ -43,17 +43,10 @@
 
 效果如下
 
-|image2|
+.. image:: http://image.iswbm.com/20210504112153.png
 
 如果你的文件是 py 脚本的话，可以直接执行它
 
-|image3|
+.. image:: http://image.iswbm.com/20210504112257.png
 
-|image4|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20210504111702.png
-.. |image2| image:: http://image.iswbm.com/20210504112153.png
-.. |image3| image:: http://image.iswbm.com/20210504112257.png
-.. |image4| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

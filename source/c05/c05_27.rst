@@ -1,7 +1,7 @@
 5.27 如何进行版本的比较
 =======================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 使用 distutils
 --------------
@@ -38,8 +38,4 @@
    >>> version.parse("1.3.a4") < version.parse("10.1.2")
    True
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

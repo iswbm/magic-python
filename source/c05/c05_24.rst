@@ -1,7 +1,7 @@
 5.24 对齐字符串的两种方法
 =========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 第一种：使用 format
 -------------------
@@ -141,8 +141,4 @@
    09 081 0729
    10 100 1000
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

@@ -1,7 +1,7 @@
 1.31 如何像 awk一样分割字符串？
 ===============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 若你使用过 Shell 中的 awk
 工具，会发现用它来分割字符串是非常方便的。特别是多个连续空格会被当做一个处理。
@@ -68,7 +68,7 @@ split函数不加参数，就能达到 awk 的效果
 查看了注释，原来是这个函数会适配 None
 的情况，当第一个参数是None的时候，返回第二个参数（可迭代对象）中非空的值，非常方便。
 
-|image1|
+.. image:: http://image.iswbm.com/20200821173708.png
 
 换用函数的写法，可以这样
 
@@ -81,9 +81,4 @@ split函数不加参数，就能达到 awk 的效果
    >>> filter(lambda item: True if item else False, msg.split('-'))
    ['hello', 'world']
 
-|image2|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200821173708.png
-.. |image2| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

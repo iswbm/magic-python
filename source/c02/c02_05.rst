@@ -1,7 +1,7 @@
 2.5 用调试模式执行脚本
 ======================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 当你使用 pdb 进行脚本的调试时，你可能会先在目标代码处输入
 ``import pdb;pdb.set_trace()`` 来设置断点。
@@ -15,8 +15,4 @@
    -> import sys
    (Pdb)
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

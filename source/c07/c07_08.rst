@@ -1,7 +1,7 @@
 7.8 像操作路径一样，操作嵌套字典
 ================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在使用前先安装它，要注意的是该模块只能在 Python 3.8+ 中使用
 
@@ -44,8 +44,4 @@
 
 更多案例，请前往 `官方文档 <https://pypi.org/project/dpath/>`__ 查阅。
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

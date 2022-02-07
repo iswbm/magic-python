@@ -1,7 +1,7 @@
 5.25 将位置参数变成关键字参数
 =============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在 Python 中，参数的种类，大概可以分为四种：
 
@@ -33,8 +33,4 @@
    2
    3
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

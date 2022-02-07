@@ -1,7 +1,7 @@
 7.11 国际化模块，让翻译更优雅
 =============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 国际化与本地化
 --------------
@@ -73,8 +73,4 @@ gettext 是一套 GNU下的国际化工具。主要有工具：
    >>> _('hello world')
    '你好世界'
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

@@ -1,7 +1,7 @@
 2.14 把模块当做脚本来执行 7 种方法及原理
 ========================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 1. 用法举例
 -----------
@@ -74,7 +74,7 @@ Python
 先看一下 ``pip`` 的源码目录，发现在其下有一个 ``__main__.py``
 的文件，难道这是 ``-m`` 的入口？
 
-|image1|
+.. image:: http://image.iswbm.com/20200811155234.png
 
 再看一下 ``json.tool`` 的源码文件，json 库下面却没有 ``__main__.py``
 的文件。
@@ -85,7 +85,7 @@ Python
 
 查看 tool 模块的源代码，有一个名为 main 的函数
 
-|image2|
+.. image:: http://image.iswbm.com/20200811154945.png
 
 但它这不是关键，main 函数是在模块中直接被调用的。
 
@@ -146,7 +146,7 @@ Python
 
 执行过程如下：
 
-|image3|
+.. image:: http://image.iswbm.com/20200811184733.png
 
 再来验证一下使用第二种方法。
 
@@ -196,11 +196,4 @@ Python 的包导入机制会帮你做这些事情。
 
 如此一对比，哪个更方便？你心里应该有数了。
 
-|image4|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200811155234.png
-.. |image2| image:: http://image.iswbm.com/20200811154945.png
-.. |image3| image:: http://image.iswbm.com/20200811184733.png
-.. |image4| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

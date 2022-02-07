@@ -1,7 +1,7 @@
 2.15 命令行式打开 idle 编辑脚本
 ===============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在你安装 Python 解释器的时候，会有一个选项，让你选择是否安装
 idle，这是一个极简的 Python 编辑器，对于有点 python
@@ -27,16 +27,10 @@ idle，这也是为什么 idle 是大多数人的第一个 Python 代码编辑�
 
 使用的效果如下
 
-|image1|
+.. image:: http://image.iswbm.com/20210504110446.png
 
 如果你不加文件的路径，默认会打开 idle 的 shell 模式
 
-|image2|
+.. image:: http://image.iswbm.com/20210504110758.png
 
-|image3|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20210504110446.png
-.. |image2| image:: http://image.iswbm.com/20210504110758.png
-.. |image3| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

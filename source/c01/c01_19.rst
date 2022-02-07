@@ -1,7 +1,7 @@
 1.19 return不一定都是函数的终点
 ===============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 众所周知，try…finally…
 的用法是：不管try里面是正常执行还是有报异常，最终都能保证finally能够执行。
@@ -57,8 +57,4 @@ return 真的是直接被忽视，那当finally 下没有显式的 return
 会直接覆盖 try 里的 return，而如果 finally 里没有 显式的 return，那么
 try 里的 return 仍然有效。
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

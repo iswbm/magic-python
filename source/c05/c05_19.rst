@@ -1,7 +1,7 @@
 5.19 改变默认递归次数限制
 =========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 上面才提到递归，大家都知道使用递归是有风险的，递归深度过深容易导致堆栈的溢出。如果你这字符串太长啦，使用递归方式反转，就会出现问题。
 
@@ -21,8 +21,4 @@
    >>> sys.getrecursionlimit()
    2000
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

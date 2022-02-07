@@ -1,7 +1,7 @@
 1.17 有趣但没啥用的 import 用法
 ===============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 import 是 Python 导包的方式。
 
@@ -52,9 +52,6 @@ import 是 Python 导包的方式。
 
 就会自动打开一个网页。 |image1|
 
-|image2|
+.. image:: http://image.iswbm.com/20200607174235.png
 
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
 .. |image1| image:: http://image.iswbm.com/20190511165735.png
-.. |image2| image:: http://image.iswbm.com/20200607174235.png
-

@@ -1,7 +1,7 @@
 5.20 让你晕头转向的 else 用法
 =============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 if else 用法可以说是最基础的语法表达式之一，但是今天不是讲这个的。
 
@@ -67,8 +67,4 @@ break，还是没有break？
 总结一下，for else 和 try else 相同，只要代码正常走下去不被
 break，不抛出异常，就可以走else。
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

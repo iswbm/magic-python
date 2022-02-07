@@ -1,7 +1,7 @@
 7.13 实现字典的点式操作
 =======================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 字典是 Python
 中基础的数据结构之一，字典的使用，可以说是非常的简单粗暴，但即便是这样一个与世无争的数据结构，仍然有很多人
@@ -268,8 +268,4 @@ Munch 支持序列化为 JSON 或者 YAML 格式的字符串对象
 
 也正是因为这样，原生字典至今还是不可替代的存在。
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

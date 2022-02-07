@@ -1,7 +1,7 @@
 2.2 最快查看包搜索路径的方式
 ============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 当你使用 import 导入一个包或模块时，Python
 会去一些目录下查找，而这些目录是有优先级顺序的，正常人会使用 sys.path
@@ -63,8 +63,4 @@
 从输出你可以发现，这个列的路径会比 sys.path
 更全，它包含了用户环境的目录。
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

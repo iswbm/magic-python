@@ -1,7 +1,7 @@
 5.13 如何在运行状态查看源代码？
 ===============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 查看函数的源代码，我们通常会使用 IDE 来完成。
 
@@ -36,8 +36,4 @@
    def add(x, y):
        return x + y
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

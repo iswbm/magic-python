@@ -1,7 +1,7 @@
 1.23 数值与字符串的比较
 =======================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在 Python2 中，数字可以与字符串直接比较。结果是数值永远比字符串小。
 
@@ -19,8 +19,4 @@
    >>> 100000000 < ""
    TypeError: '<' not supported between instances of 'int' and 'str'
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

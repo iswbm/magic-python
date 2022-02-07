@@ -1,7 +1,7 @@
 7.9 读取文件中任意行的数据
 ==========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 ``linecache`` 是 Python 中的一个内置模块。
 
@@ -24,8 +24,4 @@
 
    >>>
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

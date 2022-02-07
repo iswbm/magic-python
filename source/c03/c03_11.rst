@@ -1,7 +1,7 @@
 3.11 Python 读取文件的六种方式
 ==============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 第一种：使用 open
 -----------------
@@ -94,8 +94,4 @@ os 模块也自带了 open 函数，直接操作的是底层的 I/O
    b'hello, world'
    >>> os.close(fp)
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

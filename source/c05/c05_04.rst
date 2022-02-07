@@ -1,7 +1,7 @@
 5.4 如何关闭异常自动关联上下文？
 ================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 当你在处理异常时，由于处理不当或者其他问题，再次抛出另一个异常时，往外抛出的异常也会携带原始的异常信息。
 
@@ -88,8 +88,4 @@
    RuntimeError: Something bad happened
    (PythonCodingTime)
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

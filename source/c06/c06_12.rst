@@ -1,7 +1,7 @@
 6.12 变量不能与保留关键字重名
 =============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在 Python
 中有很多的保留关键字，这些关键字的使用，不需要我们定义，也不需要我们导入，只要你进入到了
@@ -30,8 +30,4 @@ class，这个有类别的意思，可能你也想使用它来作为变量名，
    def tag(name,*content,class_):
        pass
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

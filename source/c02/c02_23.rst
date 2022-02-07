@@ -1,7 +1,7 @@
 2.23 快速打印函数的调用栈
 =========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在使用pdb时，手动打印调用栈
 
@@ -28,8 +28,4 @@
    -> self.handle_one_response()
      /usr/lib/python2.7/site-packages/eventlet/wsgi.py(481)handle_one_response()
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

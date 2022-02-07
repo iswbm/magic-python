@@ -1,7 +1,7 @@
 7.6 新一代的调试神器：PySnooper
 ===============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 对于每个程序开发者来说，调试几乎是必备技能。
 
@@ -135,7 +135,7 @@ PySnooper
 
 如此一来，PySnooper 会在 ``out["foo"]`` 值有变化时，也将其打印出来
 
-|image1|
+.. image:: http://image.iswbm.com/20201114183018.png
 
 watch 参数，接收一个可迭代对象（可以是list 或者
 tuple），里面的元素为字符串表达式，什么意思呢？看下面例子就知道了
@@ -187,7 +187,7 @@ tuple），里面的元素为字符串表达式，什么意思呢？看下面例
 
 效果如下
 
-|image2|
+.. image:: http://image.iswbm.com/20201114193131.png
 
 3.5 设置最大的输出长度
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -225,7 +225,7 @@ PySnooper 同样支持多线程的调试，通过设置参数
 
 效果如下
 
-|image3|
+.. image:: http://image.iswbm.com/20201114194449.png
 
 2.7 自定义对象的格式输出
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -287,7 +287,7 @@ PySnooper 在打印对象的调试信息时，会逐个判断它是否是 Person
 
 运行一下，观察一下效果。
 
-|image4|
+.. image:: http://image.iswbm.com/20201114201042.png
 
 如果你要自定义格式输出的有很多个类型，那么 ``custom_repr``
 参数的值可以这么写
@@ -328,12 +328,4 @@ PySnooper 在打印对象的调试信息时，会逐个判断它是否是 Person
 以上就是明哥今天给大家介绍的一款调试神器（\ ``PySnooper``\ ）
 的详细使用手册，是不是觉得还不错？
 
-|image5|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20201114183018.png
-.. |image2| image:: http://image.iswbm.com/20201114193131.png
-.. |image3| image:: http://image.iswbm.com/20201114194449.png
-.. |image4| image:: http://image.iswbm.com/20201114201042.png
-.. |image5| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

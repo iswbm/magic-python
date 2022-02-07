@@ -1,7 +1,7 @@
 6.6 不想让子类继承的变量名该怎么写？
 ====================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 先来看下面这段代码
 
@@ -47,11 +47,6 @@ Parent
 
 验证过程如下：
 
-|image1|
+.. image:: http://image.iswbm.com/20200823205210.png
 
-|image2|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200823205210.png
-.. |image2| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

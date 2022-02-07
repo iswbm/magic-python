@@ -1,7 +1,7 @@
 5.18 如何将 print 内容输出到文件
 ================================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 Python 3 中的 print
 作为一个函数，由于可以接收更多的参数，所以功能变为更加强大。
@@ -18,8 +18,4 @@ Python 3 中的 print
    $ cat test.log
    hello, python
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

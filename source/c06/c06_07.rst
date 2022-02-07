@@ -1,7 +1,7 @@
 6.7 利用 any 代替 for 循环
 ==========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在某些场景下，我们需要判断是否满足某一组集合中任意一个条件
 
@@ -34,8 +34,4 @@
 
 只要有一个不满足条件，all 函数的结果就会立刻返回 False
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

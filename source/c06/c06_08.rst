@@ -1,7 +1,7 @@
 6.8 不同条件分支里应减少重合度
 ==============================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 如下是一个简单的条件语句模型
 
@@ -39,8 +39,4 @@
        else:
            process_international_payment(payment)
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

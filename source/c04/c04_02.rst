@@ -1,7 +1,7 @@
 4.2 深入理解描述符
 ==================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 学习 Python 这么久了，说起 Python 的优雅之处，能让我脱口而出的，
 Descriptor（描述符）特性可以排得上号。
@@ -76,7 +76,7 @@ Descriptor（描述符）特性可以排得上号。
 
 这下程序稍微有点人工智能了，能够自己明辨是非了。
 
-|image1|
+.. image:: http://image.iswbm.com/20190425221322.png
 
 程序是智能了，但在\ ``__init__``\ 里有太多的判断逻辑，很影响代码的可读性。巧的是，你刚好学过
 Property
@@ -131,7 +131,7 @@ Property
 
 程序还是一样的人工智能，非常好。
 
-|image2|
+.. image:: http://image.iswbm.com/20190425221322.png
 
 你以为你写的代码，已经非常优秀，无懈可击了。
 
@@ -201,7 +201,7 @@ math、chinese、english这三个属性的时候，都会经过 Score
 
 实现的效果和前面的一样，可以对数据的合法性进行有效控制（字段类型、数值区间等）
 
-|image3|
+.. image:: http://image.iswbm.com/20190425221233.png
 
 以上，我举了下具体的实例，从最原始的编码风格到 Property
 ，最后引出描述符。由浅入深，一步一步带你感受到描述符的优雅之处。
@@ -473,7 +473,7 @@ property
 其实就相当于一个描述符类，而\ ``myfunc`` 在此刻变成了一个描述符。关于
 ``staticmethod`` 的实现，你可以参照下面这段我自己写的代码，加以理解。
 
-|image4|
+.. image:: http://image.iswbm.com/20190519001930.png
 
 调用这个方法可以知道，每调用一次，它都会经过描述符类的 ``__get__`` 。
 
@@ -628,7 +628,7 @@ Student
 引导程序逻辑进入描述符之后，不管你是获取属性，还是设置属性，都是直接作用于
 instance 的。
 
-|image5|
+.. image:: http://image.iswbm.com/20200812085823.png
 
 这段代码，你可以仔细和前面的对比一下。
 
@@ -639,13 +639,4 @@ instance 的。
 
 以上便是我对描述符的全部分享，希望能对你有所帮助。
 
-|image6|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20190425221322.png
-.. |image2| image:: http://image.iswbm.com/20190425221322.png
-.. |image3| image:: http://image.iswbm.com/20190425221233.png
-.. |image4| image:: http://image.iswbm.com/20190519001930.png
-.. |image5| image:: http://image.iswbm.com/20200812085823.png
-.. |image6| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png

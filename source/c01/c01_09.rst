@@ -1,7 +1,7 @@
 1.9 字典居然是可以排序的？
 ==========================
 
-|image0|
+.. image:: http://image.iswbm.com/20200804124133.png
 
 在 Python 3.6 之前字典不可排序的思想，似乎已经根深蒂固。
 
@@ -24,8 +24,4 @@
    >>> mydict
    {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4}
 
-|image1|
-
-.. |image0| image:: http://image.iswbm.com/20200804124133.png
-.. |image1| image:: http://image.iswbm.com/20200607174235.png
-
+.. image:: http://image.iswbm.com/20200607174235.png
