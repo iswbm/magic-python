@@ -114,6 +114,7 @@
    * [# 3.10 Python装饰器的六种写法](https://magic.iswbm.com/c03/c03_10.html)
    * [# 3.11 Python 读取文件的六种方式](https://magic.iswbm.com/c03/c03_11.html)
    * [# 3.12 调用函数的九种方法](https://magic.iswbm.com/c03/c03_12.html)
+   * [# 3.13 创造 "新语法" 的黑科技](https://magic.iswbm.com/c03/c03_13.html)
 - **第四章：魔法进阶扫盲**
    * [# 4.1 精通上下文管理器](https://magic.iswbm.com/c04/c04_01.html)
    * [# 4.2 深入理解描述符](https://magic.iswbm.com/c04/c04_02.html)
@@ -179,6 +180,8 @@
    * [# 7.11 国际化模块，让翻译更优雅](https://magic.iswbm.com/c07/c07_11.html)
    * [# 7.12 非常好用的调度模块](https://magic.iswbm.com/c07/c07_12.html)
    * [# 7.13 实现字典的点式操作](https://magic.iswbm.com/c07/c07_13.html)
+   * [# 7.14 使用 trypackage 试用新库](https://magic.iswbm.com/c07/c07_14.html)
+      * [# 7.15 利用 streamlit 傻瓜式构建可视化web应用](https://magic.iswbm.com/c07/c07_15.html)
 
 ## 写在最后
 
