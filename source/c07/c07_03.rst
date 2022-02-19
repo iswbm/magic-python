@@ -219,5 +219,3 @@ RetryError，而不是最根本的原因。
    等待重试中...
    执行回调函数
    False
-
-.. image:: http://image.iswbm.com/20200607174235.png

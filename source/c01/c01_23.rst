@@ -18,5 +18,3 @@
 
    >>> 100000000 < ""
    TypeError: '<' not supported between instances of 'int' and 'str'
-
-.. image:: http://image.iswbm.com/20200607174235.png

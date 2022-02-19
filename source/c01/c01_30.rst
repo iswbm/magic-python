@@ -53,5 +53,3 @@ print 来替代）。
 
 1. continue 与 break 一样，如果先遇到上下文管理器会先进行资源的释放
 2. 上面只举例了 while 循环体，而 for 循环也是同样的。
-
-.. image:: http://image.iswbm.com/20200607174235.png

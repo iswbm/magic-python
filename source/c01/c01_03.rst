@@ -37,5 +37,3 @@
    [root@localhost ~]# python demo.zip
    5
    [root@localhost ~]#
-
-.. image:: http://image.iswbm.com/20200607174235.png

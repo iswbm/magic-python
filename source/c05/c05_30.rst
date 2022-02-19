@@ -45,5 +45,3 @@
 
 附上 ：\ `inspect
 学习文档 <https://docs.python.org/zh-cn/3.7/library/inspect.html>`__
-
-.. image:: http://image.iswbm.com/20200607174235.png

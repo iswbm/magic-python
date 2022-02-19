@@ -24,5 +24,3 @@
    []
    >>> alist[100:]
    []
-
-.. image:: http://image.iswbm.com/20200607174235.png

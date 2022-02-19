@@ -25,5 +25,3 @@ Debian 这么设计的原因，是为了减少不同来源的 Python 之间产�
    >>> from distutils.sysconfig import get_python_lib
    >>> print(get_python_lib())
    /usr/lib/python2.7/site-packages
-
-.. image:: http://image.iswbm.com/20200607174235.png

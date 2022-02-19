@@ -220,5 +220,3 @@ open 来读取，最后使用 compile 函数编译运行。
    caller = methodcaller("speak", "明哥")
    p = People()
    caller(p)
-
-.. image:: http://image.iswbm.com/20200607174235.png

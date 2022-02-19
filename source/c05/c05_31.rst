@@ -108,5 +108,3 @@ method ，你可以把替换前后的 speak 打印出来
 
 这种方法，最为安全，不会影响其他实例。并且 Python 2 和 Python 3
 都适用，是官方推荐的一种做法。
-
-.. image:: http://image.iswbm.com/20200607174235.png

@@ -32,5 +32,3 @@
    >>>
    >>> +ct
    Counter({'a': 3, 'b': 2})
-
-.. image:: http://image.iswbm.com/20200607174235.png

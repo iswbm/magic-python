@@ -46,5 +46,3 @@
    ... show me code.'''
    >>> text
    'talk is cheap,\nshow me code.'
-
-.. image:: http://image.iswbm.com/20200607174235.png

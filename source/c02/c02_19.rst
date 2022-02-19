@@ -85,5 +85,3 @@ zip 格式压缩包
    $ ls -l | grep demo
    drwxr-xr-x   3 MING  staff         96  5  4 12:57 demo
    -rw-r--r--   1 MING  staff      74890  5  4 12:55 demo.zip
-
-.. image:: http://image.iswbm.com/20200607174235.png

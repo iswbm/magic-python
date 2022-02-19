@@ -42,5 +42,3 @@ timeit ​ 使用它，只用一行代码即可
    2
    2
    10.020059824
-
-.. image:: http://image.iswbm.com/20200607174235.png

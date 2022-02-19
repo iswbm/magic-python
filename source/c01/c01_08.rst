@@ -11,5 +11,3 @@
    >>>
    >>> sum((a,b,c), [])
    [1, 2, 3, 4, 5, 6]
-
-.. image:: http://image.iswbm.com/20200607174235.png

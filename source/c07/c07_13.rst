@@ -267,5 +267,3 @@ Munch 支持序列化为 JSON 或者 YAML 格式的字符串对象
    SyntaxError: invalid syntax
 
 也正是因为这样，原生字典至今还是不可替代的存在。
-
-.. image:: http://image.iswbm.com/20200607174235.png

@@ -151,5 +151,3 @@ sys.modules 来重载模块这种方法是失效的。
    >>> del sys.modules['foo.bar']
    >>> from foo import bar
    >>>
-
-.. image:: http://image.iswbm.com/20200607174235.png

@@ -24,5 +24,3 @@ pyc 文件，来提高加载速度。
    ├── __pycache__
    │   └── main.cpython-39.opt-1.pyc
    └── main.py
-
-.. image:: http://image.iswbm.com/20200607174235.png

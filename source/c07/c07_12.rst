@@ -90,5 +90,3 @@ Python
 argument参数对应的元组存放普通参数，kwargs对应的字典存放带参数名的参数。
 
 本文来源于：公众号”未闻Code”，作者：kingname
-
-.. image:: http://image.iswbm.com/20200607174235.png

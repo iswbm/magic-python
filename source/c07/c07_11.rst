@@ -72,5 +72,3 @@ gettext 是一套 GNU下的国际化工具。主要有工具：
    >>> zh.install()
    >>> _('hello world')
    '你好世界'
-
-.. image:: http://image.iswbm.com/20200607174235.png

@@ -27,5 +27,3 @@
      /usr/lib/python2.7/site-packages/eventlet/wsgi.py(384)handle_one_request()
    -> self.handle_one_response()
      /usr/lib/python2.7/site-packages/eventlet/wsgi.py(481)handle_one_response()
-
-.. image:: http://image.iswbm.com/20200607174235.png

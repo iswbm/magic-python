@@ -40,5 +40,3 @@
    # 退出 wangbm 用户，在 root 用户环境中发现 requests 未安装
    [root@localhost ~]$ pip list | grep requests
    [root@localhost ~]$
-
-.. image:: http://image.iswbm.com/20200607174235.png

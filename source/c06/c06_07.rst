@@ -33,5 +33,3 @@
    found = all(thing == other_thing for thing in things)
 
 只要有一个不满足条件，all 函数的结果就会立刻返回 False
-
-.. image:: http://image.iswbm.com/20200607174235.png

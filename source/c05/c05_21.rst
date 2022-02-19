@@ -63,5 +63,3 @@ defaultdict 接收一个工厂方法，工厂方法返回的对象就是字典�
    >>>
    >>> info["msg"]
    'default value'
-
-.. image:: http://image.iswbm.com/20200607174235.png

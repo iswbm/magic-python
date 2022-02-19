@@ -45,5 +45,3 @@
    >>> students.sort(key=lambda student: (-student['score'], student['age']))
    >>> students
    [{'age': 17, 'score': 80, 'name': 'Julia'}, {'age': 16, 'score': 80, 'name': 'Tom'}, {'age': 17, 'score': 89, 'name': 'Jack'}]
-
-.. image:: http://image.iswbm.com/20200607174235.png

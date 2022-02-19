@@ -64,5 +64,3 @@
    world
 
 知道这两个魔法方法的人，一看就明白了，这里不再解释啦。
-
-.. image:: http://image.iswbm.com/20200607174235.png

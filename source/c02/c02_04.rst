@@ -16,5 +16,3 @@
    5d41402abc4b2a76b9719d911017c592
 
 只要加 -c 参数，就可以输入你的 Python 代码了。
-
-.. image:: http://image.iswbm.com/20200607174235.png

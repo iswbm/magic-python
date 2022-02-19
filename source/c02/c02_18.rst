@@ -17,5 +17,3 @@
 -  以及各种环境变量
 
 .. image:: http://image.iswbm.com/20210504114516.png
-
-.. image:: http://image.iswbm.com/20200607174235.png

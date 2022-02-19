@@ -46,5 +46,3 @@
    3
    calculating: 2 + 3
    5
-
-.. image:: http://image.iswbm.com/20200607174235.png

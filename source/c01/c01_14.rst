@@ -21,5 +21,3 @@ arguments 和 parameter
        print(msg)
        
    output_msg("error")
-
-.. image:: http://image.iswbm.com/20200607174235.png

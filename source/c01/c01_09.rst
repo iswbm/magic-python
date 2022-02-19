@@ -23,5 +23,3 @@
    >>> mydict = {str(i):i for i in range(5)}
    >>> mydict
    {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4}
-
-.. image:: http://image.iswbm.com/20200607174235.png

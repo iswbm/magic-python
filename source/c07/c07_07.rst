@@ -445,5 +445,3 @@ fileinput 是对 open 函数的再次封装，在仅需读取数据的场景中�
 做得更专业、更人性，当然在其他有写操作的复杂场景中，fileinput
 就无能为力啦，本身从 fileinput
 的命名上就知道这个模块只专注于输入（读）而不是输出（写）。
-
-.. image:: http://image.iswbm.com/20200607174235.png

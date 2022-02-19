@@ -129,5 +129,3 @@ python 代码快。
 
    print(is_in("hello, python", "llo"))  # True
    print(is_in("hello, python", "lol"))  # False
-
-.. image:: http://image.iswbm.com/20200607174235.png

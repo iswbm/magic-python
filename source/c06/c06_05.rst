@@ -72,5 +72,3 @@ Python 的关键字，可以通过 keyword 这个模块列出来，一共有 33 
 .. code:: python
 
    >>> try_ = True
-
-.. image:: http://image.iswbm.com/20200607174235.png

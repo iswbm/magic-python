@@ -31,5 +31,3 @@ Python3.9，那你安装包时就会很困惑，我到底把包安装在了哪�
 
    # 在 python3.9 中安装
    $ python3.9 -m pip install requests
-
-.. image:: http://image.iswbm.com/20200607174235.png

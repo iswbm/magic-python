@@ -24,5 +24,3 @@
 帮助文档的效果如下
 
 .. image:: http://image.iswbm.com/20200718191249.png
-
-.. image:: http://image.iswbm.com/20200607174235.png

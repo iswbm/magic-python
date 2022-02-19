@@ -40,5 +40,3 @@ Shell 模式后，还是会打印平安经。
 ``手动加载执行``
 
 .. image:: http://image.iswbm.com/20200801230503.png
-
-.. image:: http://image.iswbm.com/20200607174235.png

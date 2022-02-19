@@ -33,5 +33,3 @@
    [root@localhost ~]$ python demo.py 
    10
    10
-
-.. image:: http://image.iswbm.com/20200607174235.png

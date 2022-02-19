@@ -87,5 +87,3 @@
        raise RuntimeError("Something bad happened") from None
    RuntimeError: Something bad happened
    (PythonCodingTime)
-
-.. image:: http://image.iswbm.com/20200607174235.png

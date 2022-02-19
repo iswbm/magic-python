@@ -38,5 +38,3 @@
            process_standard_payment(payment)
        else:
            process_international_payment(payment)
-
-.. image:: http://image.iswbm.com/20200607174235.png

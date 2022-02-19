@@ -32,5 +32,3 @@
    1
    2
    3
-
-.. image:: http://image.iswbm.com/20200607174235.png

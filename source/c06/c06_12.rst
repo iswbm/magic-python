@@ -29,5 +29,3 @@ class，这个有类别的意思，可能你也想使用它来作为变量名，
 
    def tag(name,*content,class_):
        pass
-
-.. image:: http://image.iswbm.com/20200607174235.png

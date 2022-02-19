@@ -24,5 +24,3 @@
    [0, 1, 2, 3, 4]
    >>> x
    1
-
-.. image:: http://image.iswbm.com/20200607174235.png

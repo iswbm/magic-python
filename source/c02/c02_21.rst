@@ -19,5 +19,3 @@
    Protocol mismatch.
    Telnet(192.168.56.200,22): recv b''
    *** Connection closed by remote host ***
-
-.. image:: http://image.iswbm.com/20200607174235.png

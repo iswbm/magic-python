@@ -38,5 +38,3 @@
        
    with close_stdout():
        you_task()
-
-.. image:: http://image.iswbm.com/20200607174235.png

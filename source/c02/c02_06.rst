@@ -20,5 +20,3 @@ SimpleHTTPServer是Python
 .. image:: http://image.iswbm.com/20190511165716.png
 
 SimpleHTTPServer有一个特性，如果待共享的目录下有index.html，那么index.html文件会被视为默认主页；如果不存在index.html文件，那么就会显示整个目录列表。
-
-.. image:: http://image.iswbm.com/20200607174235.png

@@ -18,5 +18,3 @@
 经过我的摸索，终于找到了方法，具体方法如下：
 
 .. image:: http://image.iswbm.com/20200801195158.png
-
-.. image:: http://image.iswbm.com/20200607174235.png

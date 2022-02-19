@@ -39,5 +39,3 @@
    # 调用私有方法，以下两种等价
    ins._Kls__private()
    ins.call_private()
-
-.. image:: http://image.iswbm.com/20200607174235.png

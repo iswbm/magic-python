@@ -30,5 +30,3 @@ pdb 的代码。
 从下图可以看出，程序执行完成后会自动进入 console 交互模式。
 
 .. image:: http://image.iswbm.com/image-20200616000039009.png
-
-.. image:: http://image.iswbm.com/20200607174235.png

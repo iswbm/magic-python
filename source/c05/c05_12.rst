@@ -43,5 +43,3 @@ print 的取消换行
    [root@localhost ~]# python demo.py 
    0 1 2
    [root@localhost ~]#
-
-.. image:: http://image.iswbm.com/20200607174235.png

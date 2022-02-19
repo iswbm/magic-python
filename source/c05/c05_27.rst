@@ -37,5 +37,3 @@
    True
    >>> version.parse("1.3.a4") < version.parse("10.1.2")
    True
-
-.. image:: http://image.iswbm.com/20200607174235.png

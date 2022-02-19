@@ -23,5 +23,3 @@
    >>> linecache.getline('/etc/passwd', 10000)
 
    >>>
-
-.. image:: http://image.iswbm.com/20200607174235.png

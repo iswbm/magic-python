@@ -17,5 +17,3 @@ Python Shell，就像下面这样子，开启了极简模式，舒服多了。
 .. image:: http://image.iswbm.com/20200801203047.png
 
 .. image:: http://image.iswbm.com/20200512125643.png
-
-.. image:: http://image.iswbm.com/20200607174235.png

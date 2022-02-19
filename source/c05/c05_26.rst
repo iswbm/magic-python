@@ -38,5 +38,3 @@
      File "/usr/lib64/python3.6/inspect.py", line 2912, in _bind
        raise TypeError(msg) from None
    TypeError: missing a required argument: 'age'
-
-.. image:: http://image.iswbm.com/20200607174235.png

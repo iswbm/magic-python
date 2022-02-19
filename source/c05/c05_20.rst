@@ -66,5 +66,3 @@ break，还是没有break？
 
 总结一下，for else 和 try else 相同，只要代码正常走下去不被
 break，不抛出异常，就可以走else。
-
-.. image:: http://image.iswbm.com/20200607174235.png

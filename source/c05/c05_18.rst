@@ -17,5 +17,3 @@ Python 3 中的 print
 
    $ cat test.log
    hello, python
-
-.. image:: http://image.iswbm.com/20200607174235.png
