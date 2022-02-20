@@ -27,16 +27,16 @@ jobs:
           SERVER_IP: ${{ secrets.SSH_HOST }} # 引用配置，服务器的host名（IP或者域名domain.com）
           USERNAME: ${{ secrets.SSH_USERNAME }} # 引用配置，服务器登录名
           SERVER_DESTINATION: ${{ secrets.WORK_HOME }} # 部署到目标文件夹
-      - name: Restart server # 第三步，重启服务
+      - name: Restart server # 第三步，重新部署服务
         uses: appleboy/ssh-action@master
         env:
           WORK_HOME: ${{ secrets.WORK_HOME }}
         with:
           host: ${{ secrets.SSH_HOST }} # 下面三个配置与上一步类似
           username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.DEPLOY_KEY }}
-          # 重启的脚本，根据自身情况做相应改动，一般要做的是migrate数据库以及重启服务器
+          port: ${{ secrets.SSH_PORT }} # SSH端口
+          key: ${{ secrets.DEPLOY_KEY }} #  私钥
           script: |
             cd $WORK_HOME
             ./rebuild.sh
-          envs: WORK_HOME
+          envs: WORK_HOME # 要传入 script 的环境变量
