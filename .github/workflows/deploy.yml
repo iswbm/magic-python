@@ -29,6 +29,8 @@ jobs:
           SERVER_DESTINATION: ${{ secrets.WORK_HOME }} # 部署到目标文件夹
       - name: Restart server # 第三步，重启服务
         uses: appleboy/ssh-action@master
+        env:
+          WORK_HOME: ${{ secrets.WORK_HOME }}
         with:
           host: ${{ secrets.SSH_HOST }} # 下面三个配置与上一步类似
           username: ${{ secrets.SSH_USERNAME }}
@@ -37,5 +39,4 @@ jobs:
           script: |
             cd $WORK_HOME
             ./rebuild.sh
-          env:
-            WORK_HOME: ${{ secrets.WORK_HOME }}
+          envs: WORK_HOME
