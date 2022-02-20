@@ -18,6 +18,4 @@ Contents:
    aboutme
    roadmap
 
---------------
 
-.. figure:: http://image.iswbm.com/20200607174235.png
