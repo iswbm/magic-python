@@ -12,8 +12,8 @@
 
    def function():
        if isinstance(a, b) or issubclass(b, a):
-           returnTrue
-       returnFalse
+           return True
+       return False
 
 但是，对比这样，直接返回结果会更加明智：
 
