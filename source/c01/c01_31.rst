@@ -77,6 +77,6 @@ split函数不加参数，就能达到 awk 的效果
    >>> msg='hello----world'
    >>> msg.split('-')
    ['hello', '', '', '', 'world']
-   >>> 
-   >>> filter(lambda item: True if item else False, msg.split('-'))
+   >>>
+   >>> filter(bool, msg.split('-'))
    ['hello', 'world']
